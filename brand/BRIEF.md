@@ -1,3 +1,5 @@
+> **Brand name changed to Virunga Journeys** (was Ridgeline). The owner chose travel-company names. Use Virunga Journeys everywhere; the build prompt is brand/PROMPT.md.
+
 # Brand brief: Ridgeline (Rwanda)
 
 **Name switched.** The assigned name was **Thousand Hills**, but two companies already trade under it in Rwanda: **1000 Hills Safaris**, a Kigali tour company selling customised Rwanda and East Africa safaris (SafariBookings lists it as founded in 2015), and **Thousand Hills Africa**, a Rwandan ground operator now folded into **Wilderness**, which is this brand's primary design reference (it became Wilderness Rwanda's travel-shop and touring business). Using the name would look like a copy of both. This brief uses the best runner-up, **Ridgeline**. The owner should confirm.
