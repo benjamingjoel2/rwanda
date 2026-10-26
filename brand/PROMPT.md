@@ -1,3 +1,5 @@
+Name this Claude chat: Virunga Journeys (Rwanda)
+
 Build a travel website for Rwanda in this repo, from scratch.
 
 Brand:
