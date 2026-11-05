@@ -544,7 +544,7 @@ function pEnquire(lang) {
   const body = `${plainTop(lang, { crumbs: [[u.nav.enquire, p]], title: E.title, intro: E.intro })}
 <section class="section wrap"><div class="enq">
 <aside><p class="label label--muted">${E.asideLabel}</p><ol class="care" style="margin-top:1rem;grid-template-columns:1fr">${E.steps.map(s => `<li>${s}</li>`).join('')}</ol>${contactList(lang)}</aside>
-<form class="form" method="POST" action="${cfg.form.action}" data-ajax="${cfg.form.ajax}" data-sending="${attr(f.sending)}" data-error="${attr(f.error)}" accept-charset="UTF-8">
+<form class="form" method="POST" action="${cfg.form.action}" data-ajax="${cfg.form.ajax}" data-sending="${attr(f.sending)}" data-error="${attr(f.error)}" data-mailto="${attr(f.mailto)}" data-email="${cfg.brand.email}" accept-charset="UTF-8">
 <input type="hidden" name="_subject" value="${attr(`${cfg.brand.name} — ${f.subject}`)}">
 <input type="hidden" name="_template" value="table">
 <input type="hidden" name="_captcha" value="false">

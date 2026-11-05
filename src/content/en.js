@@ -738,6 +738,7 @@ module.exports = {
       consent: 'I agree that {{brand}} may use these details to reply to my enquiry, as described in the <a class="link" href="{privacy}">privacy policy</a>.',
       submit: 'Send enquiry',
       sending: 'Sending…',
+      mailto: 'Send it by email instead',
       error: 'Something went wrong. Please try again, or email us directly at {{email}}.',
       note: 'Fields marked * are required. We never share your details with anyone except the suppliers needed for your journey.',
     },

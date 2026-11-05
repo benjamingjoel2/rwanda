@@ -738,6 +738,7 @@ module.exports = {
       consent: 'Ich bin damit einverstanden, dass {{brand}} diese Angaben verwendet, um auf meine Anfrage zu antworten, wie in der <a class="link" href="{privacy}">Datenschutzerklärung</a> beschrieben.',
       submit: 'Anfrage senden',
       sending: 'Wird gesendet …',
+      mailto: 'Stattdessen per E-Mail senden',
       error: 'Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt an {{email}}.',
       note: 'Mit * gekennzeichnete Felder sind Pflichtfelder. Wir geben Ihre Daten nur an die Leistungsträger weiter, die für Ihre Reise nötig sind.',
     },

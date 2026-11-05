@@ -127,22 +127,37 @@
     um.forEach(function (el) { el.textContent = txt; });
   }
 
-  /* enquiry form: submit via fetch, fall back to normal POST */
+  /* enquiry form: submit via fetch; if the relay fails, offer a pre-filled email instead */
   var f = d.querySelector('form[data-ajax]');
   if (f && w.fetch) {
+    var mailto = function () {
+      var lines = [];
+      new FormData(f).forEach(function (v, k) { if (k.charAt(0) !== '_' && v) lines.push(k + ': ' + v); });
+      return 'mailto:' + f.dataset.email + '?subject=' + encodeURIComponent(f.querySelector('[name=_subject]').value) + '&body=' + encodeURIComponent(lines.join('\n'));
+    };
     f.addEventListener('submit', function (e) {
       var st = f.querySelector('.form-status');
       if (!f.checkValidity()) return;
       e.preventDefault();
       var btn = f.querySelector('[type=submit]'); btn.disabled = true;
       st.className = 'form-status'; st.textContent = f.dataset.sending;
-      fetch(f.dataset.ajax, { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(f) })
+      var ctrl = w.AbortController ? new AbortController() : null;
+      var timer = setTimeout(function () { ctrl && ctrl.abort(); }, 15000);
+      fetch(f.dataset.ajax, { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(f), signal: ctrl && ctrl.signal })
         .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
         .then(function (res) {
+          clearTimeout(timer);
           if (res.ok && String(res.j.success) !== 'false') { w.location.href = f.querySelector('[name=_next]').value; }
           else { throw new Error(res.j.message || 'error'); }
         })
-        .catch(function () { st.className = 'form-status err'; st.textContent = f.dataset.error; btn.disabled = false; });
+        .catch(function () {
+          clearTimeout(timer);
+          st.className = 'form-status err';
+          st.innerHTML = '';
+          st.appendChild(d.createTextNode(f.dataset.error + ' '));
+          var a = d.createElement('a'); a.href = mailto(); a.className = 'link'; a.textContent = f.dataset.mailto; st.appendChild(a);
+          btn.disabled = false;
+        });
     });
   }
 })();
