@@ -499,7 +499,7 @@ module.exports = {
       { note: 'The long dry season starts. Peak trekking months begin.', events: [] },
       { note: 'Dry, clear and busy. Book permits early.', events: [['', 'Independence Day (1 Jul)'], ['', 'Liberation Day (4 Jul)']] },
       { note: 'Dry and dusty in the east; ideal for Akagera.', events: [['', 'Umuganura, harvest day (first Friday of August)'], ['', 'Assumption Day (15 Aug)']] },
-      { note: 'Dry at first, then the short rains approach. Kwita Izina is often held around now.', events: [['kwita', 'Kwita Izina, the gorilla naming, is often held in late summer or early autumn; the date is announced each year']] },
+      { note: 'Dry at first, then the short rains approach. Kwita Izina is often held around now.', events: [['kwita', 'Kwita Izina, the gorilla naming, is often held between late August and October; the date is announced each year']] },
       { note: 'Short rains. Quieter lodges, lush forest.', events: [] },
       { note: 'Short rains continue; afternoon showers.', events: [] },
       { note: 'Rains easing; festive season and busy lodges at Christmas.', events: [['', 'Christmas Day (25 Dec) and Boxing Day (26 Dec)']] },

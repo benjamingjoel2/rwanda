@@ -9,7 +9,7 @@ const other = require(path.join(__dirname, `../src/content/${lang}.js`));
 const shape = (o, p = '') => typeof o !== 'object' || o === null ? [p + ':' + typeof o] : Array.isArray(o) ? o.flatMap((v, i) => shape(v, `${p}[${i}]`)) : Object.keys(o).flatMap(k => shape(o[k], `${p}.${k}`));
 const a = new Set(shape(en)), b = new Set(shape(other));
 const miss = [...a].filter(k => !b.has(k)), extra = [...b].filter(k => !a.has(k));
-const KEEP = /\.(slug|id|img|card|ctaImg|gallery\[\d+\]|strip\[\d+\]|nights)$/;
+const KEEP = /(\.(slug|id|img|card|ctaImg)|gallery\[\d+\]|strip\[\d+\]|list\[\d+\]\.nights)$/;
 const get = (o, p) => p.split(/\.|\[|\]/).filter(Boolean).reduce((x, k) => x?.[k], o);
 const keys = [...a].map(k => k.split(':')[0]);
 const changed = keys.filter(k => KEEP.test(k) && get(en, k) !== get(other, k));
