@@ -1,194 +1,176 @@
 {
  "hills-mist": {
-  "en": "hills-mist",
-  "fr": "hills-mist",
-  "de": "hills-mist",
-  "es": "hills-mist"
+  "en": "Morning mist filling a forested valley below a green ridge in Nyungwe, south-west Rwanda",
+  "fr": "Brume matinale dans une vallée boisée sous une crête verte à Nyungwe, dans le sud-ouest du Rwanda",
+  "de": "Morgennebel in einem bewaldeten Tal unter einem grünen Bergrücken in Nyungwe, Südwest-Ruanda",
+  "es": "Niebla matinal en un valle boscoso bajo una loma verde en Nyungwe, al suroeste de Ruanda"
  },
  "hills-mist-2": {
-  "en": "hills-mist-2",
-  "fr": "hills-mist-2",
-  "de": "hills-mist-2",
-  "es": "hills-mist-2"
- },
- "kigali": {
-  "en": "kigali",
-  "fr": "kigali",
-  "de": "kigali",
-  "es": "kigali"
- },
- "kigali-2": {
-  "en": "kigali-2",
-  "fr": "kigali-2",
-  "de": "kigali-2",
-  "es": "kigali-2"
- },
- "kigali-memorial": {
-  "en": "kigali-memorial",
-  "fr": "kigali-memorial",
-  "de": "kigali-memorial",
-  "es": "kigali-memorial"
- },
- "memorial-2": {
-  "en": "memorial-2",
-  "fr": "memorial-2",
-  "de": "memorial-2",
-  "es": "memorial-2"
- },
- "volcanoes": {
-  "en": "volcanoes",
-  "fr": "volcanoes",
-  "de": "volcanoes",
-  "es": "volcanoes"
- },
- "volcanoes-2": {
-  "en": "volcanoes-2",
-  "fr": "volcanoes-2",
-  "de": "volcanoes-2",
-  "es": "volcanoes-2"
- },
- "gorilla": {
-  "en": "gorilla",
-  "fr": "gorilla",
-  "de": "gorilla",
-  "es": "gorilla"
- },
- "gorilla-2": {
-  "en": "gorilla-2",
-  "fr": "gorilla-2",
-  "de": "gorilla-2",
-  "es": "gorilla-2"
- },
- "golden-monkey": {
-  "en": "golden-monkey",
-  "fr": "golden-monkey",
-  "de": "golden-monkey",
-  "es": "golden-monkey"
- },
- "twin-lakes": {
-  "en": "twin-lakes",
-  "fr": "twin-lakes",
-  "de": "twin-lakes",
-  "es": "twin-lakes"
- },
- "nyungwe": {
-  "en": "nyungwe",
-  "fr": "nyungwe",
-  "de": "nyungwe",
-  "es": "nyungwe"
- },
- "nyungwe-2": {
-  "en": "nyungwe-2",
-  "fr": "nyungwe-2",
-  "de": "nyungwe-2",
-  "es": "nyungwe-2"
- },
- "chimp": {
-  "en": "chimp",
-  "fr": "chimp",
-  "de": "chimp",
-  "es": "chimp"
- },
- "colobus": {
-  "en": "colobus",
-  "fr": "colobus",
-  "de": "colobus",
-  "es": "colobus"
+  "en": "Green hills and valleys of Karongi District, with villages on the ridges and haze on the horizon",
+  "fr": "Collines et vallées verdoyantes du district de Karongi, villages sur les crêtes et horizon voilé",
+  "de": "Grüne Hügel und Täler im Distrikt Karongi, Dörfer auf den Kämmen und Dunst am Horizont",
+  "es": "Colinas y valles verdes del distrito de Karongi, con aldeas en las lomas y bruma en el horizonte"
  },
  "tea": {
-  "en": "tea",
-  "fr": "tea",
-  "de": "tea",
-  "es": "tea"
- },
- "akagera": {
-  "en": "akagera",
-  "fr": "akagera",
-  "de": "akagera",
-  "es": "akagera"
- },
- "akagera-2": {
-  "en": "akagera-2",
-  "fr": "akagera-2",
-  "de": "akagera-2",
-  "es": "akagera-2"
- },
- "akagera-animal": {
-  "en": "akagera-animal",
-  "fr": "akagera-animal",
-  "de": "akagera-animal",
-  "es": "akagera-animal"
- },
- "akagera-animal-2": {
-  "en": "akagera-animal-2",
-  "fr": "akagera-animal-2",
-  "de": "akagera-animal-2",
-  "es": "akagera-animal-2"
- },
- "kivu-gisenyi": {
-  "en": "kivu-gisenyi",
-  "fr": "kivu-gisenyi",
-  "de": "kivu-gisenyi",
-  "es": "kivu-gisenyi"
- },
- "kivu-kibuye": {
-  "en": "kivu-kibuye",
-  "fr": "kivu-kibuye",
-  "de": "kivu-kibuye",
-  "es": "kivu-kibuye"
- },
- "gishwati": {
-  "en": "gishwati",
-  "fr": "gishwati",
-  "de": "gishwati",
-  "es": "gishwati"
- },
- "imigongo": {
-  "en": "imigongo",
-  "fr": "imigongo",
-  "de": "imigongo",
-  "es": "imigongo"
- },
- "imigongo-2": {
-  "en": "imigongo-2",
-  "fr": "imigongo-2",
-  "de": "imigongo-2",
-  "es": "imigongo-2"
- },
- "congo-nile": {
-  "en": "congo-nile",
-  "fr": "congo-nile",
-  "de": "congo-nile",
-  "es": "congo-nile"
+  "en": "Rows of tea covering the hills at Kitabi, on the edge of Nyungwe",
+  "fr": "Rangées de thé couvrant les collines de Kitabi, en lisière de Nyungwe",
+  "de": "Teereihen auf den Hügeln von Kitabi am Rand von Nyungwe",
+  "es": "Hileras de té cubriendo las colinas de Kitabi, en el límite de Nyungwe"
  },
  "countryside": {
-  "en": "countryside",
-  "fr": "countryside",
-  "de": "countryside",
-  "es": "countryside"
+  "en": "A Rwandan hillside cut into green farming terraces",
+  "fr": "Un versant rwandais taillé en terrasses cultivées",
+  "de": "Ein ruandischer Hang mit grünen Ackerterrassen",
+  "es": "Una ladera ruandesa cortada en terrazas de cultivo verdes"
  },
  "countryside-2": {
-  "en": "countryside-2",
-  "fr": "countryside-2",
-  "de": "countryside-2",
-  "es": "countryside-2"
+  "en": "Rolling hills of Nyamagabe District in southern Rwanda, patched with fields and woodland",
+  "fr": "Collines ondulantes du district de Nyamagabe, dans le sud du Rwanda, entre champs et bois",
+  "de": "Sanfte Hügel im Distrikt Nyamagabe im Süden Ruandas, mit Feldern und Waldstücken",
+  "es": "Colinas onduladas del distrito de Nyamagabe, en el sur de Ruanda, entre campos y bosque"
+ },
+ "volcanoes": {
+  "en": "Muhabura, Gahinga and Sabyinyo volcanoes at sunrise above farmland in northern Rwanda",
+  "fr": "Les volcans Muhabura, Gahinga et Sabyinyo au lever du soleil, au-dessus des champs du nord du Rwanda",
+  "de": "Die Vulkane Muhabura, Gahinga und Sabyinyo bei Sonnenaufgang über Feldern im Norden Ruandas",
+  "es": "Los volcanes Muhabura, Gahinga y Sabyinyo al amanecer sobre campos del norte de Ruanda"
+ },
+ "volcanoes-2": {
+  "en": "The jagged peaks of Mount Sabyinyo rising above fields near the park",
+  "fr": "Les sommets déchiquetés du mont Sabyinyo au-dessus des champs, près du parc",
+  "de": "Die zerklüfteten Gipfel des Sabyinyo über Feldern nahe dem Nationalpark",
+  "es": "Los picos irregulares del monte Sabyinyo sobre los campos cercanos al parque"
  },
  "musanze": {
-  "en": "musanze",
-  "fr": "musanze",
-  "de": "musanze",
-  "es": "musanze"
+  "en": "Farmland and trees around Kinigi, below the Virunga volcanoes",
+  "fr": "Champs et arbres autour de Kinigi, au pied des volcans des Virunga",
+  "de": "Felder und Bäume rund um Kinigi am Fuß der Virunga-Vulkane",
+  "es": "Campos y árboles alrededor de Kinigi, al pie de los volcanes Virunga"
  },
- "coffee": {
-  "en": "coffee",
-  "fr": "coffee",
-  "de": "coffee",
-  "es": "coffee"
+ "gorilla": {
+  "en": "A mountain gorilla of the Susa group sitting in green thicket in Volcanoes National Park",
+  "fr": "Un gorille de montagne du groupe Susa assis dans les fourrés du parc national des Volcans",
+  "de": "Ein Berggorilla der Susa-Gruppe sitzt im grünen Dickicht des Volcanoes-Nationalparks",
+  "es": "Un gorila de montaña del grupo Susa sentado en la espesura del Parque Nacional de los Volcanes"
  },
- "nyanza": {
-  "en": "nyanza",
-  "fr": "nyanza",
-  "de": "nyanza",
-  "es": "nyanza"
+ "gorilla-2": {
+  "en": "A mother mountain gorilla resting with her baby, Sabyinyo group, Volcanoes National Park",
+  "fr": "Une mère gorille de montagne se reposant avec son petit, groupe Sabyinyo, parc national des Volcans",
+  "de": "Eine Berggorilla-Mutter ruht mit ihrem Jungen, Sabyinyo-Gruppe, Volcanoes-Nationalpark",
+  "es": "Una gorila de montaña descansa con su cría, grupo Sabyinyo, Parque Nacional de los Volcanes"
+ },
+ "golden-monkey": {
+  "en": "A golden monkey eating bamboo in Volcanoes National Park",
+  "fr": "Un singe doré mangeant du bambou dans le parc national des Volcans",
+  "de": "Eine Goldmeerkatze frisst Bambus im Volcanoes-Nationalpark",
+  "es": "Un mono dorado comiendo bambú en el Parque Nacional de los Volcanes"
+ },
+ "kigali": {
+  "en": "Kigali’s hills covered in houses and trees, with office towers on the skyline",
+  "fr": "Les collines de Kigali couvertes de maisons et d’arbres, avec des tours de bureaux à l’horizon",
+  "de": "Kigalis Hügel voller Häuser und Bäume, am Horizont Bürotürme",
+  "es": "Las colinas de Kigali cubiertas de casas y árboles, con torres de oficinas en el horizonte"
+ },
+ "kigali-2": {
+  "en": "Aerial view of the Kigali Convention Centre dome and gardens, with the city beyond",
+  "fr": "Vue aérienne du dôme et des jardins du Kigali Convention Centre, avec la ville au-delà",
+  "de": "Luftaufnahme der Kuppel und Gärten des Kigali Convention Centre, dahinter die Stadt",
+  "es": "Vista aérea de la cúpula y los jardines del Kigali Convention Centre, con la ciudad al fondo"
+ },
+ "kigali-memorial": {
+  "en": "The gardens of the Kigali Genocide Memorial at Gisozi, looking across the city",
+  "fr": "Les jardins du mémorial du génocide de Kigali, à Gisozi, face à la ville",
+  "de": "Die Gärten der Genozid-Gedenkstätte Kigali in Gisozi mit Blick über die Stadt",
+  "es": "Los jardines del Memorial del Genocidio de Kigali, en Gisozi, con vistas a la ciudad"
+ },
+ "akagera": {
+  "en": "Golden grassland running down to a lake in Akagera National Park",
+  "fr": "Savane dorée descendant vers un lac dans le parc national de l’Akagera",
+  "de": "Goldenes Grasland, das zu einem See im Akagera-Nationalpark hinabführt",
+  "es": "Pradera dorada que baja hasta un lago en el Parque Nacional de Akagera"
+ },
+ "akagera-2": {
+  "en": "Lake Ihema and its islands seen from the wooded shore, Akagera National Park",
+  "fr": "Le lac Ihema et ses îles vus depuis la rive boisée, parc national de l’Akagera",
+  "de": "Der Ihema-See mit seinen Inseln vom bewaldeten Ufer aus, Akagera-Nationalpark",
+  "es": "El lago Ihema y sus islas desde la orilla arbolada, Parque Nacional de Akagera"
+ },
+ "akagera-animal": {
+  "en": "A group of Masai giraffes on the green plains of Akagera National Park",
+  "fr": "Un groupe de girafes Masaï dans les plaines vertes du parc national de l’Akagera",
+  "de": "Eine Gruppe Massai-Giraffen in den grünen Ebenen des Akagera-Nationalparks",
+  "es": "Un grupo de jirafas masái en las llanuras verdes del Parque Nacional de Akagera"
+ },
+ "akagera-animal-2": {
+  "en": "A herd of zebras walking along a track in Akagera National Park",
+  "fr": "Un troupeau de zèbres marchant sur une piste du parc national de l’Akagera",
+  "de": "Eine Zebraherde auf einer Piste im Akagera-Nationalpark",
+  "es": "Una manada de cebras caminando por una pista en el Parque Nacional de Akagera"
+ },
+ "kivu-gisenyi": {
+  "en": "Men paddling a boat on Lake Kivu off Rubavu (Gisenyi)",
+  "fr": "Des hommes en barque sur le lac Kivu au large de Rubavu (Gisenyi)",
+  "de": "Männer rudern ein Boot auf dem Kivusee vor Rubavu (Gisenyi)",
+  "es": "Hombres remando en una barca en el lago Kivu frente a Rubavu (Gisenyi)"
+ },
+ "kivu-kibuye": {
+  "en": "Wooded peninsulas and calm water on Lake Kivu outside Kibuye (Karongi)",
+  "fr": "Presqu’îles boisées et eaux calmes du lac Kivu près de Kibuye (Karongi)",
+  "de": "Bewaldete Halbinseln und ruhiges Wasser am Kivusee bei Kibuye (Karongi)",
+  "es": "Penínsulas boscosas y aguas tranquilas del lago Kivu cerca de Kibuye (Karongi)"
+ },
+ "congo-nile": {
+  "en": "A small boat crossing Lake Kivu between green headlands near Kibuye",
+  "fr": "Un petit bateau traversant le lac Kivu entre des caps verdoyants près de Kibuye",
+  "de": "Ein kleines Boot überquert den Kivusee zwischen grünen Landzungen bei Kibuye",
+  "es": "Una pequeña barca cruza el lago Kivu entre cabos verdes cerca de Kibuye"
+ },
+ "kivu-shore": {
+  "en": "Lake Kivu seen from the Rubona peninsula near Gisenyi, with houses among the trees",
+  "fr": "Le lac Kivu vu depuis la presqu’île de Rubona, près de Gisenyi, avec des maisons parmi les arbres",
+  "de": "Der Kivusee von der Halbinsel Rubona bei Gisenyi, Häuser zwischen den Bäumen",
+  "es": "El lago Kivu desde la península de Rubona, cerca de Gisenyi, con casas entre los árboles"
+ },
+ "twin-lakes": {
+  "en": "Lake Burera and its islands below the volcanoes, seen from the surrounding hills",
+  "fr": "Le lac Burera et ses îles au pied des volcans, vus depuis les collines alentour",
+  "de": "Der Burera-See mit seinen Inseln unterhalb der Vulkane, von den umliegenden Hügeln aus",
+  "es": "El lago Burera y sus islas al pie de los volcanes, visto desde las colinas cercanas"
+ },
+ "nyungwe": {
+  "en": "The canopy walkway in Nyungwe, suspended above the forest with mountains behind",
+  "fr": "La passerelle de la canopée de Nyungwe, suspendue au-dessus de la forêt, montagnes en arrière-plan",
+  "de": "Der Baumkronenpfad in Nyungwe hoch über dem Wald, dahinter Berge",
+  "es": "La pasarela del dosel de Nyungwe, suspendida sobre el bosque con montañas al fondo"
+ },
+ "nyungwe-2": {
+  "en": "Looking along the Nyungwe canopy walkway between its rope netting",
+  "fr": "Vue le long de la passerelle de la canopée de Nyungwe, entre ses filets de corde",
+  "de": "Blick entlang des Baumkronenpfads in Nyungwe zwischen den Seilnetzen",
+  "es": "Vista a lo largo de la pasarela del dosel de Nyungwe, entre sus redes de cuerda"
+ },
+ "chimp": {
+  "en": "A young chimpanzee sitting in the branches in Nyungwe forest",
+  "fr": "Un jeune chimpanzé assis dans les branches de la forêt de Nyungwe",
+  "de": "Ein junger Schimpanse sitzt in den Ästen im Nyungwe-Wald",
+  "es": "Un chimpancé joven sentado entre las ramas del bosque de Nyungwe"
+ },
+ "colobus": {
+  "en": "A group of black-and-white Rwenzori colobus monkeys in Nyungwe",
+  "fr": "Un groupe de colobes noir et blanc du Ruwenzori à Nyungwe",
+  "de": "Eine Gruppe schwarz-weißer Ruwenzori-Stummelaffen in Nyungwe",
+  "es": "Un grupo de colobos blanquinegros de Ruwenzori en Nyungwe"
+ },
+ "gishwati": {
+  "en": "Cloud over the green mountains of Gishwati-Mukura in Rutsiro District",
+  "fr": "Nuages sur les montagnes verdoyantes de Gishwati-Mukura, district de Rutsiro",
+  "de": "Wolken über den grünen Bergen von Gishwati-Mukura im Distrikt Rutsiro",
+  "es": "Nubes sobre las montañas verdes de Gishwati-Mukura, en el distrito de Rutsiro"
+ },
+ "imigongo": {
+  "en": "An imigongo panel with twin spirals in raised black and white ridges",
+  "fr": "Un panneau imigongo à double spirale en reliefs noirs et blancs",
+  "de": "Eine Imigongo-Tafel mit Doppelspirale aus erhabenen schwarzen und weißen Graten",
+  "es": "Un panel de imigongo con dos espirales en relieves negros y blancos"
  }
 }
