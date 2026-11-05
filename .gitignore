@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.vercel/
+src/img-src/*.jpg
+src/img-src/tmp/
+.DS_Store
