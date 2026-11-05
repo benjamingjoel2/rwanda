@@ -108,6 +108,18 @@
   function req() { if (!ticking) { ticking = true; w.requestAnimationFrame(frame); } }
   if (words.length || ridges || day) { w.addEventListener('scroll', req, { passive: true }); w.addEventListener('resize', req); frame(); }
 
+  /* card carousel arrows */
+  d.querySelectorAll('.cnav').forEach(function (nav) {
+    var sec = nav.closest('section'), track = sec && sec.querySelector('[data-carousel]');
+    if (!track) return;
+    nav.querySelectorAll('.cbtn').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var card = track.firstElementChild, step = card ? card.getBoundingClientRect().width + 24 : 300;
+        track.scrollBy({ left: step * +b.dataset.dir, behavior: reduce ? 'auto' : 'smooth' });
+      });
+    });
+  });
+
   /* Kigali local time (fact row) */
   var kt = d.querySelectorAll('[data-kigali-time]');
   function tick() {

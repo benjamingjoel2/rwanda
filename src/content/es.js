@@ -4,6 +4,8 @@ module.exports = {
   ui: {
     skip: 'Ir al contenido',
     menu: 'Menú',
+    prev: 'Anterior',
+    next: 'Siguiente',
     mainNav: 'Principal',
     language: 'Idioma',
     breadcrumb: 'Ruta de navegación',
@@ -45,6 +47,7 @@ module.exports = {
   },
 
   home: {
+    stats: [['1', 'hora con una familia de gorilas'], ['8', 'visitantes por familia y día'], ['4507', 'metros: el Karisimbi, el volcán más alto'], ['4', 'parques nacionales en un país pequeño']],
     metaDescription: 'Viajes privados por Ruanda: trekking de gorilas y monos dorados en el Parque Nacional de los Volcanes, chimpancés en Nyungwe, la sabana de Akagera y el lago Kivu, planificados con respeto por la historia del país.',
     hero: {
       img: 'hills-mist',

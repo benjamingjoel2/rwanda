@@ -4,6 +4,8 @@ module.exports = {
   ui: {
     skip: 'Skip to content',
     menu: 'Menu',
+    prev: 'Previous',
+    next: 'Next',
     mainNav: 'Main',
     language: 'Language',
     breadcrumb: 'Breadcrumb',
@@ -45,6 +47,7 @@ module.exports = {
   },
 
   home: {
+    stats: [['1', 'hour with a gorilla family'], ['8', 'visitors per family, per day'], ['4,507', 'metres: Karisimbi, the highest volcano'], ['4', 'national parks in one small country']],
     metaDescription: 'Private journeys in Rwanda: gorilla and golden monkey treks in Volcanoes National Park, chimpanzees in Nyungwe, Akagera’s savannah and Lake Kivu, planned with care for the country’s history.',
     hero: {
       img: 'hills-mist',

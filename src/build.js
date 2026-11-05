@@ -28,6 +28,8 @@ const href = (lang, p) => (loc(lang).prefix + p) || '/';
 const abs = (lang, p) => cfg.siteUrl + href(lang, p);
 const fmtDate = (lang, d, o) => d.toLocaleDateString(lang === 'en' ? 'en-GB' : lang, Object.assign({ timeZone: 'Africa/Kigali' }, o));
 const cls = (...a) => a.filter(Boolean).join(' ');
+// Tarn-style headline: first sentence upright, the rest in italics
+const emTail = s => { if (/<em>/.test(s)) return s; const i = s.search(/[.!?]\s/); return i < 0 ? s : `${s.slice(0, i + 1)} <em>${s.slice(i + 2)}</em>`; };
 
 const ICON = {
   ne: '<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 11L11 3M5 3h6v6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>',
@@ -37,7 +39,7 @@ const ICON = {
 const logoMark = `<svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" fill="var(--ochre)"/><path d="M0 22 L8 10 L16 22 L24 10 L32 22 V32 H0Z" fill="var(--imigongo)"/><path d="M0 27 L8 15 L16 27 L24 15 L32 27" fill="none" stroke="var(--cream)" stroke-width="1.6"/></svg>`;
 
 function btn(text, link, variant = '', extra = '') {
-  return `<a class="btn ${variant}" href="${attr(link)}"${extra}><span>${text}</span><span class="ic">${ICON.ne}</span></a>`;
+  return `<a class="btn ${variant}" href="${attr(link)}"${extra}><span>${text}</span></a>`;
 }
 const tlink = (text, link) => `<a class="tlink" href="${attr(link)}">${text}${ICON.right}</a>`;
 
@@ -177,13 +179,13 @@ ${alts}
 <meta name="theme-color" content="${cfg.palette.imigongo}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 ${o.preload || ''}
-<link rel="preload" href="/assets/fonts/caslon-display-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/spectral-300.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/nunito-sans-var.woff2" as="font" type="font/woff2" crossorigin>
 <style>${CSS}</style>
 <script src="${JS_URL}" defer></script>
 <script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>
 </head>
-<body class="${o.solid ? 'is-solid' : ''}">
+<body class="${(o.solid ?? !o.body.includes('class="hero ')) ? 'is-solid' : ''}">
 <a class="skip" href="#main">${u.skip}</a>
 ${header(lang, p)}
 <main id="main">
@@ -200,10 +202,11 @@ function crumbsHtml(lang, list) {
   return `<nav class="crumbs" aria-label="${attr(u.breadcrumb)}"><a href="${href(lang, '/')}">${u.nav.home}</a>${list.map(([n, h], i) => `<span aria-hidden="true">/</span>${i === list.length - 1 ? `<span aria-current="page">${n}</span>` : `<a href="${href(lang, h)}">${n}</a>`}`).join('')}</nav>`;
 }
 function pageHero(lang, o) {
-  return `<section class="phero on-image">${ph(lang, o.img, { eager: true, zoom: false })}
-<div class="phero__in">${crumbsHtml(lang, o.crumbs)}${o.chips ? `<div class="chips">${o.chips.map(c => `<span class="chip">${c}</span>`).join('')}</div>` : ''}
-<div class="phero__row"><h1>${o.title}</h1><div>${o.intro ? `<p>${o.intro}</p>` : ''}${o.ctas ? `<div class="hero__ctas" style="margin-top:1.25rem">${o.ctas}</div>` : ''}</div></div></div>
-${o.facts ? `<dl class="factbar" style="--n:${o.facts.length}">${o.facts.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('')}</dl>` : ''}
+  return `<section class="ihero">
+<div class="ihero__top">${crumbsHtml(lang, o.crumbs)}${o.chips ? `<p class="meta">${o.chips.join(', ')}</p>` : ''}
+<div class="ihero__row"><h1>${emTail(o.title)}</h1><div class="ihero__side">${o.intro ? `<p>${o.intro}</p>` : ''}${o.ctas ? `<div class="hero__ctas">${o.ctas}</div>` : ''}</div></div></div>
+${ph(lang, o.img, { eager: true, zoom: false, cls: 'ihero__img', sizes: 'calc(100vw - 48px)' })}
+${o.facts ? `<dl class="kvbar" style="--n:${o.facts.length}">${o.facts.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('')}</dl>` : ''}
 </section>`;
 }
 function plainTop(lang, o) {
@@ -223,7 +226,11 @@ function ctaBanner(lang, o) {
 }
 function placeCards(lang, slugs, variant = 'hscroll') {
   const u = C[lang].ui;
-  return `<div class="${variant}">${slugs.map(s => { const p = place(lang, s); return `<a class="card rv" href="${href(lang, `/${s}/`)}">${ph(lang, p.card, { cls: 'r45', sizes: '(min-width:1100px) 25vw, (min-width:700px) 42vw, 78vw' })}<span class="label">${p.region}</span><h3 class="h3">${p.name}</h3><p>${p.short}</p><span class="tlink">${u.explore}${ICON.right}</span></a>`; }).join('')}</div>`;
+  return `<div class="${variant}" data-carousel>${slugs.map(s => { const p = place(lang, s); return `<a class="tcard rv" href="${href(lang, `/${s}/`)}"><div class="tcard__media">${ph(lang, p.card, { cls: 'r45', sizes: '(min-width:1100px) 25vw, (min-width:700px) 42vw, 78vw' })}<div class="tcard__cap"><h3>${p.name}</h3><i>${p.region}</i></div></div><div class="tcard__foot"><i>${p.strapline}</i><span>${u.explore} →</span></div></a>`; }).join('')}</div>`;
+}
+function carouselNav(lang) {
+  const u = C[lang].ui;
+  return `<div class="cnav"><button type="button" class="cbtn" data-dir="-1" aria-label="${attr(u.prev)}">←</button><button type="button" class="cbtn" data-dir="1" aria-label="${attr(u.next)}">→</button></div>`;
 }
 function journeyCard(lang, j) {
   const u = C[lang].ui;
@@ -240,11 +247,10 @@ function rowsHtml(lang, items) {
 }
 function dayHtml(lang, g, compact) {
   const steps = compact ? g.day.steps.filter((_, i) => [1, 2, 4, 6, 7, 8].includes(i)) : g.day.steps;
-  return `<section class="section wrap dark" aria-labelledby="day-h"><div class="day">
-<div class="day__side"><span class="label label--muted">${g.day.label}</span><h2 id="day-h" style="margin-top:1rem">${g.day.title}</h2><p class="muted" style="margin-top:1rem;max-width:30rem">${g.day.text}</p>
-<svg class="day__arc" viewBox="0 0 300 160" aria-hidden="true"><path d="M20 150 A130 130 0 0 1 280 150" fill="none" stroke="currentColor" stroke-dasharray="2 6"/><line x1="0" y1="150" x2="300" y2="150" stroke="currentColor" opacity=".5"/><circle class="day__sun" cx="20" cy="150" r="7" fill="var(--ochre)" stroke="var(--clay)"/></svg>
-<p class="day__clock num" aria-hidden="true">${steps[0].time}</p><p class="day__now" aria-hidden="true">${steps[0].title}</p>
-${compact ? `<p style="margin-top:2rem">${btn(C[lang].ui.readExplainer, href(lang, '/gorilla-trekking/'), 'btn--light')}</p>` : ''}</div>
+  return `<section class="section wrap" aria-labelledby="day-h">
+${secHead({ label: g.day.label, title: g.day.title, id: 'day-h', text: g.day.text, link: compact ? tlink(C[lang].ui.readExplainer, href(lang, '/gorilla-trekking/')) : '' })}
+<div class="day">
+<div class="day__side"><div class="day__photo">${ph(lang, compact ? 'gorilla-2' : 'golden-monkey', { zoom: false, sizes: '(min-width:1000px) 42vw, 100vw' })}<p class="day__clock num" aria-hidden="true">${steps[0].time}</p><p class="day__now" aria-hidden="true">${steps[0].title}</p></div></div>
 <ol class="day__list" style="list-style:none;padding:0">${steps.map(s => `<li class="step"><time>${s.time}</time><div><h3>${s.title}</h3><p>${s.text}</p></div></li>`).join('')}</ol>
 </div></section>`;
 }
@@ -278,29 +284,20 @@ function pHome(lang) {
   const body = `
 <section class="hero on-image">${ph(lang, h.hero.img, { eager: true, zoom: false })}<div class="hero__mist"></div>${heroRidges}
 <div class="hero__in">
-<div class="hero__tags"><p>${h.hero.tags.map(t => `<span>${t}</span>`).join('')}</p><p>${h.hero.place}</p></div>
-<h1>${h.hero.title}</h1>
-<div class="hero__row"><div></div><div><p>${h.hero.text}</p><div class="hero__ctas" style="margin-top:1.25rem">${btn(h.hero.cta, href(lang, '/journeys/'), 'btn--light')}${btn(u.nav.gorilla, href(lang, '/gorilla-trekking/'), 'btn--ghost')}</div></div></div>
+<div class="hero__meta"><p>${h.hero.place}</p><p>${h.idea.facts.time} <span data-kigali-time class="num">--:--</span>, ${h.idea.facts.altitude[1]}</p></div>
+<div class="hero__row"><h1>${emTail(h.hero.title)}</h1><div class="hero__side"><p class="meta">${h.hero.tags.join(' · ')}</p><p>${h.hero.text}</p><div class="hero__ctas" style="margin-top:1.25rem">${btn(h.hero.cta, href(lang, '/journeys/'), 'btn--light')}<a class="hero__link" href="${href(lang, '/gorilla-trekking/')}">${u.nav.gorilla} →</a></div></div></div>
 </div>
 <svg class="hero__zz" viewBox="0 0 1600 28" preserveAspectRatio="none" aria-hidden="true" style="--len:${zig.len}"><path d="${zig.d}" fill="none" stroke="currentColor" stroke-width="2.5" vector-effect="non-scaling-stroke"/></svg>
-<nav class="strip" aria-label="${attr(u.nav.destinations)}">${h.hero.strip.map((s, i) => { const p = place(lang, s); return `<a href="${href(lang, `/${s}/`)}"><small class="num">0${i + 1}</small><strong>${p.name}</strong><em>${p.strapline}</em></a>`; }).join('')}</nav>
 </section>
 
-<section class="section wrap idea" aria-labelledby="idea-h">
-<span class="label label--muted rv">${h.idea.label}</span>
+<section class="lift wrap" aria-labelledby="idea-h">
 <h2 id="idea-h" class="sr">${h.idea.srTitle}</h2>
-<p class="lead rv-words" style="margin-top:1.25rem">${h.idea.lead}</p>
-<div class="idea__grid">
-${ph(lang, h.idea.img, { cls: 'r1610', reveal: true, sizes: '(min-width:900px) 66vw, 100vw' })}
-<div><p class="rv" style="max-width:28rem">${h.idea.text}</p>
-<dl class="facts rv" style="margin-top:2rem">
-<div><dt>${h.idea.facts.country[0]}</dt><dd>${h.idea.facts.country[1]}</dd></div>
-<div><dt>${h.idea.facts.altitude[0]}</dt><dd>${h.idea.facts.altitude[1]}</dd></div>
-<div><dt>${h.idea.facts.time}</dt><dd><span data-kigali-time class="num">--:--</span><small>CAT (GMT+2)</small></dd></div>
-<div><dt>${u.tickerLabel}</dt><dd><span data-next-umuganda>${nextUmugandaText(lang)}</span><small>${u.tickerTime}</small></dd></div>
-</dl>
-<p style="margin-top:2rem">${tlink(h.idea.link, href(lang, '/about/'))}</p></div>
-</div></section>
+<div class="lift__grid">
+<div class="lift__meta rv"><p>${h.idea.label}</p><p>${h.idea.facts.country[1]}, ${h.idea.facts.altitude[1]}</p><p>${u.tickerLabel}: <span data-next-umuganda>${nextUmugandaText(lang)}</span></p></div>
+<div><p class="lift__lead rv">${emTail(h.idea.lead)}</p><p class="lift__text rv">${h.idea.text}</p><p class="rv" style="margin-top:1.5rem">${tlink(h.idea.link, href(lang, '/about/'))}</p></div>
+</div>
+<dl class="stats">${h.stats.map(([n, l]) => `<div class="rv"><dt>${n}</dt><dd>${l}</dd></div>`).join('')}</dl>
+</section>
 
 <section class="ridges" aria-labelledby="ridges-h"><div class="ridges__stick">
 ${ridgeSvgs}
@@ -311,7 +308,7 @@ ${ridgeSvgs}
 </div></section>
 
 <section class="section wrap" aria-labelledby="where-h">
-${secHead({ label: h.where.label, title: h.where.title, id: 'where-h', link: tlink(h.where.link, href(lang, '/journeys/')) })}
+${secHead({ label: h.where.label, title: h.where.title, id: 'where-h', link: carouselNav(lang) })}
 ${placeCards(lang, PLACES)}
 </section>
 
@@ -558,7 +555,7 @@ ${field('journey', f.journey, 'select', { options: journeyOpts })}
 <fieldset class="field"><legend>${f.interests}</legend><div class="checks">${f.interestOptions.map((x, i) => `<label><input type="checkbox" name="interests" value="${attr(strip(x))}">${x}</label>`).join('')}</div></fieldset>
 ${field('message', f.message, 'textarea', { ph: f.messagePh })}
 <label class="consent"><input type="checkbox" name="consent" value="yes" required><span>${f.consent.replace('{privacy}', href(lang, '/privacy/'))}</span></label>
-<div><button class="btn" type="submit"><span>${f.submit}</span><span class="ic">${ICON.ne}</span></button></div>
+<div><button class="btn" type="submit"><span>${f.submit}</span></button></div>
 <p class="form-status" role="status" aria-live="polite"></p>
 <p class="small muted">${f.note}</p>
 </form></div></section>

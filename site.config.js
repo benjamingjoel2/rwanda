@@ -10,7 +10,7 @@ module.exports = {
   },
   // Canonical production URL (no trailing slash). The live Vercel URL is recorded below.
   siteUrl: 'https://virungajourneys.tourground.com',
-  liveUrl: 'https://rwanda-three.vercel.app',
+  liveUrl: 'https://virungajourneys.tourground.com',
   address: {
     venue: 'Norrsken House Kigali',
     street: '1 KN 78 St',
@@ -38,7 +38,7 @@ module.exports = {
     mist: '#DCE3D6',      // mist (graphics only)
   },
   fonts: {
-    display: "'Libre Caslon Display', 'Iowan Old Style', Georgia, serif",
+    display: "'Spectral', 'Iowan Old Style', Georgia, serif",
     text: "'Nunito Sans', system-ui, -apple-system, 'Segoe UI', sans-serif",
   },
   locales: [

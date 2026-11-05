@@ -2,8 +2,8 @@
 
 Static travel website for **Virunga Journeys**: private journeys across Rwanda (gorillas and golden monkeys in the Virungas, chimpanzees in Nyungwe, Akagera's savannah, Lake Kivu), in **English, French, German and Spanish**.
 
-- Live site: https://rwanda-three.vercel.app
-- Planned production domain: https://virungajourneys.tourground.com (set in `site.config.js` as `siteUrl`; canonicals, hreflang, sitemap and JSON-LD use it)
+- Live site: https://virungajourneys.tourground.com (also https://rwanda-three.vercel.app). Set in `site.config.js` as `siteUrl` / `liveUrl`; canonicals, hreflang, sitemap and JSON-LD use it.
+- Domain: `virungajourneys.tourground.com` is attached to the Vercel project; the tourground.com zone (Cloudflare) already has a wildcard CNAME to Vercel.
 - Hosting: Vercel, team "Benjamin - Sevo", project `rwanda`; every push to `main` deploys.
 
 ## Run it
@@ -28,7 +28,7 @@ Vercel uses `vercel.json`: build command `node src/build.js`, output folder `dis
 | Page templates and the generator | `src/build.js` |
 | Styles (inlined into each page at build) | `src/assets/css/site.css` |
 | Small progressive-enhancement script (deferred) | `src/assets/js/site.js` |
-| Fonts (self-hosted woff2: Libre Caslon Display 400, Nunito Sans 400–700) | `src/assets/fonts/` |
+| Fonts (self-hosted woff2: Spectral Light 300 + italic for display, Nunito Sans 400–700 for text) | `src/assets/fonts/` |
 | Optimised images (AVIF + WebP, 480–2400 px) and their metadata | `src/assets/img/`, `src/data/images.json` |
 | Photo sources and licences | `src/img-src/manifest.json` |
 
@@ -55,6 +55,10 @@ Creative Commons photos are credited automatically on `/credits/`. Rules for pho
 
 The form posts to [FormSubmit](https://formsubmit.co) (`form.action` / `form.ajax` in `site.config.js`), which emails each enquiry to `virungajourneys@tourground.com`. **The first submission triggers a one-time activation email to that address; click the link in it once** and enquiries arrive from then on. To use another relay, change the two URLs in `site.config.js`.
 
+## Design
+
+Layout and interaction patterns follow the design references (safari.com, eaglesnest.sergesyutkin.com, stillwild.framer.website, and tarn-template.framer.website for the light-serif type, italic metadata, framed inner heroes, card carousel and photo-led day timeline). Colours and the zigzag motifs come from the IMIGONGO theme; the palette lives in `site.config.js`.
+
 ## Languages
 
 English is at `/`, French at `/fr/`, German at `/de/`, Spanish at `/es/`. Every page exists in every language with translated nav, forms, legal pages, meta and alt text; `<html lang>`, canonical and `hreflang` (with `x-default` → English) are set on every page, and the sitemap lists all alternates. The EN · FR · DE · ES selector links to the same page in each language. There is no automatic redirect by browser language and no translation code in the browser.
@@ -64,4 +68,4 @@ English is at `/`, French at `/fr/`, German at `/de/`, Spanish at `/es/`. Every 
 - Check every item in `FACTS-TO-VERIFY.md` (permit prices, park fees, seasons, holidays, travel advice).
 - Replace placeholder lodge names on `/stays/` once partners are confirmed; see `IMAGES-NEEDED.md` for venue photos.
 - Commission or license imigongo patterns from a cooperative and credit it by name (the current zigzags are original drawings).
-- Point `virungajourneys.tourground.com` at the Vercel project and activate the FormSubmit address.
+- Activate the FormSubmit address (first real submission sends a one-time activation email).
