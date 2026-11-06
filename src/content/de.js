@@ -38,7 +38,7 @@ module.exports = {
       blurb: 'Private Reisen durch Ruanda: Gorillas und Goldmeerkatzen in den Virunga-Vulkanen, Schimpansen in Nyungwe, die Ebenen von Akagera und ruhige Tage am Kivusee. Geplant in Kigali, mit Achtung vor der Geschichte des Landes.',
       plan: 'Planen',
       contact: 'Kontakt',
-      imigongo: 'Die Zickzackbänder und Rahmen auf dieser Website sind eine Hommage an Imigongo, die geometrische Reliefkunst des östlichen Ruanda, die traditionell von Frauen aus Kuhdung, Asche und natürlichen Erdpigmenten gefertigt wird. Es sind unsere eigenen Zeichnungen, keine Kopien der Tafeln einer bestimmten Künstlerin.',
+      imigongo: 'Die Zickzackrahmen und -muster auf dieser Website sind eine Hommage an Imigongo, die geometrische Reliefkunst des östlichen Ruanda, die traditionell von Frauen aus Kuhdung, Asche und natürlichen Erdpigmenten gefertigt wird. Es sind unsere eigenen Zeichnungen, keine Kopien der Tafeln einer bestimmten Künstlerin.',
       privacy: 'Datenschutzerklärung',
       terms: 'Reisebedingungen',
       cookies: 'Cookie-Richtlinie',
