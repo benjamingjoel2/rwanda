@@ -43,14 +43,6 @@ function btn(text, link, variant = '', extra = '') {
 }
 const tlink = (text, link) => `<a class="tlink" href="${attr(link)}">${text}${ICON.right}</a>`;
 
-/* imigongo zigzag band (section edge) */
-let zid = 0;
-function zz(variant = '', flip = false) {
-  zid++;
-  const id = 'zz' + zid;
-  return `<svg class="zz ${variant}" viewBox="0 0 240 18" preserveAspectRatio="none" aria-hidden="true" focusable="false"${flip ? ' style="transform:scaleY(-1)"' : ''}><defs><pattern id="${id}" width="24" height="18" patternUnits="userSpaceOnUse"><path d="M0 18L12 4 24 18Z" fill="currentColor"/><path d="M5 18L12 10 19 18" fill="none" stroke="var(--ochre)" stroke-width="2"/></pattern></defs><rect width="240" height="18" fill="url(#${id})"/></svg>`;
-}
-
 /* smooth ridge path (deterministic) */
 function ridgePath(seed, base, amp, w = 1600, h = 600, n = 9) {
   let s = seed;
@@ -63,12 +55,6 @@ function ridgePath(seed, base, amp, w = 1600, h = 600, n = 9) {
     d += ` C${mx.toFixed(1)} ${y0.toFixed(1)} ${mx.toFixed(1)} ${y1.toFixed(1)} ${x1.toFixed(1)} ${y1.toFixed(1)}`;
   }
   return d + ` L${w} ${h} Z`;
-}
-function zigPath(w, h, step, pad = 2) {
-  let d = `M0 ${h - pad}`; let up = true;
-  for (let x = step / 2; x <= w + step; x += step / 2) { d += ` L${x} ${up ? pad : h - pad}`; up = !up; }
-  const len = Math.round((w / (step / 2)) * Math.hypot(step / 2, h - 2 * pad)) + 40;
-  return { d, len };
 }
 
 /* responsive picture */
@@ -134,9 +120,8 @@ function footer(lang, p) {
   return `<footer class="ftr">${''}
 <div class="ftr__grid">
 <div class="ftr__about"><a class="logo" href="${href(lang, '/')}">${logoMark}<span>${cfg.brand.name}</span></a><p>${f.blurb}</p></div>
-<ul class="ftr__big">${[['/gorilla-trekking/', n.gorilla], ['/journeys/', n.journeys], ['/calendar/', n.calendar], ['/history/', n.history]].map(([h, t]) => `<li><a href="${href(lang, h)}">${t}</a></li>`).join('')}</ul>
 <div class="ftr__col"><h2>${n.destinations}</h2><ul>${PLACES.map(s => `<li><a href="${href(lang, `/${s}/`)}">${place(lang, s).name}</a></li>`).join('')}</ul></div>
-<div class="ftr__col"><h2>${f.plan}</h2><ul>${[['/stays/', n.stays], ['/journal/', n.journal], ['/about/', n.about], ['/enquire/', n.enquire]].map(([h, t]) => `<li><a href="${href(lang, h)}">${t}</a></li>`).join('')}</ul></div>
+<div class="ftr__col"><h2>${f.plan}</h2><ul>${[['/gorilla-trekking/', n.gorilla], ['/journeys/', n.journeys], ['/calendar/', n.calendar], ['/history/', n.history], ['/stays/', n.stays], ['/journal/', n.journal], ['/about/', n.about], ['/enquire/', n.enquire]].map(([h, t]) => `<li><a href="${href(lang, h)}">${t}</a></li>`).join('')}</ul></div>
 <div class="ftr__col"><h2>${f.contact}</h2><p><a class="link" style="color:var(--clay)" href="mailto:${cfg.brand.email}">${cfg.brand.email}</a></p><address style="margin-top:1rem">${a.venue}<br>${a.street}<br>${a.locality}, ${C[lang].ui.countryName}</address><div style="margin-top:1.25rem">${langSwitch(lang, p)}</div></div>
 </div>
 <p class="ftr__credit">${f.imigongo}</p>
@@ -276,18 +261,15 @@ function yearBar(lang) {
 /* ---------------- pages ---------------- */
 function pHome(lang) {
   const h = C[lang].home, u = C[lang].ui, g = C[lang].gorilla;
-  const zig = zigPath(1600, 28, 40);
   const ridgeColors = ['#9fb08c', '#7f9670', '#5f7a52', '#46613e', '#2e4630'];
   const ridgeSvgs = ridgeColors.map((c, i) => `<div class="ridges__layer" style="z-index:${i + 1};bottom:${-6 + i * -3}%"><svg viewBox="0 0 1600 600" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="rg${i}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eef0e6" stop-opacity="${0.55 - i * 0.08}"/><stop offset=".35" stop-color="#eef0e6" stop-opacity="0"/></linearGradient></defs><path d="${ridgePath(17 + i * 31, 330 + i * 55, 150 - i * 12)}" fill="${c}"/><path d="${ridgePath(17 + i * 31, 330 + i * 55, 150 - i * 12)}" fill="url(#rg${i})"/></svg></div>`).join('');
-  const heroRidges = `<div class="hero__ridges" aria-hidden="true"><svg viewBox="0 0 1600 600" preserveAspectRatio="none" style="opacity:.55"><path d="${ridgePath(5, 420, 120)}" fill="#2e4630"/></svg><svg viewBox="0 0 1600 600" preserveAspectRatio="none" style="opacity:.8"><path d="${ridgePath(11, 520, 90)}" fill="#1f3121"/></svg></div>`;
-  const rz = zigPath(1600, 60, 80, 4);
   const body = `
-<section class="hero on-image">${ph(lang, h.hero.img, { eager: true, zoom: false })}<div class="hero__mist"></div>${heroRidges}
-<div class="hero__in">
-<div class="hero__meta"><p>${h.hero.place}</p><p>${h.idea.facts.time} <span data-kigali-time class="num">--:--</span>, ${h.idea.facts.altitude[1]}</p></div>
-<div class="hero__row"><h1>${emTail(h.hero.title)}</h1><div class="hero__side"><p class="meta">${h.hero.tags.join(' · ')}</p><p>${h.hero.text}</p><div class="hero__ctas" style="margin-top:1.25rem">${btn(h.hero.cta, href(lang, '/journeys/'), 'btn--light')}<a class="hero__link" href="${href(lang, '/gorilla-trekking/')}">${u.nav.gorilla} →</a></div></div></div>
+<section class="pano" aria-labelledby="hero-h">
+<div class="pano__in">
+<p class="pano__meta">${h.hero.place} · ${h.idea.facts.time} <span data-kigali-time class="num">--:--</span></p>
+<div class="pano__row"><h1 id="hero-h">${emTail(h.hero.title)}</h1><div class="pano__side"><p class="meta">${h.hero.tags.join(' · ')}</p><p>${h.hero.text}</p><div class="hero__ctas" style="margin-top:1.25rem">${btn(h.hero.cta, href(lang, '/journeys/'))}</div></div></div>
 </div>
-<svg class="hero__zz" viewBox="0 0 1600 28" preserveAspectRatio="none" aria-hidden="true" style="--len:${zig.len}"><path d="${zig.d}" fill="none" stroke="currentColor" stroke-width="2.5" vector-effect="non-scaling-stroke"/></svg>
+${ph(lang, h.hero.img, { eager: true, zoom: false, cls: 'pano__img', sizes: '100vw' })}
 </section>
 
 <section class="lift wrap" aria-labelledby="idea-h">
@@ -302,7 +284,6 @@ function pHome(lang) {
 <section class="ridges" aria-labelledby="ridges-h"><div class="ridges__stick">
 ${ridgeSvgs}
 <div class="ridges__fog"></div>
-<svg class="ridges__zz" viewBox="0 0 1600 60" preserveAspectRatio="none" aria-hidden="true" style="--len:${rz.len}"><path d="${rz.d}" fill="none" stroke="currentColor" stroke-width="3" vector-effect="non-scaling-stroke" pathLength="${rz.len}"/></svg>
 <div class="ridges__text"><p class="label" id="ridges-h">${h.ridges.label}</p><div class="ridges__lines">${h.ridges.lines.map((l, i) => `<p class="${i === 0 ? 'on' : ''}">${l[0]}<small>${l[1]}</small></p>`).join('')}</div></div>
 <p class="ridges__count" aria-hidden="true">01 / 0${h.ridges.lines.length}</p>
 </div></section>
@@ -325,7 +306,6 @@ ${secHead({ label: h.journeys.label, title: h.journeys.title, id: 'jr-h', text: 
 </section>
 
 <section class="section wrap dark" aria-labelledby="hist-h">
-${zz('zz--cream')}
 <div class="split" style="margin-top:clamp(2.5rem,6vw,5rem)"><div><span class="label label--muted">${h.history.label}</span><h2 id="hist-h" style="margin-top:1rem;max-width:14ch">${h.history.title}</h2></div>
 <div class="txt"><p class="lead lead--muted rv" style="font-size:clamp(1.2rem,1.8vw,1.5rem)">${h.history.text}</p><p>${tlink(h.history.link, href(lang, '/history/'))}</p></div></div>
 </section>
@@ -402,7 +382,6 @@ function pHistory(lang) {
   const h = C[lang].history, u = C[lang].ui, p = '/history/';
   const body = `
 <section class="ptop dark" style="border:0">${crumbsHtml(lang, [[u.nav.history, p]])}<h1>${h.title}</h1><p class="lead lead--muted" style="font-size:clamp(1.2rem,2vw,1.6rem);max-width:40rem">${h.intro}</p></section>
-<div class="dark">${zz('zz--ochre')}</div>
 <section class="section wrap" aria-labelledby="h1-h"><div class="split" style="align-items:start">
 <div><span class="label label--muted">${h.what.label}</span><h2 id="h1-h" style="margin-top:1rem">${h.what.title}</h2></div>
 <div class="quiet">${h.what.body.map(x => `<p>${x}</p>`).join('')}</div></div></section>
