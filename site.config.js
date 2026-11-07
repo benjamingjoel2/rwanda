@@ -27,19 +27,20 @@ module.exports = {
     ajax: 'https://formsubmit.co/ajax/virungajourneys@tourground.com',
   },
   palette: {
-    cream: '#F4ECDD',     // page ground
-    kaolin: '#E6D9C3',    // alternate ground
-    imigongo: '#1B1715',  // imigongo black: text, dark bands
-    ochre: '#9E3B26',     // ochre red: lead accent on light
-    clay: '#DDA47C',      // fired clay: accent on black only
-    ridge: '#2E4630',     // ridge green: dark green bands
-    ridgeLight: '#6F8A5B',// ridge green, light (graphics only)
-    volcano: '#55524F',   // volcano grey: secondary text on light
-    mist: '#DCE3D6',      // mist (graphics only)
+    cream: '#E9ECE8',     // mist ground (page background)
+    kaolin: '#F4F5F2',    // panel: alternate sections, form fields
+    imigongo: '#12191D',  // ink: text, dark bands
+    ochre: '#9E3B26',     // imigongo ochre-red: zigzag motif, focus ring
+    clay: '#C29A5E',      // gold: italic accent on dark only
+    ridge: '#1C2A2C',     // dark green-grey: mist band
+    ridgeLight: '#6F8A5B',// ridge green (graphics only)
+    volcano: '#5D676A',   // volcano grey: secondary text on light
+    mist: '#DCE1DD',      // mist (graphics only)
+    night: '#0D1317',     // footer
   },
   fonts: {
     display: "'Spectral', 'Iowan Old Style', Georgia, serif",
-    text: "'Nunito Sans', system-ui, -apple-system, 'Segoe UI', sans-serif",
+    text: "'Spectral', 'Iowan Old Style', Georgia, serif",
   },
   locales: [
     { code: 'en', label: 'EN', name: 'English', hreflang: 'en', ogLocale: 'en_GB', prefix: '' },

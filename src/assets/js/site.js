@@ -60,7 +60,7 @@
   }
 
   /* scroll-driven pieces: word reveal, ridges scene, trek day */
-  var ridges = d.querySelector('.ridges'), day = d.querySelector('.day');
+  var ridges = d.querySelector('.ridges'), day = d.querySelector('.day'), clear = d.querySelector('.clear');
   var layers = ridges ? ridges.querySelectorAll('.ridges__layer') : [];
   var lines = ridges ? ridges.querySelectorAll('.ridges__lines p') : [];
   var rz = ridges ? ridges.querySelector('.ridges__zz') : null;
@@ -79,6 +79,11 @@
       var n = Math.round(p * ws.length);
       ws.forEach(function (s, i) { s.classList.toggle('on', i < n); });
     });
+    if (clear && !reduce) {
+      var cr = clear.getBoundingClientRect();
+      var cp = Math.min(1, Math.max(0, -cr.top / (cr.height - vh)));
+      clear.style.setProperty('--p', cp.toFixed(3));
+    }
     if (ridges && !reduce) {
       var r = ridges.getBoundingClientRect();
       var p = Math.min(1, Math.max(0, -r.top / (r.height - vh)));
@@ -106,7 +111,7 @@
     }
   }
   function req() { if (!ticking) { ticking = true; w.requestAnimationFrame(frame); } }
-  if (words.length || ridges || day) { w.addEventListener('scroll', req, { passive: true }); w.addEventListener('resize', req); frame(); }
+  if (words.length || ridges || day || clear) { w.addEventListener('scroll', req, { passive: true }); w.addEventListener('resize', req); frame(); }
 
   /* card carousel arrows */
   d.querySelectorAll('.cnav').forEach(function (nav) {

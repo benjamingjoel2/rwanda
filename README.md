@@ -28,7 +28,7 @@ Vercel uses `vercel.json`: build command `node src/build.js`, output folder `dis
 | Page templates and the generator | `src/build.js` |
 | Styles (inlined into each page at build) | `src/assets/css/site.css` |
 | Small progressive-enhancement script (deferred) | `src/assets/js/site.js` |
-| Fonts (self-hosted woff2: Spectral Light 300 + italic for display, Nunito Sans 400–700 for text) | `src/assets/fonts/` |
+| Fonts (self-hosted woff2: Spectral 200 and 400, upright and italic) | `src/assets/fonts/` |
 | Optimised images (AVIF + WebP, 480–2400 px) and their metadata | `src/assets/img/`, `src/data/images.json` |
 | Photo sources and licences | `src/img-src/manifest.json` |
 
@@ -57,7 +57,7 @@ The form posts to [FormSubmit](https://formsubmit.co) (`form.action` / `form.aja
 
 ## Design
 
-Layout and interaction patterns follow the design references (safari.com, eaglesnest.sergesyutkin.com, stillwild.framer.website, and tarn-template.framer.website for the light-serif type, italic metadata, framed inner heroes, card carousel and photo-led day timeline). Colours and the zigzag motifs come from the IMIGONGO theme; the palette lives in `site.config.js`.
+The design follows tarn-template.framer.website: Spectral light serif throughout, italic metadata, mist-grey ground, rounded photography, part-the-mist scroll moment, dark statement band with stats, card carousel, photo-led day timeline, framed inner heroes, filled form fields and a giant italic wordmark footer. Tarn's hosts, testimonial and social sections are left out (owner rules). Imigongo zigzags remain as a thin brand line; the palette lives in `site.config.js`.
 
 ## Languages
 

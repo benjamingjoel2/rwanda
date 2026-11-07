@@ -4,6 +4,7 @@ module.exports = {
   ui: {
     skip: 'Ir al contenido',
     menu: 'Menú',
+    otherPlaces: 'Otros lugares',
     prev: 'Anterior',
     next: 'Siguiente',
     mainNav: 'Principal',
@@ -35,6 +36,8 @@ module.exports = {
     months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
     monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
     footer: {
+      write: 'Escríbanos',
+      small: 'Letra pequeña',
       blurb: 'Viajes privados por Ruanda: gorilas y monos dorados en los Virunga, chimpancés en Nyungwe, las llanuras de Akagera y días tranquilos en el lago Kivu. Planificados desde Kigali, con respeto por la historia del país.',
       plan: 'Planificar',
       contact: 'Contacto',
@@ -47,6 +50,7 @@ module.exports = {
   },
 
   home: {
+    clear: { meta: 'Kinigi, 6:40 · se levanta la niebla', title: 'Y entonces, los volcanes.', hint: 'Desplácese para disipar la niebla' },
     stats: [['1', 'hora con una familia de gorilas'], ['8', 'visitantes por familia y día'], ['4507', 'metros: el Karisimbi, el volcán más alto'], ['4', 'parques nacionales en un país pequeño']],
     metaDescription: 'Viajes privados por Ruanda: trekking de gorilas y monos dorados en el Parque Nacional de los Volcanes, chimpancés en Nyungwe, la sabana de Akagera y el lago Kivu, planificados con respeto por la historia del país.',
     hero: {

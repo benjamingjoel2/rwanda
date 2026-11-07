@@ -4,6 +4,7 @@ module.exports = {
   ui: {
     skip: 'Aller au contenu',
     menu: 'Menu',
+    otherPlaces: 'Autres lieux',
     prev: 'Précédent',
     next: 'Suivant',
     mainNav: 'Principal',
@@ -35,6 +36,8 @@ module.exports = {
     months: ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'],
     monthsShort: ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'],
     footer: {
+      write: 'Écrivez-nous',
+      small: 'Mentions',
       blurb: 'Voyages privés à travers le Rwanda : gorilles et singes dorés dans les Virunga, chimpanzés à Nyungwe, plaines de l’Akagera et journées lentes au bord du lac Kivu. Organisés depuis Kigali, dans le respect de l’histoire du pays.',
       plan: 'Préparer',
       contact: 'Contact',
@@ -47,6 +50,7 @@ module.exports = {
   },
 
   home: {
+    clear: { meta: 'Kinigi, 6 h 40 · la brume se lève', title: 'Et puis, les volcans.', hint: 'Faites défiler pour dissiper la brume' },
     stats: [['1', 'heure avec une famille de gorilles'], ['8', 'visiteurs par famille et par jour'], ['4 507', 'mètres : le Karisimbi, le plus haut volcan'], ['4', 'parcs nationaux dans un petit pays']],
     metaDescription: 'Voyages privés au Rwanda : treks des gorilles et des singes dorés dans le parc national des Volcans, chimpanzés à Nyungwe, savane de l’Akagera et lac Kivu, organisés dans le respect de l’histoire du pays.',
     hero: {

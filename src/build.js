@@ -103,45 +103,41 @@ function langSwitch(lang, p) {
 function header(lang, p) {
   const u = C[lang].ui, n = u.nav;
   const cur = x => (p === x ? ' aria-current="page"' : '');
-  const mega = PLACES.map(s => { const pl = place(lang, s); return `<li><a href="${href(lang, `/${s}/`)}">${ph(lang, pl.card, { cls: 'r45', sizes: '16vw', zoom: true })}<strong>${pl.name}</strong><small>${pl.short}</small></a></li>`; }).join('');
+  const mega = PLACES.map(s => { const pl = place(lang, s); return `<li><a href="${href(lang, `/${s}/`)}">${ph(lang, pl.card, { cls: 'r45', sizes: '16vw', zoom: true })}<strong>${pl.name}</strong><small>${pl.region}</small></a></li>`; }).join('');
   return `<header class="hdr"><div class="hdr__in">
-<a class="logo" href="${href(lang, '/')}" aria-label="${attr(cfg.brand.name)} — ${attr(n.home)}">${logoMark}<span>${cfg.brand.name}</span></a>
+<a class="logo" href="${href(lang, '/')}" aria-label="${attr(cfg.brand.name)} — ${attr(n.home)}"><span>${cfg.brand.name}</span></a>
 <nav class="nav" aria-label="${attr(u.mainNav)}"><ul>
-<li class="has-mega"><button type="button" aria-expanded="false" aria-controls="mega">${n.destinations}${ICON.down}</button><ul class="mega" id="mega">${mega}</ul></li>
+<li class="has-mega"><button type="button" aria-expanded="false" aria-controls="mega">${n.destinations}</button><ul class="mega" id="mega">${mega}</ul></li>
 <li><a href="${href(lang, '/gorilla-trekking/')}"${cur('/gorilla-trekking/')}>${n.gorilla}</a></li>
 <li><a href="${href(lang, '/journeys/')}"${cur('/journeys/')}>${n.journeys}</a></li>
-<li><a href="${href(lang, '/stays/')}"${cur('/stays/')}>${n.stays}</a></li>
 <li><a href="${href(lang, '/calendar/')}"${cur('/calendar/')}>${n.calendar}</a></li>
 <li><a href="${href(lang, '/history/')}"${cur('/history/')}>${n.history}</a></li>
-<li><a href="${href(lang, '/journal/')}"${cur('/journal/')}>${n.journal}</a></li>
-<li><a href="${href(lang, '/about/')}"${cur('/about/')}>${n.about}</a></li>
 </ul></nav>
 <div class="hdr__side">
-<p class="ticker">${u.tickerLabel} · <b data-next-umuganda>${nextUmugandaText(lang)}</b> · ${u.tickerTime}</p>
 ${langSwitch(lang, p)}
-${btn(n.enquire, href(lang, '/enquire/'), 'btn--light enq')}
+${btn(n.enquire, href(lang, '/enquire/'), 'btn--line enq')}
 <button class="burger" type="button" aria-expanded="false" aria-controls="mnav"><span class="sr">${u.menu}</span><i></i></button>
 </div></div></header>
 <div class="mnav" id="mnav" inert>
 <ul>${[['/gorilla-trekking/', n.gorilla], ['/journeys/', n.journeys], ['/stays/', n.stays], ['/calendar/', n.calendar], ['/history/', n.history], ['/journal/', n.journal], ['/about/', n.about], ['/enquire/', n.enquire]].map(([h, t]) => `<li><a href="${href(lang, h)}">${t}</a></li>`).join('')}</ul>
-<div><p class="label" style="color:var(--clay);margin-bottom:.5rem">${n.destinations}</p><ul class="sub">${PLACES.map(s => `<li><a href="${href(lang, `/${s}/`)}">${place(lang, s).name}</a></li>`).join('')}</ul></div>
+<div><p class="label" style="margin-bottom:.5rem">${n.destinations}</p><ul class="sub">${PLACES.map(s => `<li><a href="${href(lang, `/${s}/`)}">${place(lang, s).name}</a></li>`).join('')}</ul></div>
 ${langSwitch(lang, p)}
 </div>`;
 }
 
 function footer(lang, p) {
   const u = C[lang].ui, n = u.nav, f = u.footer, a = cfg.address;
-  return `<footer class="ftr">${''}
+  const [w1, ...wr] = cfg.brand.name.split(' ');
+  return `<footer class="ftr">
+${zz('zz--ochre')}
+<p class="ftr__word" aria-hidden="true">${w1}${wr.length ? ` <em>${wr.join(' ')}</em>` : ''}</p>
 <div class="ftr__grid">
-<div class="ftr__about"><a class="logo" href="${href(lang, '/')}">${logoMark}<span>${cfg.brand.name}</span></a><p>${f.blurb}</p></div>
-<ul class="ftr__big">${[['/gorilla-trekking/', n.gorilla], ['/journeys/', n.journeys], ['/calendar/', n.calendar], ['/history/', n.history]].map(([h, t]) => `<li><a href="${href(lang, h)}">${t}</a></li>`).join('')}</ul>
+<div class="ftr__col"><h2>${f.write}</h2><p><a href="mailto:${cfg.brand.email}">${cfg.brand.email}</a></p><address>${a.venue}<br>${a.street}<br>${a.locality}, ${u.countryName}</address></div>
+<div class="ftr__col"><h2>${f.plan}</h2><ul>${[['/gorilla-trekking/', n.gorilla], ['/journeys/', n.journeys], ['/stays/', n.stays], ['/calendar/', n.calendar], ['/history/', n.history], ['/journal/', n.journal], ['/about/', n.about], ['/enquire/', n.enquire]].map(([h, t]) => `<li><a href="${href(lang, h)}">${t}</a></li>`).join('')}</ul></div>
 <div class="ftr__col"><h2>${n.destinations}</h2><ul>${PLACES.map(s => `<li><a href="${href(lang, `/${s}/`)}">${place(lang, s).name}</a></li>`).join('')}</ul></div>
-<div class="ftr__col"><h2>${f.plan}</h2><ul>${[['/stays/', n.stays], ['/journal/', n.journal], ['/about/', n.about], ['/enquire/', n.enquire]].map(([h, t]) => `<li><a href="${href(lang, h)}">${t}</a></li>`).join('')}</ul></div>
-<div class="ftr__col"><h2>${f.contact}</h2><p><a class="link" style="color:var(--clay)" href="mailto:${cfg.brand.email}">${cfg.brand.email}</a></p><address style="margin-top:1rem">${a.venue}<br>${a.street}<br>${a.locality}, ${C[lang].ui.countryName}</address><div style="margin-top:1.25rem">${langSwitch(lang, p)}</div></div>
+<div class="ftr__col"><h2>${f.small}</h2><p>© ${new Date().getFullYear()} ${cfg.brand.legalName}</p><ul>${[['/privacy/', f.privacy], ['/booking-terms/', f.terms], ['/cookies/', f.cookies], ['/credits/', f.credits]].map(([h, t]) => `<li><a href="${href(lang, h)}">${t}</a></li>`).join('')}</ul><div style="margin-top:1rem">${langSwitch(lang, p)}</div></div>
 </div>
 <p class="ftr__credit">${f.imigongo}</p>
-<div class="ftr__base"><p>© ${new Date().getFullYear()} ${cfg.brand.legalName}</p>
-<ul>${[['/privacy/', f.privacy], ['/booking-terms/', f.terms], ['/cookies/', f.cookies], ['/credits/', f.credits]].map(([h, t]) => `<li><a href="${href(lang, h)}">${t}</a></li>`).join('')}</ul></div>
 </footer>`;
 }
 
@@ -179,8 +175,8 @@ ${alts}
 <meta name="theme-color" content="${cfg.palette.imigongo}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 ${o.preload || ''}
-<link rel="preload" href="/assets/fonts/spectral-300.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/nunito-sans-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/spectral-200.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/spectral-400.woff2" as="font" type="font/woff2" crossorigin>
 <style>${CSS}</style>
 <script src="${JS_URL}" defer></script>
 <script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>
@@ -222,7 +218,8 @@ function faqHtml(lang, f, dark) {
 </div></section>`;
 }
 function ctaBanner(lang, o) {
-  return `<section class="cta on-image">${ph(lang, o.img, { zoom: false })}<div class="cta__in"><h2 class="rv">${o.title}</h2><div>${btn(o.button, href(lang, '/enquire/'), 'btn--light')}</div></div></section>`;
+  const u = C[lang].ui;
+  return `<section class="section wrap teaser"><div class="teaser__in"><div><p class="label">${u.nav.enquire}</p><h2 class="rv">${emTail(o.title)}</h2></div><div class="rv"><p>${C[lang].enquire.intro}</p><p style="margin-top:1.5rem">${btn(o.button, href(lang, '/enquire/'))}</p></div></div></section>`;
 }
 function placeCards(lang, slugs, variant = 'hscroll') {
   const u = C[lang].ui;
@@ -234,10 +231,7 @@ function carouselNav(lang) {
 }
 function journeyCard(lang, j) {
   const u = C[lang].ui;
-  return `<article class="jcard rv">${ph(lang, j.img, { sizes: '(min-width:900px) 50vw, 100vw' })}
-<p class="meta">${j.nights} ${u.nights} · ${j.route}</p><h3>${j.title}</h3><p class="meta">${j.includes}</p>
-<ul>${j.highlights.map(h => `<li>${h}</li>`).join('')}</ul>
-<div class="jcard__foot"><div><small>${u.bestMonths}</small><strong>${j.months}</strong></div>${btn(u.viewJourney, href(lang, `/journeys/#${j.id}`))}</div></article>`;
+  return `<a class="tcard rv" href="${href(lang, `/journeys/#${j.id}`)}"><div class="tcard__media">${ph(lang, j.img, { cls: 'r43', sizes: '(min-width:900px) 50vw, 100vw' })}<div class="tcard__cap"><h3>${j.title}</h3><i>${j.route}</i></div></div><div class="tcard__foot"><i>${j.nights} ${u.nights} · ${j.months}</i><span>${u.viewJourney} →</span></div></a>`;
 }
 function journalCards(lang, posts) {
   return `<div class="cols" style="--n:3">${posts.map(p => `<article class="post rv"><a href="${href(lang, `/journal/${p.slug}/`)}" style="text-decoration:none;display:block">${ph(lang, p.img, { cls: 'r43', sizes: '(min-width:900px) 33vw, 100vw' })}<div class="post-meta"><span>${p.kicker}</span><span>${p.read}</span></div><h3>${p.title}</h3></a></article>`).join('')}</div>`;
@@ -275,64 +269,56 @@ function yearBar(lang) {
 
 /* ---------------- pages ---------------- */
 function pHome(lang) {
-  const h = C[lang].home, u = C[lang].ui, g = C[lang].gorilla;
-  const zig = zigPath(1600, 28, 40);
-  const ridgeColors = ['#9fb08c', '#7f9670', '#5f7a52', '#46613e', '#2e4630'];
-  const ridgeSvgs = ridgeColors.map((c, i) => `<div class="ridges__layer" style="z-index:${i + 1};bottom:${-6 + i * -3}%"><svg viewBox="0 0 1600 600" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="rg${i}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eef0e6" stop-opacity="${0.55 - i * 0.08}"/><stop offset=".35" stop-color="#eef0e6" stop-opacity="0"/></linearGradient></defs><path d="${ridgePath(17 + i * 31, 330 + i * 55, 150 - i * 12)}" fill="${c}"/><path d="${ridgePath(17 + i * 31, 330 + i * 55, 150 - i * 12)}" fill="url(#rg${i})"/></svg></div>`).join('');
-  const heroRidges = `<div class="hero__ridges" aria-hidden="true"><svg viewBox="0 0 1600 600" preserveAspectRatio="none" style="opacity:.55"><path d="${ridgePath(5, 420, 120)}" fill="#2e4630"/></svg><svg viewBox="0 0 1600 600" preserveAspectRatio="none" style="opacity:.8"><path d="${ridgePath(11, 520, 90)}" fill="#1f3121"/></svg></div>`;
-  const rz = zigPath(1600, 60, 80, 4);
+  const h = C[lang].home, u = C[lang].ui, g = C[lang].gorilla, S = C[lang].stays;
   const body = `
-<section class="hero on-image">${ph(lang, h.hero.img, { eager: true, zoom: false })}<div class="hero__mist"></div>${heroRidges}
+<section class="hero on-image">${ph(lang, h.hero.img, { eager: true, zoom: false })}
 <div class="hero__in">
 <div class="hero__meta"><p>${h.hero.place}</p><p>${h.idea.facts.time} <span data-kigali-time class="num">--:--</span>, ${h.idea.facts.altitude[1]}</p></div>
-<div class="hero__row"><h1>${emTail(h.hero.title)}</h1><div class="hero__side"><p class="meta">${h.hero.tags.join(' · ')}</p><p>${h.hero.text}</p><div class="hero__ctas" style="margin-top:1.25rem">${btn(h.hero.cta, href(lang, '/journeys/'), 'btn--light')}<a class="hero__link" href="${href(lang, '/gorilla-trekking/')}">${u.nav.gorilla} →</a></div></div></div>
+<div class="hero__row"><h1>${emTail(h.hero.title)}</h1><div class="hero__side"><p class="meta">${h.hero.tags.join(' · ')}</p><p>${h.hero.text}</p><div class="hero__ctas">${btn(h.hero.cta, href(lang, '/journeys/'), 'btn--light')}</div></div></div>
 </div>
-<svg class="hero__zz" viewBox="0 0 1600 28" preserveAspectRatio="none" aria-hidden="true" style="--len:${zig.len}"><path d="${zig.d}" fill="none" stroke="currentColor" stroke-width="2.5" vector-effect="non-scaling-stroke"/></svg>
 </section>
+
+<section class="clear" aria-labelledby="clear-h"><div class="clear__stick">
+<div class="clear__img">${ph(lang, 'volcanoes', { zoom: false, sizes: '100vw' })}</div>
+<div class="clear__fog" aria-hidden="true"></div>
+<p class="clear__hint" aria-hidden="true"><span></span>${h.clear.hint}</p>
+<div class="clear__cap"><p class="meta">${h.clear.meta}</p><h2 id="clear-h">${emTail(h.clear.title)}</h2></div>
+</div></section>
 
 <section class="lift wrap" aria-labelledby="idea-h">
 <h2 id="idea-h" class="sr">${h.idea.srTitle}</h2>
 <div class="lift__grid">
 <div class="lift__meta rv"><p>${h.idea.label}</p><p>${h.idea.facts.country[1]}, ${h.idea.facts.altitude[1]}</p><p>${u.tickerLabel}: <span data-next-umuganda>${nextUmugandaText(lang)}</span></p></div>
-<div><p class="lift__lead rv">${emTail(h.idea.lead)}</p><p class="lift__text rv">${h.idea.text}</p><p class="rv" style="margin-top:1.5rem">${tlink(h.idea.link, href(lang, '/about/'))}</p></div>
+<div><p class="lift__lead rv">${emTail(h.idea.lead)}</p></div>
 </div>
 <dl class="stats">${h.stats.map(([n, l]) => `<div class="rv"><dt>${n}</dt><dd>${l}</dd></div>`).join('')}</dl>
 </section>
 
-<section class="ridges" aria-labelledby="ridges-h"><div class="ridges__stick">
-${ridgeSvgs}
-<div class="ridges__fog"></div>
-<svg class="ridges__zz" viewBox="0 0 1600 60" preserveAspectRatio="none" aria-hidden="true" style="--len:${rz.len}"><path d="${rz.d}" fill="none" stroke="currentColor" stroke-width="3" vector-effect="non-scaling-stroke" pathLength="${rz.len}"/></svg>
-<div class="ridges__text"><p class="label" id="ridges-h">${h.ridges.label}</p><div class="ridges__lines">${h.ridges.lines.map((l, i) => `<p class="${i === 0 ? 'on' : ''}">${l[0]}<small>${l[1]}</small></p>`).join('')}</div></div>
-<p class="ridges__count" aria-hidden="true">01 / 0${h.ridges.lines.length}</p>
-</div></section>
-
-<section class="section wrap" aria-labelledby="where-h">
-${secHead({ label: h.where.label, title: h.where.title, id: 'where-h', link: carouselNav(lang) })}
+<section class="section wrap where" aria-labelledby="where-h">
+<div class="sec-head rv"><div><h2 id="where-h">${h.where.title}</h2><p class="muted" style="margin-top:1rem;max-width:32rem">${h.idea.text}</p></div>${carouselNav(lang)}</div>
 ${placeCards(lang, PLACES)}
 </section>
 
 ${dayHtml(lang, g, true)}
 
+<section class="section wrap" aria-labelledby="st-h">
+<div class="sec-head rv"><div><p class="label">${u.nav.stays}</p><h2 id="st-h">${emTail(S.listTitle)}</h2></div>${tlink(u.seeStays, href(lang, '/stays/'))}</div>
+<div class="pair">${[S.list[1], S.list[4]].map((s, k) => `<figure class="pair__${k} rv">${ph(lang, s.img, { sizes: '(min-width:900px) 50vw, 100vw' })}<figcaption>${s.text}</figcaption></figure>`).join('')}</div>
+</section>
+
 <section class="section wrap" aria-labelledby="jr-h">
 ${secHead({ label: h.journeys.label, title: h.journeys.title, id: 'jr-h', text: h.journeys.text, link: tlink(h.journeys.link, href(lang, '/journeys/')) })}
-<div class="jcards">${C[lang].journeys.list.slice(0, 2).map(j => journeyCard(lang, j)).join('')}</div>
+<div class="tgrid">${C[lang].journeys.list.slice(0, 2).map(j => journeyCard(lang, j)).join('')}</div>
 </section>
 
 <section class="section wrap kaolin" aria-labelledby="cal-h">
 <div class="split split--wide"><div>${secHead({ label: h.calendar.label, title: h.calendar.title, id: 'cal-h' })}${yearBar(lang)}</div>
-<div class="txt rv"><p class="lead" style="font-size:clamp(1.2rem,1.8vw,1.5rem)">${h.calendar.text}</p><p>${btn(h.calendar.link, href(lang, '/calendar/'))}</p></div></div>
+<div class="txt rv"><p>${h.calendar.text}</p><p>${tlink(h.calendar.link, href(lang, '/calendar/'))}</p></div></div>
 </section>
 
 <section class="section wrap dark" aria-labelledby="hist-h">
-${zz('zz--cream')}
-<div class="split" style="margin-top:clamp(2.5rem,6vw,5rem)"><div><span class="label label--muted">${h.history.label}</span><h2 id="hist-h" style="margin-top:1rem;max-width:14ch">${h.history.title}</h2></div>
-<div class="txt"><p class="lead lead--muted rv" style="font-size:clamp(1.2rem,1.8vw,1.5rem)">${h.history.text}</p><p>${tlink(h.history.link, href(lang, '/history/'))}</p></div></div>
-</section>
-
-<section class="steps on-image" aria-labelledby="how-h">${ph(lang, h.how.img, { zoom: false })}
-<div class="steps__top"><span class="label">${h.how.label}</span><h2 id="how-h" style="margin-top:1rem;max-width:16ch">${h.how.title}</h2></div>
-<div class="steps__in"><div><p>${h.how.text}</p></div>${h.how.steps.map((s, i) => `<div><b>0${i + 1}</b><small>${u.step}</small><h3>${s[0]}</h3><p>${s[1]}</p></div>`).join('')}</div>
+<div class="split"><div><p class="label">${h.history.label}</p><h2 id="hist-h" style="margin-top:1rem;max-width:14ch">${emTail(h.history.title)}</h2></div>
+<div class="txt"><p class="rv" style="font-size:1.25rem;line-height:1.5">${h.history.text}</p><p>${tlink(h.history.link, href(lang, '/history/'))}</p></div></div>
 </section>
 
 ${faqHtml(lang, { ...h.faq, link: tlink(u.nav.enquire, href(lang, '/enquire/')) })}
@@ -342,7 +328,7 @@ ${secHead({ label: h.journal.label, title: h.journal.title, id: 'jn-h', link: tl
 ${journalCards(lang, C[lang].journal.posts)}
 </section>
 
-${ctaBanner(lang, h.cta)}`;
+${reserveHtml(lang)}`;
   return layout(lang, '/', { title: cfg.brand.name, description: h.metaDescription, body, preload: preloadFor(h.hero.img), ogImage: h.hero.img });
 }
 
@@ -363,9 +349,10 @@ ${rowsHtml(lang, p.experiences)}
 </section>
 ${p.stay ? `<section class="section wrap kaolin" aria-labelledby="st-h"><div class="split"><div><span class="label label--muted">${u.nav.stays}</span><h2 id="st-h" style="margin-top:1rem">${p.stay.title}</h2></div><div class="txt"><p>${p.stay.text}</p><p>${tlink(u.seeStays, href(lang, '/stays/'))}</p></div></div></section>` : ''}
 ${faqHtml(lang, { label: u.questions, title: p.faqTitle, items: p.faq, link: tlink(u.nav.enquire, href(lang, '/enquire/')) }, true)}
-<section class="section wrap" aria-labelledby="nx-h"><a class="split" href="${href(lang, `/${next.slug}/`)}" style="text-decoration:none">
-<div><span class="label label--muted">${u.nextPlace}</span><h2 id="nx-h" style="margin-top:1rem">${next.name}</h2><p class="muted" style="margin-top:1rem;max-width:28rem">${next.short}</p><p style="margin-top:1.5rem"><span class="tlink">${u.explore}${ICON.right}</span></p></div>
-${ph(lang, next.card, { cls: 'r1610', sizes: '(min-width:900px) 50vw, 100vw' })}</a></section>
+<section class="section wrap" aria-labelledby="nx-h">
+<div class="sec-head rv"><h2 id="nx-h">${u.otherPlaces}</h2>${tlink(u.nav.journeys, href(lang, '/journeys/'))}</div>
+${placeCards(lang, [1, 2, 3].map(k => PLACES[(i + k) % PLACES.length]), 'tgrid tgrid--3')}
+</section>
 ${ctaBanner(lang, { img: p.ctaImg || p.img, title: p.cta, button: u.nav.enquire })}`;
   return layout(lang, `/${slug}/`, { title: p.metaTitle, description: p.metaDescription, body, preload: preloadFor(p.img), ogImage: p.img, crumbs: [[p.name, `/${slug}/`]], ld: [{ '@type': 'TouristDestination', name: p.name, description: strip(p.metaDescription), url: abs(lang, `/${slug}/`), containedInPlace: { '@type': 'Country', name: 'Rwanda' } }] });
 }
@@ -533,32 +520,40 @@ ${pageHero(lang, { img: post.img, crumbs: [[u.nav.journal, '/journal/'], [post.k
   return layout(lang, p, { title: post.title, description: post.dek, body, preload: preloadFor(post.img), ogImage: post.img, crumbs: [[u.nav.journal, '/journal/'], [post.title, p]], ld: [{ '@type': 'Article', headline: strip(post.title), description: strip(post.dek), inLanguage: lang, url: abs(lang, p), publisher: { '@id': cfg.siteUrl + '/#org' }, author: { '@id': cfg.siteUrl + '/#org' } }] });
 }
 
-function pEnquire(lang) {
-  const E = C[lang].enquire, u = C[lang].ui, p = '/enquire/';
-  const f = E.form;
-  const field = (name, label, type = 'text', o = {}) => `<div class="field"><label for="f-${name}">${label}${o.req ? ' <span aria-hidden="true">*</span>' : ''}</label>${type === 'textarea' ? `<textarea id="f-${name}" name="${name}"${o.req ? ' required' : ''}${o.ph ? ` placeholder="${attr(o.ph)}"` : ''}></textarea>` : type === 'select' ? `<select id="f-${name}" name="${name}"${o.req ? ' required' : ''}>${o.options.map(x => `<option value="${attr(x[0])}">${x[1]}</option>`).join('')}</select>` : `<input id="f-${name}" name="${name}" type="${type}"${o.req ? ' required' : ''}${o.auto ? ` autocomplete="${o.auto}"` : ''}${o.extra || ''}>`}${o.hint ? `<p class="hint">${o.hint}</p>` : ''}</div>`;
+function formHtml(lang, full) {
+  const E = C[lang].enquire, f = E.form, x = full ? 'f' : 'h';
+  const field = (name, label, type = 'text', o = {}) => `<div class="field"><label for="${x}-${name}">${label}${o.req ? ' <span aria-hidden="true">*</span>' : ''}</label>${type === 'textarea' ? `<textarea id="${x}-${name}" name="${name}"${o.req ? ' required' : ''}${o.ph ? ` placeholder="${attr(o.ph)}"` : ''}></textarea>` : type === 'select' ? `<select id="${x}-${name}" name="${name}"${o.req ? ' required' : ''}>${o.options.map(v => `<option value="${attr(v[0])}">${v[1]}</option>`).join('')}</select>` : `<input id="${x}-${name}" name="${name}" type="${type}"${o.req ? ' required' : ''}${o.auto ? ` autocomplete="${o.auto}"` : ''}>`}${o.hint ? `<p class="hint">${o.hint}</p>` : ''}</div>`;
   const journeyOpts = [['', f.journeyNone], ...C[lang].journeys.list.map(j => [j.id, j.title])];
-  const body = `${plainTop(lang, { crumbs: [[u.nav.enquire, p]], title: E.title, intro: E.intro })}
-<section class="section wrap"><div class="enq">
-<aside><p class="label label--muted">${E.asideLabel}</p><ol class="care" style="margin-top:1rem;grid-template-columns:1fr">${E.steps.map(s => `<li>${s}</li>`).join('')}</ol>${contactList(lang)}</aside>
-<form class="form" method="POST" action="${cfg.form.action}" data-ajax="${cfg.form.ajax}" data-sending="${attr(f.sending)}" data-error="${attr(f.error)}" data-mailto="${attr(f.mailto)}" data-email="${cfg.brand.email}" accept-charset="UTF-8">
+  return `<form class="form" method="POST" action="${cfg.form.action}" data-ajax="${cfg.form.ajax}" data-sending="${attr(f.sending)}" data-error="${attr(f.error)}" data-mailto="${attr(f.mailto)}" data-email="${cfg.brand.email}" accept-charset="UTF-8">
 <input type="hidden" name="_subject" value="${attr(`${cfg.brand.name} — ${f.subject}`)}">
 <input type="hidden" name="_template" value="table">
 <input type="hidden" name="_captcha" value="false">
 <input type="hidden" name="_next" value="${abs(lang, '/enquire/thanks/')}">
 <input type="hidden" name="language" value="${lang}">
-<div class="hp" aria-hidden="true"><label for="f-honey">${f.honey}</label><input id="f-honey" type="text" name="_honey" tabindex="-1" autocomplete="off"></div>
-<div class="two">${field('name', f.name, 'text', { req: true, auto: 'name' })}${field('email', f.email, 'email', { req: true, auto: 'email' })}</div>
-<div class="two">${field('country', f.country, 'text', { auto: 'country-name' })}${field('travellers', f.travellers, 'text', { req: true, hint: f.travellersHint })}</div>
-<div class="two">${field('dates', f.dates, 'text', { req: true, hint: f.datesHint })}${field('nights', f.nights, 'select', { options: f.nightsOptions.map(x => [x, x]) })}</div>
+<div class="hp" aria-hidden="true"><label for="${x}-honey">${f.honey}</label><input id="${x}-honey" type="text" name="_honey" tabindex="-1" autocomplete="off"></div>
 ${field('journey', f.journey, 'select', { options: journeyOpts })}
-<fieldset class="field"><legend>${f.interests}</legend><div class="checks">${f.interestOptions.map((x, i) => `<label><input type="checkbox" name="interests" value="${attr(strip(x))}">${x}</label>`).join('')}</div></fieldset>
+<div class="two">${field('name', f.name, 'text', { req: true, auto: 'name' })}${field('email', f.email, 'email', { req: true, auto: 'email' })}</div>
+<div class="two">${field('travellers', f.travellers, 'text', { req: true, hint: full ? f.travellersHint : '' })}${field('dates', f.dates, 'text', { req: true, hint: full ? f.datesHint : '' })}</div>
+${full ? `<div class="two">${field('country', f.country, 'text', { auto: 'country-name' })}${field('nights', f.nights, 'select', { options: f.nightsOptions.map(v => [v, v]) })}</div>
+<fieldset class="field"><legend>${f.interests}</legend><div class="checks">${f.interestOptions.map(v => `<label><input type="checkbox" name="interests" value="${attr(strip(v))}">${v}</label>`).join('')}</div></fieldset>` : ''}
 ${field('message', f.message, 'textarea', { ph: f.messagePh })}
 <label class="consent"><input type="checkbox" name="consent" value="yes" required><span>${f.consent.replace('{privacy}', href(lang, '/privacy/'))}</span></label>
-<div><button class="btn" type="submit"><span>${f.submit}</span></button></div>
+<div class="form__send"><button class="btn" type="submit"><span>${f.submit}</span></button><i>${C[lang].ui.hours}</i></div>
 <p class="form-status" role="status" aria-live="polite"></p>
-<p class="small muted">${f.note}</p>
-</form></div></section>
+</form>`;
+}
+function reserveHtml(lang) {
+  const E = C[lang].enquire;
+  return `<section class="section wrap reserve" aria-labelledby="rs-h"><div class="reserve__in">
+<div><p class="label">${C[lang].ui.nav.enquire}</p><h2 id="rs-h">${emTail(E.title)}</h2><p class="reserve__txt">${E.intro}</p></div>
+${formHtml(lang, false)}</div></section>`;
+}
+function pEnquire(lang) {
+  const E = C[lang].enquire, u = C[lang].ui, p = '/enquire/';
+  const body = `<section class="section wrap reserve reserve--page" aria-labelledby="rs-h"><div class="reserve__in">
+<div>${crumbsHtml(lang, [[u.nav.enquire, p]])}<h1 id="rs-h">${emTail(E.title)}</h1><p class="reserve__txt">${E.intro}</p>
+<p class="label" style="margin-top:2.5rem">${E.asideLabel}</p><ol class="care" style="margin-top:1rem;grid-template-columns:1fr">${E.steps.map(s => `<li>${s}</li>`).join('')}</ol>${contactList(lang)}</div>
+${formHtml(lang, true)}</div></section>
 <script>(function(){var q=new URLSearchParams(location.search).get('journey');if(q){var s=document.getElementById('f-journey');if(s)s.value=q;}})();</script>`;
   return layout(lang, p, { title: E.metaTitle, description: E.metaDescription, body, solid: true, crumbs: [[u.nav.enquire, p]] });
 }

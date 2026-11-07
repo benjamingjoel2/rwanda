@@ -4,6 +4,7 @@ module.exports = {
   ui: {
     skip: 'Skip to content',
     menu: 'Menu',
+    otherPlaces: 'Other places',
     prev: 'Previous',
     next: 'Next',
     mainNav: 'Main',
@@ -35,6 +36,8 @@ module.exports = {
     months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
     monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     footer: {
+      write: 'Write to us',
+      small: 'Small print',
       blurb: 'Private journeys across Rwanda: gorillas and golden monkeys in the Virungas, chimpanzees in Nyungwe, the plains of Akagera and slow days on Lake Kivu. Planned from Kigali, with care for the country’s history.',
       plan: 'Plan',
       contact: 'Contact',
@@ -47,6 +50,7 @@ module.exports = {
   },
 
   home: {
+    clear: { meta: 'Kinigi, 06:40 · mist lifting', title: 'And then, the volcanoes.', hint: 'Scroll to part the mist' },
     stats: [['1', 'hour with a gorilla family'], ['8', 'visitors per family, per day'], ['4,507', 'metres: Karisimbi, the highest volcano'], ['4', 'national parks in one small country']],
     metaDescription: 'Private journeys in Rwanda: gorilla and golden monkey treks in Volcanoes National Park, chimpanzees in Nyungwe, Akagera’s savannah and Lake Kivu, planned with care for the country’s history.',
     hero: {
