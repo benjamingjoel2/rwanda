@@ -50,6 +50,7 @@ module.exports = {
   },
 
   home: {
+    meet: 'Ceux que vous rencontrerez',
     clear: { meta: 'Kinigi, 6 h 40 · la brume se lève', title: 'Et puis, les volcans.', hint: 'Faites défiler pour dissiper la brume' },
     stats: [['1', 'heure avec une famille de gorilles'], ['8', 'visiteurs par famille et par jour'], ['4 507', 'mètres : le Karisimbi, le plus haut volcan'], ['4', 'parcs nationaux dans un petit pays']],
     metaDescription: 'Voyages privés au Rwanda : treks des gorilles et des singes dorés dans le parc national des Volcans, chimpanzés à Nyungwe, savane de l’Akagera et lac Kivu, organisés dans le respect de l’histoire du pays.',

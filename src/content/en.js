@@ -50,6 +50,7 @@ module.exports = {
   },
 
   home: {
+    meet: 'Who you’ll meet',
     clear: { meta: 'Kinigi, 06:40 · mist lifting', title: 'And then, the volcanoes.', hint: 'Scroll to part the mist' },
     stats: [['1', 'hour with a gorilla family'], ['8', 'visitors per family, per day'], ['4,507', 'metres: Karisimbi, the highest volcano'], ['4', 'national parks in one small country']],
     metaDescription: 'Private journeys in Rwanda: gorilla and golden monkey treks in Volcanoes National Park, chimpanzees in Nyungwe, Akagera’s savannah and Lake Kivu, planned with care for the country’s history.',

@@ -29,6 +29,7 @@ const abs = (lang, p) => cfg.siteUrl + href(lang, p);
 const fmtDate = (lang, d, o) => d.toLocaleDateString(lang === 'en' ? 'en-GB' : lang, Object.assign({ timeZone: 'Africa/Kigali' }, o));
 const cls = (...a) => a.filter(Boolean).join(' ');
 // Tarn-style headline: first sentence upright, the rest in italics
+const lab = s => String(s).replace(/^\(\d+\)\s*/, '');
 const emTail = s => { if (/<em>/.test(s)) return s; const i = s.search(/[.!?]\s/); return i < 0 ? s : `${s.slice(0, i + 1)} <em>${s.slice(i + 2)}</em>`; };
 
 const ICON = {
@@ -162,6 +163,7 @@ ${alts}
 ${o.preload || ''}
 <link rel="preload" href="/assets/fonts/spectral-200.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/spectral-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/spectral-300-italic.woff2" as="font" type="font/woff2" crossorigin>
 <style>${CSS}</style>
 <script src="${JS_URL}" defer></script>
 <script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>
@@ -194,11 +196,11 @@ function plainTop(lang, o) {
   return `<section class="ptop">${crumbsHtml(lang, o.crumbs)}<h1>${o.title}</h1>${o.intro ? `<p class="lead lead--muted" style="font-size:clamp(1.2rem,2vw,1.6rem)">${o.intro}</p>` : ''}</section>`;
 }
 function secHead(o) {
-  return `<div class="sec-head rv"><div>${o.label ? `<span class="label ${o.muted === false ? '' : 'label--muted'}">${o.label}</span>` : ''}<h2${o.id ? ` id="${o.id}"` : ''}>${o.title}</h2>${o.text ? `<p class="muted" style="margin-top:1rem;max-width:36rem">${o.text}</p>` : ''}</div>${o.link || ''}</div>`;
+  return `<div class="sec-head rv"><div>${o.label ? `<span class="label ${o.muted === false ? '' : 'label--muted'}">${lab(o.label)}</span>` : ''}<h2${o.id ? ` id="${o.id}"` : ''}>${o.title}</h2>${o.text ? `<p class="muted" style="margin-top:1rem;max-width:36rem">${o.text}</p>` : ''}</div>${o.link || ''}</div>`;
 }
 function faqHtml(lang, f, dark) {
   return `<section class="section wrap ${dark ? 'dark' : 'kaolin'}" aria-labelledby="faq-h"><div class="faq">
-<div class="rv"><span class="label label--muted">${f.label}</span><h2 id="faq-h" style="margin-top:1rem">${f.title}</h2>${f.text ? `<p class="muted" style="margin-top:1rem;max-width:22rem">${f.text}</p>` : ''}${f.link ? `<p style="margin-top:1.5rem">${f.link}</p>` : ''}</div>
+<div class="rv"><span class="label label--muted">${lab(f.label)}</span><h2 id="faq-h" style="margin-top:1rem">${f.title}</h2>${f.text ? `<p class="muted" style="margin-top:1rem;max-width:22rem">${f.text}</p>` : ''}${f.link ? `<p style="margin-top:1.5rem">${f.link}</p>` : ''}</div>
 <div>${f.items.map(([q, a], i) => `<details><summary><small>${String(i + 1).padStart(2, '0')}</small><span>${q}</span></summary><div class="ans">${[].concat(a).map(x => `<p>${x}</p>`).join('')}</div></details>`).join('')}</div>
 </div></section>`;
 }
@@ -226,12 +228,12 @@ function rowsHtml(lang, items) {
 }
 function dayHtml(lang, g, compact) {
   const steps = compact ? g.day.steps.filter((_, i) => [1, 2, 4, 6, 7, 8].includes(i)) : g.day.steps;
-  return `<section class="section wrap" aria-labelledby="day-h">
-${secHead({ label: g.day.label, title: g.day.title, id: 'day-h', text: g.day.text, link: compact ? tlink(C[lang].ui.readExplainer, href(lang, '/gorilla-trekking/')) : '' })}
+  return `<section class="section wrap tday" aria-labelledby="day-h">
+<h2 id="day-h" class="rv">${g.day.title}</h2>
 <div class="day">
-<div class="day__side"><div class="day__photo">${ph(lang, compact ? 'gorilla-2' : 'golden-monkey', { zoom: false, sizes: '(min-width:1000px) 42vw, 100vw' })}<p class="day__clock num" aria-hidden="true">${steps[0].time}</p><p class="day__now" aria-hidden="true">${steps[0].title}</p></div></div>
-<ol class="day__list" style="list-style:none;padding:0">${steps.map(s => `<li class="step"><time>${s.time}</time><div><h3>${s.title}</h3><p>${s.text}</p></div></li>`).join('')}</ol>
-</div></section>`;
+<div class="day__side"><div class="day__photo">${ph(lang, compact ? 'gorilla-2' : 'golden-monkey', { zoom: false, sizes: '(min-width:1000px) 45vw, 100vw' })}<p class="day__clock num" aria-hidden="true">${steps[0].time}</p><p class="day__now" aria-hidden="true">${steps[0].title}</p></div></div>
+<ol class="day__list" style="list-style:none;padding:0">${steps.map(s => `<li class="step"><time>${s.time}</time><h3>${s.title}</h3><p>${s.text}</p></li>`).join('')}</ol>
+</div>${compact ? `<p class="tday__more">${tlink(C[lang].ui.readExplainer, href(lang, '/gorilla-trekking/'))}</p>` : ''}</section>`;
 }
 
 /* calendar data (not language-specific) */
@@ -254,7 +256,8 @@ function yearBar(lang) {
 
 /* ---------------- pages ---------------- */
 function pHome(lang) {
-  const h = C[lang].home, u = C[lang].ui, g = C[lang].gorilla, S = C[lang].stays;
+  const h = C[lang].home, u = C[lang].ui, g = C[lang].gorilla, S = C[lang].stays, P = C[lang].enquire.form.interestOptions;
+  const meet = [['gorilla', P[0], place(lang, 'volcanoes').name], ['golden-monkey', P[1], place(lang, 'volcanoes').name], ['chimp', P[2], place(lang, 'nyungwe').name]];
   const body = `
 <section class="hero on-image">${ph(lang, h.hero.img, { eager: true, zoom: false })}
 <div class="hero__in">
@@ -267,51 +270,37 @@ function pHome(lang) {
 <div class="clear__img">${ph(lang, 'volcanoes', { zoom: false, sizes: '100vw' })}</div>
 <div class="clear__fog" aria-hidden="true"></div>
 <p class="clear__hint" aria-hidden="true"><span></span>${h.clear.hint}</p>
-<div class="clear__cap"><p class="meta">${h.clear.meta}</p><h2 id="clear-h">${emTail(h.clear.title)}</h2></div>
+<div class="clear__cap"><p class="meta">${h.clear.meta}</p><h2 id="clear-h">${h.clear.title}</h2></div>
 </div></section>
 
 <section class="lift wrap" aria-labelledby="idea-h">
 <h2 id="idea-h" class="sr">${h.idea.srTitle}</h2>
 <div class="lift__grid">
-<div class="lift__meta rv"><p>${h.idea.label}</p><p>${h.idea.facts.country[1]}, ${h.idea.facts.altitude[1]}</p><p>${u.tickerLabel}: <span data-next-umuganda>${nextUmugandaText(lang)}</span></p></div>
-<div><p class="lift__lead rv">${emTail(h.idea.lead)}</p></div>
+<div class="lift__meta rv"><p>${lab(h.idea.label)}</p><p>${h.idea.facts.altitude[1]}</p><p>${u.tickerLabel}: <span data-next-umuganda>${nextUmugandaText(lang)}</span></p></div>
+<p class="lift__lead rv">${emTail(h.idea.lead)}</p>
 </div>
 <dl class="stats">${h.stats.map(([n, l]) => `<div class="rv"><dt>${n}</dt><dd>${l}</dd></div>`).join('')}</dl>
 </section>
 
 <section class="section wrap where" aria-labelledby="where-h">
-<div class="sec-head rv"><div><h2 id="where-h">${h.where.title}</h2><p class="muted" style="margin-top:1rem;max-width:32rem">${h.idea.text}</p></div>${carouselNav(lang)}</div>
+<div class="where__head rv"><h2 id="where-h">${h.where.title}</h2><div class="where__aside"><p>${h.idea.text.split(/(?<=[.!?])\s/)[0]}</p>${carouselNav(lang)}</div></div>
 ${placeCards(lang, PLACES)}
 </section>
 
 ${dayHtml(lang, g, true)}
 
+<section class="section wrap meet" aria-labelledby="meet-h">
+<h2 id="meet-h" class="rv">${h.meet}</h2>
+<div class="meet__grid">${meet.map(([img, n, w]) => `<figure class="rv">${ph(lang, img, { sizes: '(min-width:900px) 30vw, 100vw' })}<figcaption><h3>${n}</h3><p>${w}</p></figcaption></figure>`).join('')}</div>
+</section>
+
 <section class="section wrap" aria-labelledby="st-h">
-<div class="sec-head rv"><div><p class="label">${u.nav.stays}</p><h2 id="st-h">${emTail(S.listTitle)}</h2></div>${tlink(u.seeStays, href(lang, '/stays/'))}</div>
+<h2 id="st-h" class="rv pair__h">${S.listTitle}</h2>
 <div class="pair">${[S.list[1], S.list[4]].map((s, k) => `<figure class="pair__${k} rv">${ph(lang, s.img, { sizes: '(min-width:900px) 50vw, 100vw' })}<figcaption>${s.text}</figcaption></figure>`).join('')}</div>
+<p class="pair__more">${tlink(u.seeStays, href(lang, '/stays/'))}</p>
 </section>
 
-<section class="section wrap" aria-labelledby="jr-h">
-${secHead({ label: h.journeys.label, title: h.journeys.title, id: 'jr-h', text: h.journeys.text, link: tlink(h.journeys.link, href(lang, '/journeys/')) })}
-<div class="tgrid">${C[lang].journeys.list.slice(0, 2).map(j => journeyCard(lang, j)).join('')}</div>
-</section>
-
-<section class="section wrap kaolin" aria-labelledby="cal-h">
-<div class="split split--wide"><div>${secHead({ label: h.calendar.label, title: h.calendar.title, id: 'cal-h' })}${yearBar(lang)}</div>
-<div class="txt rv"><p>${h.calendar.text}</p><p>${tlink(h.calendar.link, href(lang, '/calendar/'))}</p></div></div>
-</section>
-
-<section class="section wrap dark" aria-labelledby="hist-h">
-<div class="split"><div><p class="label">${h.history.label}</p><h2 id="hist-h" style="margin-top:1rem;max-width:14ch">${emTail(h.history.title)}</h2></div>
-<div class="txt"><p class="rv" style="font-size:1.25rem;line-height:1.5">${h.history.text}</p><p>${tlink(h.history.link, href(lang, '/history/'))}</p></div></div>
-</section>
-
-${faqHtml(lang, { ...h.faq, link: tlink(u.nav.enquire, href(lang, '/enquire/')) })}
-
-<section class="section wrap" aria-labelledby="jn-h">
-${secHead({ label: h.journal.label, title: h.journal.title, id: 'jn-h', link: tlink(h.journal.link, href(lang, '/journal/')) })}
-${journalCards(lang, C[lang].journal.posts)}
-</section>
+<section class="section wrap tquote"><p class="rv">“${h.cta.title}”</p><p class="tquote__by">${cfg.brand.name}</p></section>
 
 ${reserveHtml(lang)}`;
   return layout(lang, '/', { title: cfg.brand.name, description: h.metaDescription, body, preload: preloadFor(h.hero.img), ogImage: h.hero.img });
@@ -319,26 +308,25 @@ ${reserveHtml(lang)}`;
 
 function pPlace(lang, slug) {
   const p = place(lang, slug), u = C[lang].ui;
-  const i = PLACES.indexOf(slug), next = place(lang, PLACES[(i + 1) % PLACES.length]);
-  const gal = p.gallery;
+  const i = PLACES.indexOf(slug);
   const body = `
-${pageHero(lang, { img: p.img, crumbs: [[u.nav.destinations, `/${slug}/`], [p.name, `/${slug}/`]].slice(1), chips: p.chips, title: p.title || p.name, intro: p.intro, facts: p.facts })}
-<section class="section wrap" aria-labelledby="pl-h"><div class="place-intro">
-<div class="rv"><span class="label label--muted">${u.thePlace}</span><dl class="kv" style="margin-top:1.25rem">${p.kv.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('')}</dl></div>
-<div><h2 id="pl-h" class="sr">${p.name}</h2><p class="lead rv">${p.lead}</p><div class="prose rv" style="margin-top:1.5rem">${p.body.map(x => `<p>${x}</p>`).join('')}</div></div>
-</div></section>
-${gal && gal.length ? `<section class="wrap" aria-label="${attr(u.gallery)}"><div class="mosaic ${gal.length === 3 ? 'mosaic--3' : ''}">${gal.map((k, j) => ph(lang, k, { reveal: true, sizes: j === 0 ? '(min-width:900px) 50vw, 100vw' : '(min-width:900px) 25vw, 50vw' })).join('')}</div></section>` : ''}
-<section class="section wrap" aria-labelledby="do-h">
-${secHead({ label: u.whatWeDo, title: p.doTitle, id: 'do-h' })}
-${rowsHtml(lang, p.experiences)}
+<section class="ihero">
+<div class="ihero__top"><p class="back"><a href="${href(lang, '/')}#where-h">← ${u.nav.destinations}</a></p><p class="meta">${p.chips.join(', ')}</p>
+<div class="ihero__row"><h1>${p.title || p.name}</h1><div class="ihero__side"><p class="ihero__price">${p.facts[0][1]}</p><p class="meta">${p.facts[0][0]} · ${p.facts[3][0]} ${p.facts[3][1]}</p></div></div></div>
+${ph(lang, p.img, { eager: true, zoom: false, cls: 'ihero__img', sizes: 'calc(100vw - 48px)' })}
 </section>
-${p.stay ? `<section class="section wrap kaolin" aria-labelledby="st-h"><div class="split"><div><span class="label label--muted">${u.nav.stays}</span><h2 id="st-h" style="margin-top:1rem">${p.stay.title}</h2></div><div class="txt"><p>${p.stay.text}</p><p>${tlink(u.seeStays, href(lang, '/stays/'))}</p></div></div></section>` : ''}
-${faqHtml(lang, { label: u.questions, title: p.faqTitle, items: p.faq, link: tlink(u.nav.enquire, href(lang, '/enquire/')) }, true)}
-<section class="section wrap" aria-labelledby="nx-h">
-<div class="sec-head rv"><h2 id="nx-h">${u.otherPlaces}</h2>${tlink(u.nav.journeys, href(lang, '/journeys/'))}</div>
+<section class="section wrap tdetail" aria-labelledby="pl-h"><div class="tdetail__in">
+<aside class="tdetail__aside rv"><dl>${p.kv.slice(0, 4).map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('')}</dl><p>${p.intro}</p><p>${btn(u.nav.enquire, href(lang, '/enquire/'))}</p></aside>
+<div class="tdetail__body">
+<section><h2 id="pl-h">${u.thePlace}</h2><p class="tdetail__lead">${p.lead}</p>${p.body.map(x => `<p>${x}</p>`).join('')}</section>
+<section><h2>${p.doTitle}</h2><ul>${p.experiences.map(x => `<li><strong>${x.title}</strong> <i>${x.label}</i><br>${x.text}${x.link ? ` <a class="link" href="${href(lang, x.link[1])}">${x.link[0]}</a>` : ''}</li>`).join('')}</ul></section>
+${p.stay ? `<section><h2>${u.nav.stays}</h2><p>${p.stay.title} ${p.stay.text}</p><p><a class="link" href="${href(lang, '/stays/')}">${u.seeStays}</a></p></section>` : ''}
+<section><h2>${p.faqTitle}</h2>${p.faq.map(([q, a]) => `<details><summary>${q}</summary><p>${a}</p></details>`).join('')}</section>
+</div></div></section>
+<section class="section wrap others" aria-labelledby="nx-h">
+<div class="sec-head rv"><h2 id="nx-h">${u.otherPlaces}</h2>${tlink(u.nav.destinations, href(lang, '/') + '#where-h')}</div>
 ${placeCards(lang, [1, 2, 3].map(k => PLACES[(i + k) % PLACES.length]), 'tgrid tgrid--3')}
-</section>
-${ctaBanner(lang, { img: p.ctaImg || p.img, title: p.cta, button: u.nav.enquire })}`;
+</section>`;
   return layout(lang, `/${slug}/`, { title: p.metaTitle, description: p.metaDescription, body, preload: preloadFor(p.img), ogImage: p.img, crumbs: [[p.name, `/${slug}/`]], ld: [{ '@type': 'TouristDestination', name: p.name, description: strip(p.metaDescription), url: abs(lang, `/${slug}/`), containedInPlace: { '@type': 'Country', name: 'Rwanda' } }] });
 }
 

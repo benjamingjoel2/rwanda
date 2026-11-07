@@ -50,6 +50,7 @@ module.exports = {
   },
 
   home: {
+    meet: 'A quién conocerá',
     clear: { meta: 'Kinigi, 6:40 · se levanta la niebla', title: 'Y entonces, los volcanes.', hint: 'Desplácese para disipar la niebla' },
     stats: [['1', 'hora con una familia de gorilas'], ['8', 'visitantes por familia y día'], ['4507', 'metros: el Karisimbi, el volcán más alto'], ['4', 'parques nacionales en un país pequeño']],
     metaDescription: 'Viajes privados por Ruanda: trekking de gorilas y monos dorados en el Parque Nacional de los Volcanes, chimpancés en Nyungwe, la sabana de Akagera y el lago Kivu, planificados con respeto por la historia del país.',

@@ -50,6 +50,7 @@ module.exports = {
   },
 
   home: {
+    meet: 'Wen Sie treffen werden',
     clear: { meta: 'Kinigi, 6:40 Uhr · der Nebel hebt sich', title: 'Und dann: die Vulkane.', hint: 'Scrollen, um den Nebel zu lichten' },
     stats: [['1', 'Stunde mit einer Gorillafamilie'], ['8', 'Besucher pro Familie und Tag'], ['4.507', 'Meter: der Karisimbi, der höchste Vulkan'], ['4', 'Nationalparks in einem kleinen Land']],
     metaDescription: 'Private Reisen in Ruanda: Gorilla- und Goldmeerkatzen-Treks im Volcanoes-Nationalpark, Schimpansen in Nyungwe, die Savanne von Akagera und der Kivusee, geplant mit Achtung vor der Geschichte des Landes.',
