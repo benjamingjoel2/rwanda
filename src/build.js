@@ -43,14 +43,6 @@ function btn(text, link, variant = '', extra = '') {
 }
 const tlink = (text, link) => `<a class="tlink" href="${attr(link)}">${text}${ICON.right}</a>`;
 
-/* imigongo zigzag band (section edge) */
-let zid = 0;
-function zz(variant = '', flip = false) {
-  zid++;
-  const id = 'zz' + zid;
-  return `<svg class="zz ${variant}" viewBox="0 0 240 18" preserveAspectRatio="none" aria-hidden="true" focusable="false"${flip ? ' style="transform:scaleY(-1)"' : ''}><defs><pattern id="${id}" width="24" height="18" patternUnits="userSpaceOnUse"><path d="M0 18L12 4 24 18Z" fill="currentColor"/><path d="M5 18L12 10 19 18" fill="none" stroke="var(--ochre)" stroke-width="2"/></pattern></defs><rect width="240" height="18" fill="url(#${id})"/></svg>`;
-}
-
 /* smooth ridge path (deterministic) */
 function ridgePath(seed, base, amp, w = 1600, h = 600, n = 9) {
   let s = seed;
@@ -63,12 +55,6 @@ function ridgePath(seed, base, amp, w = 1600, h = 600, n = 9) {
     d += ` C${mx.toFixed(1)} ${y0.toFixed(1)} ${mx.toFixed(1)} ${y1.toFixed(1)} ${x1.toFixed(1)} ${y1.toFixed(1)}`;
   }
   return d + ` L${w} ${h} Z`;
-}
-function zigPath(w, h, step, pad = 2) {
-  let d = `M0 ${h - pad}`; let up = true;
-  for (let x = step / 2; x <= w + step; x += step / 2) { d += ` L${x} ${up ? pad : h - pad}`; up = !up; }
-  const len = Math.round((w / (step / 2)) * Math.hypot(step / 2, h - 2 * pad)) + 40;
-  return { d, len };
 }
 
 /* responsive picture */
@@ -389,7 +375,6 @@ function pHistory(lang) {
   const h = C[lang].history, u = C[lang].ui, p = '/history/';
   const body = `
 <section class="ptop dark" style="border:0">${crumbsHtml(lang, [[u.nav.history, p]])}<h1>${h.title}</h1><p class="lead lead--muted" style="font-size:clamp(1.2rem,2vw,1.6rem);max-width:40rem">${h.intro}</p></section>
-<div class="dark">${zz('zz--ochre')}</div>
 <section class="section wrap" aria-labelledby="h1-h"><div class="split" style="align-items:start">
 <div><span class="label label--muted">${h.what.label}</span><h2 id="h1-h" style="margin-top:1rem">${h.what.title}</h2></div>
 <div class="quiet">${h.what.body.map(x => `<p>${x}</p>`).join('')}</div></div></section>

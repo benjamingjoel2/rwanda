@@ -41,7 +41,7 @@ module.exports = {
       blurb: 'Viajes privados por Ruanda: gorilas y monos dorados en los Virunga, chimpancés en Nyungwe, las llanuras de Akagera y días tranquilos en el lago Kivu. Planificados desde Kigali, con respeto por la historia del país.',
       plan: 'Planificar',
       contact: 'Contacto',
-      imigongo: 'Las franjas en zigzag y los marcos de este sitio están dibujados en homenaje al imigongo, el arte geométrico en relieve del este de Ruanda, elaborado tradicionalmente por mujeres con estiércol de vaca, ceniza y pigmentos naturales de tierra. Son dibujos propios, no copias de los paneles de ninguna artesana.',
+      imigongo: 'Los marcos y motivos en zigzag de este sitio están dibujados en homenaje al imigongo, el arte geométrico en relieve del este de Ruanda, elaborado tradicionalmente por mujeres con estiércol de vaca, ceniza y pigmentos naturales de tierra. Son dibujos propios, no copias de los paneles de ninguna artesana.',
       privacy: 'Política de privacidad',
       terms: 'Condiciones de reserva',
       cookies: 'Política de cookies',

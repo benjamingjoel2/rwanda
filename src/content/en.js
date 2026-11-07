@@ -41,7 +41,7 @@ module.exports = {
       blurb: 'Private journeys across Rwanda: gorillas and golden monkeys in the Virungas, chimpanzees in Nyungwe, the plains of Akagera and slow days on Lake Kivu. Planned from Kigali, with care for the country’s history.',
       plan: 'Plan',
       contact: 'Contact',
-      imigongo: 'The zigzag bands and frames on this site are drawn in tribute to imigongo, the geometric relief art of eastern Rwanda, traditionally made by women from cow dung, ash and natural earth pigments. They are our own drawings, not copies of any maker’s panel.',
+      imigongo: 'The zigzag frames and patterns on this site are drawn in tribute to imigongo, the geometric relief art of eastern Rwanda, traditionally made by women from cow dung, ash and natural earth pigments. They are our own drawings, not copies of any maker’s panel.',
       privacy: 'Privacy policy',
       terms: 'Booking terms',
       cookies: 'Cookie policy',

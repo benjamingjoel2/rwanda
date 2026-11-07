@@ -41,7 +41,7 @@ module.exports = {
       blurb: 'Voyages privés à travers le Rwanda : gorilles et singes dorés dans les Virunga, chimpanzés à Nyungwe, plaines de l’Akagera et journées lentes au bord du lac Kivu. Organisés depuis Kigali, dans le respect de l’histoire du pays.',
       plan: 'Préparer',
       contact: 'Contact',
-      imigongo: 'Les bandes en zigzag et les cadres de ce site sont dessinés en hommage à l’imigongo, l’art géométrique en relief de l’est du Rwanda, traditionnellement réalisé par des femmes à partir de bouse de vache, de cendre et de pigments naturels. Ce sont nos propres dessins, et non des copies du panneau d’une artisane.',
+      imigongo: 'Les cadres et motifs en zigzag de ce site sont dessinés en hommage à l’imigongo, l’art géométrique en relief de l’est du Rwanda, traditionnellement réalisé par des femmes à partir de bouse de vache, de cendre et de pigments naturels. Ce sont nos propres dessins, et non des copies du panneau d’une artisane.',
       privacy: 'Politique de confidentialité',
       terms: 'Conditions de réservation',
       cookies: 'Politique relative aux cookies',
