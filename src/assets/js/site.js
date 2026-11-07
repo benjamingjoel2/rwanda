@@ -59,12 +59,8 @@
     d.querySelectorAll('.rv,.rv-img').forEach(function (el) { el.classList.add('in'); });
   }
 
-  /* scroll-driven pieces: word reveal, ridges scene, trek day */
-  var ridges = d.querySelector('.ridges'), day = d.querySelector('.day'), clear = d.querySelector('.clear');
-  var layers = ridges ? ridges.querySelectorAll('.ridges__layer') : [];
-  var lines = ridges ? ridges.querySelectorAll('.ridges__lines p') : [];
-  var rz = ridges ? ridges.querySelector('.ridges__zz') : null;
-  var count = ridges ? ridges.querySelector('.ridges__count') : null;
+  /* scroll-driven pieces: word reveal, part the mist, trek day */
+  var day = d.querySelector('.day'), clear = d.querySelector('.clear');
   var steps = day ? day.querySelectorAll('.step') : [];
   var clock = day ? day.querySelector('.day__clock') : null, now = day ? day.querySelector('.day__now') : null;
   var sun = day ? day.querySelector('.day__sun') : null;
@@ -84,18 +80,6 @@
       var cp = Math.min(1, Math.max(0, -cr.top / (cr.height - vh)));
       clear.style.setProperty('--p', cp.toFixed(3));
     }
-    if (ridges && !reduce) {
-      var r = ridges.getBoundingClientRect();
-      var p = Math.min(1, Math.max(0, -r.top / (r.height - vh)));
-      layers.forEach(function (l, i) {
-        var depth = (i + 1) / layers.length;
-        l.style.transform = 'translate3d(' + ((i % 2 ? 1 : -1) * p * 3 * depth) + '%,' + ((1 - p) * 55 * depth * depth - p * 18 * depth) + '%,0)';
-      });
-      if (rz) rz.style.setProperty('--p', Math.min(1, p * 1.25).toFixed(3));
-      var idx = Math.min(lines.length - 1, Math.floor(p * lines.length * 0.999));
-      lines.forEach(function (l, i) { l.classList.toggle('on', i === idx); });
-      if (count) count.textContent = String(idx + 1).padStart(2, '0') + ' / ' + String(lines.length).padStart(2, '0');
-    }
     if (day && steps.length) {
       var act = 0;
       steps.forEach(function (s, i) { if (s.getBoundingClientRect().top < vh * 0.55) act = i; });
@@ -111,7 +95,7 @@
     }
   }
   function req() { if (!ticking) { ticking = true; w.requestAnimationFrame(frame); } }
-  if (words.length || ridges || day || clear) { w.addEventListener('scroll', req, { passive: true }); w.addEventListener('resize', req); frame(); }
+  if (words.length || day || clear) { w.addEventListener('scroll', req, { passive: true }); w.addEventListener('resize', req); frame(); }
 
   /* card carousel arrows */
   d.querySelectorAll('.cnav').forEach(function (nav) {
