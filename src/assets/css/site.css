@@ -513,3 +513,7 @@ fieldset.field{border:0;padding:0;margin:0}
 @media (min-width:1000px){.tdetail__in{grid-template-columns:456px 1fr;gap:0}}
 .others .ph.r45{aspect-ratio:424/440}
 .tgrid--3{gap:2.5rem 28px}
+.ftr .langs a,.mnav .langs a{opacity:1;color:#c9cfcb;background:var(--night)}
+.ftr .langs a[aria-current=true],.mnav .langs a[aria-current=true]{color:#fff}
+.ftr .langs span,.mnav .langs span{opacity:1;color:#8d9693}
+.hdr .langs a{opacity:1}
