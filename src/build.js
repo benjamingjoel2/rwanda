@@ -260,6 +260,7 @@ function pHome(lang) {
   const meet = [['gorilla', P[0], place(lang, 'volcanoes').name], ['golden-monkey', P[1], place(lang, 'volcanoes').name], ['chimp', P[2], place(lang, 'nyungwe').name]];
   const body = `
 <section class="hero on-image">${ph(lang, h.hero.img, { eager: true, zoom: false })}
+<a class="hero__part" href="#clear-h"><span></span>${h.clear.hint}</a>
 <div class="hero__in">
 <div class="hero__meta"><p>${h.hero.place}</p><p>${h.idea.facts.time} <span data-kigali-time class="num">--:--</span>, ${h.idea.facts.altitude[1]}</p></div>
 <div class="hero__row"><h1>${emTail(h.hero.title)}</h1><div class="hero__side"><p class="meta">${h.hero.tags.join(' · ')}</p><p>${h.hero.text}</p><div class="hero__ctas">${btn(h.hero.cta, href(lang, '/journeys/'), 'btn--light')}</div></div></div>
@@ -330,143 +331,125 @@ ${placeCards(lang, [1, 2, 3].map(k => PLACES[(i + k) % PLACES.length]), 'tgrid t
   return layout(lang, `/${slug}/`, { title: p.metaTitle, description: p.metaDescription, body, preload: preloadFor(p.img), ogImage: p.img, crumbs: [[p.name, `/${slug}/`]], ld: [{ '@type': 'TouristDestination', name: p.name, description: strip(p.metaDescription), url: abs(lang, `/${slug}/`), containedInPlace: { '@type': 'Country', name: 'Rwanda' } }] });
 }
 
+/* ---------- Tarn page parts ---------- */
+function tHero(lang, o) {
+  return `<section class="ihero${o.img ? '' : ' ihero--plain'}">
+<div class="ihero__top">${o.back ? `<p class="back"><a href="${href(lang, o.back[1])}">← ${o.back[0]}</a></p>` : ''}${o.meta ? `<p class="meta">${o.meta}</p>` : ''}
+<div class="ihero__row"><h1>${o.title}</h1><div class="ihero__side">${o.price ? `<p class="ihero__price">${o.price}</p>` : ''}${o.sub ? `<p class="meta">${o.sub}</p>` : ''}${o.intro ? `<p class="ihero__intro">${o.intro}</p>` : ''}</div></div></div>
+${o.img ? ph(lang, o.img, { eager: true, zoom: false, cls: 'ihero__img', sizes: 'calc(100vw - 48px)' }) : ''}
+</section>`;
+}
+function tDetail(o) {
+  return `<section class="section wrap tdetail"${o.id ? ` id="${o.id}"` : ''}><div class="tdetail__in">
+<aside class="tdetail__aside rv">${o.aside || ''}</aside>
+<div class="tdetail__body">${o.sections.filter(Boolean).map(([h, html, id]) => `<section${id ? ` id="${id}"` : ''}><h2>${h}</h2>${html}</section>`).join('')}</div>
+</div></section>`;
+}
+const kvAside = rows => `<dl>${rows.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('')}</dl>`;
+const paras = arr => arr.map(x => `<p>${x}</p>`).join('');
+const faqList = items => items.map(([q, a]) => `<details><summary>${q}</summary>${[].concat(a).map(x => `<p>${x}</p>`).join('')}</details>`).join('');
+function tOthers(lang, title, link, cards, id = 'nx-h') {
+  return `<section class="section wrap others" aria-labelledby="${id}"><div class="sec-head rv"><h2 id="${id}">${title}</h2>${link || ''}</div>${cards}</section>`;
+}
+const otherPlaces = (lang, skip = []) => tOthers(lang, C[lang].ui.otherPlaces, tlink(C[lang].ui.nav.destinations, href(lang, '/') + '#where-h'), placeCards(lang, PLACES.filter(s => !skip.includes(s)).slice(0, 3), 'tgrid tgrid--3'));
+function postCards(lang, posts) {
+  return `<div class="tgrid tgrid--3">${posts.map(p => `<a class="tcard rv" href="${href(lang, `/journal/${p.slug}/`)}"><div class="tcard__media">${ph(lang, p.img, { cls: 'r45', sizes: '(min-width:800px) 33vw, 100vw' })}<div class="tcard__cap"><h3>${p.title}</h3><i>${p.kicker}</i></div></div><div class="tcard__foot"><i>${p.read}</i><span>→</span></div></a>`).join('')}</div>`;
+}
+
 function pGorilla(lang) {
-  const g = C[lang].gorilla, u = C[lang].ui, p = '/gorilla-trekking/';
+  const g = C[lang].gorilla, u = C[lang].ui, p = '/gorilla-trekking/', v = place(lang, 'volcanoes');
   const body = `
-${pageHero(lang, { img: g.img, crumbs: [[u.nav.gorilla, p]], chips: g.chips, title: g.title, intro: g.intro, facts: g.facts, ctas: btn(u.nav.enquire, href(lang, '/enquire/'), 'btn--light') })}
-<section class="section wrap" aria-labelledby="permit-h"><div class="split split--wide">
-<div>${secHead({ label: g.permit.label, title: g.permit.title, id: 'permit-h' })}<div class="prose rv">${g.permit.body.map(x => `<p>${x}</p>`).join('')}</div></div>
-<div class="txt rv">${ph(lang, g.permit.img, { cls: 'r45', sizes: '(min-width:900px) 40vw, 100vw' })}</div></div>
-<div class="prices rv" style="margin-top:clamp(2.5rem,5vw,4rem)">${g.permit.prices.map(([k, v, n]) => `<div class="price"><small>${k}</small><strong>${v}</strong><span class="small muted">${n}</span></div>`).join('')}</div>
-<p class="small muted" style="margin-top:1rem">${g.permit.note}</p>
-</section>
+${tHero(lang, { back: [v.name, '/volcanoes/'], meta: g.chips.join(', '), title: g.title, price: g.facts[0][1], sub: `${g.facts[1][0]}: ${g.facts[1][1]} · ${g.facts[2][0]}: ${g.facts[2][1]}`, img: g.img })}
+${tDetail({ aside: `${kvAside(g.facts.slice(2))}<p>${g.intro}</p><p>${btn(u.nav.enquire, href(lang, '/enquire/'))}</p>`, sections: [
+  [g.permit.title, `${paras(g.permit.body)}<ul>${g.permit.prices.map(([k, val, n]) => `<li><strong>${k}</strong> <i>${val}</i><br>${n}</li>`).join('')}</ul><p class="small">${g.permit.note}</p>`],
+  [g.fitness.title, `<p>${g.fitness.text}</p><ul>${g.fitness.levels.map(l => `<li><strong>${l[0]}</strong> <i>${l[1]}</i><br>${l[2]}</li>`).join('')}</ul>${paras(g.fitness.notes)}`],
+  [g.pack.title, `<ul>${g.pack.items.map(x => `<li>${x}</li>`).join('')}</ul>`],
+  [g.rules.title, `<ol>${g.rules.items.map(x => `<li>${x}</li>`).join('')}</ol>`],
+  [g.faqTitle, faqList(g.faq)],
+] })}
 ${dayHtml(lang, g, false)}
-<section class="section wrap" aria-labelledby="fit-h">
-${secHead({ label: g.fitness.label, title: g.fitness.title, id: 'fit-h', text: g.fitness.text })}
-<div class="levels">${g.fitness.levels.map((l, i) => `<div class="rv"><b>${l[0]}</b><div class="meter" aria-hidden="true">${[0, 1, 2].map(k => `<i class="${k <= i ? 'on' : ''}"></i>`).join('')}</div><p class="label label--muted" style="margin-bottom:.75rem">${l[1]}</p><p>${l[2]}</p></div>`).join('')}</div>
-<div class="notes rv" style="margin-top:2.5rem;max-width:46rem">${g.fitness.notes.map(n => `<p>${n}</p>`).join('')}</div>
-</section>
-<section class="section wrap kaolin" aria-labelledby="pack-h"><div class="split split--wide" style="align-items:start">
-<div>${secHead({ label: g.pack.label, title: g.pack.title, id: 'pack-h' })}<ul class="pack rv">${g.pack.items.map(i => `<li>${i}</li>`).join('')}</ul></div>
-<div class="txt rv">${ph(lang, g.pack.img, { cls: 'r45', sizes: '(min-width:900px) 40vw, 100vw' })}</div></div></section>
-<section class="section wrap" aria-labelledby="rules-h">
-${secHead({ label: g.rules.label, title: g.rules.title, id: 'rules-h' })}
-<ol class="care rv">${g.rules.items.map(r => `<li>${r}</li>`).join('')}</ol>
-</section>
-${faqHtml(lang, { label: u.questions, title: g.faqTitle, items: g.faq, link: tlink(u.nav.enquire, href(lang, '/enquire/')) }, true)}
-${ctaBanner(lang, { img: g.ctaImg, title: g.cta, button: u.nav.enquire })}`;
+${otherPlaces(lang)}`;
   return layout(lang, p, { title: g.metaTitle, description: g.metaDescription, body, preload: preloadFor(g.img), ogImage: g.img, crumbs: [[u.nav.gorilla, p]] });
 }
 
 function pHistory(lang) {
   const h = C[lang].history, u = C[lang].ui, p = '/history/';
   const body = `
-<section class="ptop dark" style="border:0">${crumbsHtml(lang, [[u.nav.history, p]])}<h1>${h.title}</h1><p class="lead lead--muted" style="font-size:clamp(1.2rem,2vw,1.6rem);max-width:40rem">${h.intro}</p></section>
-<section class="section wrap" aria-labelledby="h1-h"><div class="split" style="align-items:start">
-<div><span class="label label--muted">${h.what.label}</span><h2 id="h1-h" style="margin-top:1rem">${h.what.title}</h2></div>
-<div class="quiet">${h.what.body.map(x => `<p>${x}</p>`).join('')}</div></div></section>
-<section class="section wrap kaolin" aria-labelledby="kw-h"><div class="split" style="align-items:start">
-<div><span class="label label--muted">${h.kwibuka.label}</span><h2 id="kw-h" style="margin-top:1rem">${h.kwibuka.title}</h2></div>
-<div class="quiet">${h.kwibuka.body.map(x => `<p>${x}</p>`).join('')}</div></div></section>
-<section class="section wrap dark" aria-labelledby="mem-h">
-${secHead({ label: h.memorials.label, title: h.memorials.title, id: 'mem-h', text: h.memorials.text })}
-${ph(lang, h.memorials.img, { cls: 'r21', reveal: true, zoom: false, sizes: '100vw' })}
-<ul class="memorials" style="list-style:none;padding:0;margin-top:2rem">${h.memorials.items.map(m => `<li><h3>${m[0]}</h3><div><p class="label label--muted" style="margin-bottom:.5rem">${m[1]}</p><p>${m[2]}</p></div></li>`).join('')}</ul>
-</section>
-<section class="section wrap" aria-labelledby="care-h">
-${secHead({ label: h.care.label, title: h.care.title, id: 'care-h', text: h.care.text })}
-<ol class="care">${h.care.items.map(c => `<li><strong>${c[0]}</strong> ${c[1]}</li>`).join('')}</ol>
-</section>
-<section class="section wrap kaolin" aria-labelledby="plan-h"><div class="split" style="align-items:start">
-<div><span class="label label--muted">${h.plan.label}</span><h2 id="plan-h" style="margin-top:1rem">${h.plan.title}</h2></div>
-<div class="quiet">${h.plan.body.map(x => `<p>${x}</p>`).join('')}<p style="margin-top:2rem">${btn(u.nav.enquire, href(lang, '/enquire/'))}</p></div></div></section>
-<section class="section wrap" aria-labelledby="read-h">
-${secHead({ label: h.reading.label, title: h.reading.title, id: 'read-h' })}
-<ul class="credits" style="list-style:none;padding:0">${h.reading.items.map(r => `<li><strong>${r[0]}</strong><span>${r[1]}</span><span class="muted">${r[2]}</span></li>`).join('')}</ul>
-</section>`;
-  return layout(lang, p, { title: h.metaTitle, description: h.metaDescription, body, solid: false, crumbs: [[u.nav.history, p]], ogImage: h.memorials.img });
+${tHero(lang, { back: [u.nav.home, '/'], meta: `${h.kwibuka.label} · ${h.what.label}`, title: h.title, intro: h.intro, img: h.memorials.img })}
+${tDetail({ aside: `<p>${h.memorials.text}</p><p>${btn(u.nav.enquire, href(lang, '/enquire/'))}</p>`, sections: [
+  [h.what.title, paras(h.what.body)],
+  [h.kwibuka.title, paras(h.kwibuka.body)],
+  [h.memorials.title, `<ul>${h.memorials.items.map(m => `<li><strong>${m[0]}</strong> <i>${m[1]}</i><br>${m[2]}</li>`).join('')}</ul>`],
+  [h.care.title, `<p>${h.care.text}</p><ol>${h.care.items.map(c => `<li><strong>${c[0]}</strong> ${c[1]}</li>`).join('')}</ol>`],
+  [h.plan.title, paras(h.plan.body)],
+  [h.reading.title, `<ul>${h.reading.items.map(r => `<li><strong>${r[0]}</strong> <i>${r[1]}</i><br>${r[2]}</li>`).join('')}</ul>`],
+] })}`;
+  return layout(lang, p, { title: h.metaTitle, description: h.metaDescription, body, preload: preloadFor(h.memorials.img), crumbs: [[u.nav.history, p]], ogImage: h.memorials.img });
 }
 
 function pCalendar(lang) {
   const c = C[lang].calendar, u = C[lang].ui, p = '/calendar/';
   const um = umugandaDates(12);
   const body = `
-${pageHero(lang, { img: c.img, crumbs: [[u.nav.calendar, p]], title: c.title, intro: c.intro, facts: c.facts })}
+${tHero(lang, { back: [u.nav.home, '/'], meta: c.facts.map(f => f[1]).slice(0, 2).join(', '), title: c.title, price: c.facts[2][1], sub: c.facts[2][0], img: c.img })}
 <section class="section wrap" aria-labelledby="yr-h">
-${secHead({ label: c.year.label, title: c.year.title, id: 'yr-h', text: c.year.text })}
-<div class="legend">${['dry', 'short', 'wet', 'wet2'].map(s => { const [k, t] = seasonBadge(lang, s); return `<span><i class="${k}"></i>${t}</span>`; }).join('')}<span><i style="background:var(--ochre);transform:rotate(45deg) scale(.7)"></i>${c.legendKwita}</span><span><i style="background:var(--ridge);transform:rotate(45deg) scale(.7)"></i>${c.legendUmuganda}</span></div>
-<div class="months">${u.months.map((m, i) => { const [k, t] = seasonBadge(lang, SEASON[i]); const um1 = um.find(d => d.getUTCMonth() === i); return `<article class="month rv"><h3>${m}</h3><span class="season ${k}">${t}</span><p class="small">${c.months[i].note}</p><ul>${um1 ? `<li class="ev-umuganda">${c.umugandaShort} · ${fmtDate(lang, um1, { day: 'numeric', month: 'short', year: 'numeric' })}</li>` : ''}${c.months[i].events.map(e => `<li class="${e[0] === 'kwita' ? 'ev-kwita' : ''}">${e[1]}</li>`).join('')}</ul><div class="rain" title="${RAIN_MM[i]} mm"><i style="width:${Math.round(RAIN_MM[i] / 160 * 100)}%"></i></div></article>`; }).join('')}</div>
+<div class="where__head rv"><h2 id="yr-h">${c.year.title}</h2><div class="where__aside"><p>${c.year.text}</p></div></div>
+<div class="legend">${['dry', 'short', 'wet', 'wet2'].map(s => { const [k, tt] = seasonBadge(lang, s); return `<span><i class="${k}"></i>${tt}</span>`; }).join('')}<span><i style="background:var(--ochre)"></i>${c.legendKwita}</span><span><i style="background:var(--ridge)"></i>${c.legendUmuganda}</span></div>
+<div class="months">${u.months.map((m, i) => { const [k, tt] = seasonBadge(lang, SEASON[i]); const um1 = um.find(d => d.getUTCMonth() === i); return `<article class="month rv"><h3>${m}</h3><span class="season ${k}">${tt}</span><p class="small">${c.months[i].note}</p><ul>${um1 ? `<li class="ev-umuganda">${c.umugandaShort} · ${fmtDate(lang, um1, { day: 'numeric', month: 'short', year: 'numeric' })}</li>` : ''}${c.months[i].events.map(e => `<li class="${e[0] === 'kwita' ? 'ev-kwita' : ''}">${e[1]}</li>`).join('')}</ul><div class="rain" title="${RAIN_MM[i]} mm"><i style="width:${Math.round(RAIN_MM[i] / 160 * 100)}%"></i></div></article>`; }).join('')}</div>
 <p class="small muted" style="margin-top:1rem">${c.rainNote}</p>
 </section>
-<section class="section wrap kaolin" aria-labelledby="kw-h"><div class="split split--wide" style="align-items:start">
-<div>${secHead({ label: c.kwita.label, title: c.kwita.title, id: 'kw-h' })}<div class="prose rv">${c.kwita.body.map(x => `<p>${x}</p>`).join('')}</div></div>
-<div class="txt rv">${ph(lang, c.kwita.img, { cls: 'r45', sizes: '(min-width:900px) 40vw, 100vw' })}</div></div></section>
-<section class="section wrap dark" aria-labelledby="um-h">
-${secHead({ label: c.umuganda.label, title: c.umuganda.title, id: 'um-h', text: c.umuganda.text })}
-<div class="split" style="align-items:start"><div class="prose">${c.umuganda.body.map(x => `<p>${x}</p>`).join('')}</div>
-<div><p class="label label--muted" style="margin-bottom:1rem">${c.umuganda.next}</p><ul class="umu" style="list-style:none;padding:0;border-color:rgba(244,236,221,.2)">${um.map(d => `<li style="border-color:rgba(244,236,221,.2)">${fmtDate(lang, d, { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' })}</li>`).join('')}</ul><p class="small muted" style="margin-top:1rem">${c.umuganda.note}</p></div></div>
-</section>
-<section class="section wrap" aria-labelledby="hol-h">
-${secHead({ label: c.holidays.label, title: c.holidays.title, id: 'hol-h', text: c.holidays.text })}
-<ul class="credits" style="list-style:none;padding:0">${c.holidays.items.map(h => `<li><strong>${h[0]}</strong><span>${h[1]}</span><span class="muted">${h[2] || ''}</span></li>`).join('')}</ul>
-</section>
-${faqHtml(lang, { label: u.questions, title: c.faqTitle, items: c.faq, link: tlink(u.nav.enquire, href(lang, '/enquire/')) })}
-${ctaBanner(lang, { img: c.ctaImg, title: c.cta, button: u.nav.enquire })}`;
+${tDetail({ aside: `${kvAside(c.facts)}<p>${c.intro}</p><p>${btn(u.nav.enquire, href(lang, '/enquire/'))}</p>`, sections: [
+  [c.kwita.title, paras(c.kwita.body)],
+  [c.umuganda.title, `<p>${c.umuganda.text}</p>${paras(c.umuganda.body)}<p><i>${c.umuganda.next}</i></p><ul class="umu">${um.map(d => `<li>${fmtDate(lang, d, { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' })}</li>`).join('')}</ul><p class="small">${c.umuganda.note}</p>`],
+  [c.holidays.title, `<p>${c.holidays.text}</p><ul>${c.holidays.items.map(x => `<li><strong>${x[0]}</strong> <i>${x[1]}</i>${x[2] ? `<br>${x[2]}` : ''}</li>`).join('')}</ul>`],
+  [c.faqTitle, faqList(c.faq)],
+] })}`;
   return layout(lang, p, { title: c.metaTitle, description: c.metaDescription, body, preload: preloadFor(c.img), ogImage: c.img, crumbs: [[u.nav.calendar, p]] });
 }
 
 function pJourneys(lang) {
   const J = C[lang].journeys, u = C[lang].ui, p = '/journeys/';
   const body = `
-${pageHero(lang, { img: J.img, crumbs: [[u.nav.journeys, p]], title: J.title, intro: J.intro })}
+${tHero(lang, { back: [u.nav.home, '/'], meta: J.label, title: J.title, intro: J.intro, img: J.img })}
 <section class="section wrap" aria-labelledby="jl-h">
-${secHead({ label: J.label, title: J.listTitle, id: 'jl-h', text: J.listText })}
-<div class="jcards">${J.list.map(j => journeyCard(lang, j)).join('')}</div>
-${J.list.map(j => `<article class="itin" id="${j.id}" aria-labelledby="${j.id}-h"><div class="itin__head"><div><p class="label label--muted">${j.nights} ${u.nights} · ${j.months}</p><h2 id="${j.id}-h" style="margin-top:1rem">${j.title}</h2></div><p class="muted">${j.why}</p></div>
-<ol class="days" style="list-style:none;padding:0">${j.days.map(d => `<li><b>${d[0]}</b><div><strong>${d[1]}</strong><span>${d[2]}</span></div></li>`).join('')}</ol>
-<p style="margin-top:1.5rem">${btn(u.planThis, href(lang, '/enquire/') + `?journey=${j.id}`)}</p></article>`).join('')}
-<p class="small muted" style="margin-top:3rem;max-width:46rem">${J.note}</p>
+<div class="where__head rv"><h2 id="jl-h">${J.listTitle}</h2><div class="where__aside"><p>${J.listText}</p></div></div>
+<div class="tgrid">${J.list.map(j => journeyCard(lang, j)).join('')}</div>
 </section>
-${ctaBanner(lang, { img: J.ctaImg, title: J.cta, button: u.nav.enquire })}`;
+${J.list.map(j => tDetail({ id: j.id, aside: `${kvAside([[u.bestMonths, j.months], [u.nights, j.nights], ['', j.route]].filter(r => r[0]))}<p>${j.route}</p><p><i>${j.includes}</i></p><p>${btn(u.planThis, href(lang, '/enquire/') + `?journey=${j.id}`)}</p>`, sections: [
+  [j.title, `<p class="tdetail__lead">${j.why}</p><ul>${j.highlights.map(x => `<li>${x}</li>`).join('')}</ul>`],
+  [`${j.nights} ${u.nights}`, `<ul class="days">${j.days.map(d => `<li><b>${d[0]}</b><div><strong>${d[1]}</strong><span>${d[2]}</span></div></li>`).join('')}</ul>`],
+] })).join('')}
+<section class="wrap" style="padding-bottom:var(--sec)"><p class="small muted" style="max-width:40rem">${J.note}</p></section>`;
   return layout(lang, p, { title: J.metaTitle, description: J.metaDescription, body, preload: preloadFor(J.img), ogImage: J.img, crumbs: [[u.nav.journeys, p]] });
 }
 
 function pStays(lang) {
   const S = C[lang].stays, u = C[lang].ui, p = '/stays/';
   const body = `
-${pageHero(lang, { img: S.img, crumbs: [[u.nav.stays, p]], title: S.title, intro: S.intro })}
+${tHero(lang, { back: [u.nav.home, '/'], meta: S.label, title: S.title, intro: S.intro, img: S.img })}
 <section class="section wrap" aria-labelledby="sl-h">
-${secHead({ label: S.label, title: S.listTitle, id: 'sl-h', text: S.listText })}
-<div>${S.list.map(s => `<article class="stay rv">${ph(lang, s.img, { sizes: '(min-width:900px) 50vw, 100vw' })}<div><span class="badge">${S.placeholder}</span><p class="label label--muted">${s.where}</p><h3 style="margin:.5rem 0 1rem">${s.name}</h3><p>${s.text}</p><dl class="kv" style="margin-top:1.5rem">${s.kv.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('')}</dl></div></article>`).join('')}</div>
-<p class="small muted" style="margin-top:2rem;max-width:46rem">${S.note}</p>
+<div class="where__head rv"><h2 id="sl-h">${S.listTitle}</h2><div class="where__aside"><p>${S.listText}</p></div></div>
+<div class="tgrid">${S.list.map(s => `<figure class="tcard rv"><div class="tcard__media">${ph(lang, s.img, { cls: 'r43', sizes: '(min-width:800px) 50vw, 100vw' })}<div class="tcard__cap"><h3>${s.name}</h3><i>${s.where}</i></div></div><figcaption><div class="tcard__foot"><i>${S.placeholder}</i><span>${s.kv.map(k => k[1]).slice(1, 2).join('')} ${u.nights}</span></div><p class="stay__txt">${s.text}</p></figcaption></figure>`).join('')}</div>
+<p class="small muted" style="margin-top:3rem;max-width:40rem">${S.note}</p>
 </section>
-${ctaBanner(lang, { img: S.ctaImg, title: S.cta, button: u.nav.enquire })}`;
+${reserveHtml(lang)}`;
   return layout(lang, p, { title: S.metaTitle, description: S.metaDescription, body, preload: preloadFor(S.img), ogImage: S.img, crumbs: [[u.nav.stays, p]] });
 }
 
 function pAbout(lang) {
   const A = C[lang].about, u = C[lang].ui, h = C[lang].home, p = '/about/';
   const body = `
-${pageHero(lang, { img: A.img, crumbs: [[u.nav.about, p]], title: A.title, intro: A.intro })}
-<section class="section wrap" aria-labelledby="st-h">
-<span class="label label--muted">${A.story.label}</span><h2 id="st-h" class="sr">${A.story.label}</h2>
-<p class="lead rv-words" style="margin-top:1.25rem;max-width:34ch">${A.story.lead}</p>
-<div class="split" style="margin-top:clamp(2.5rem,6vw,5rem);align-items:start">${ph(lang, A.story.img, { cls: 'r45', reveal: true, sizes: '(min-width:900px) 50vw, 100vw' })}<div class="txt prose">${A.story.body.map(x => `<p>${x}</p>`).join('')}</div></div>
+${tHero(lang, { back: [u.nav.home, '/'], meta: A.story.label, title: A.title, intro: A.intro, img: A.img })}
+<section class="lift wrap" aria-labelledby="st-h"><h2 id="st-h" class="sr">${A.story.label}</h2>
+<div class="lift__grid"><div class="lift__meta rv"><p>${A.story.label}</p><p>${cfg.address.venue}</p><p>${cfg.address.locality}</p></div><p class="lift__lead rv">${emTail(A.story.lead)}</p></div>
+<dl class="stats">${A.principles.items.map(([n, l]) => `<div class="rv"><dt style="font-size:clamp(2rem,3vw,2.75rem);line-height:1.05">${n}</dt><dd>${l}</dd></div>`).join('')}</dl>
 </section>
-<section class="section wrap dark" aria-labelledby="pr-h">
-${secHead({ label: A.principles.label, title: A.principles.title, id: 'pr-h' })}
-<div class="cols" style="--n:3">${A.principles.items.map((x, i) => `<div class="rv"><div class="cols__top"><b>${x[0]}</b><span class="small" style="color:var(--clay)">/ 0${i + 1}</span></div><p style="color:var(--kaolin)">${x[1]}</p></div>`).join('')}</div>
-</section>
-<section class="steps on-image" aria-labelledby="how-h">${ph(lang, h.how.img, { zoom: false })}
-<div class="steps__top"><span class="label">${h.how.label}</span><h2 id="how-h" style="margin-top:1rem;max-width:16ch">${h.how.title}</h2></div>
-<div class="steps__in"><div><p>${h.how.text}</p></div>${h.how.steps.map((s, i) => `<div><b>0${i + 1}</b><small>${u.step}</small><h3>${s[0]}</h3><p>${s[1]}</p></div>`).join('')}</div>
-</section>
-<section class="section wrap" aria-labelledby="im-h"><div class="split" style="align-items:start">
-<div><span class="label label--muted">${A.imigongo.label}</span><h2 id="im-h" style="margin-top:1rem">${A.imigongo.title}</h2><div class="lozenges" style="margin-top:2rem;max-width:20rem" aria-hidden="true"></div></div>
-<div class="txt"><div class="prose">${A.imigongo.body.map(x => `<p>${x}</p>`).join('')}</div>${A.imigongo.img ? `<div class="frame" style="margin-top:2rem">${ph(lang, A.imigongo.img, { cls: 'r43', zoom: false, sizes: '(min-width:900px) 45vw, 100vw' })}</div>` : ''}</div></div></section>
-<section class="section wrap kaolin" aria-labelledby="ct-h"><div class="split" style="align-items:start">
-<div><span class="label label--muted">${A.contact.label}</span><h2 id="ct-h" style="margin-top:1rem">${A.contact.title}</h2></div>
-<div class="txt"><p>${A.contact.text}</p>${contactList(lang)}<p>${btn(u.nav.enquire, href(lang, '/enquire/'))}</p></div></div></section>`;
+${tDetail({ aside: `${contactList(lang)}<p>${btn(u.nav.enquire, href(lang, '/enquire/'))}</p>`, sections: [
+  [A.story.label, paras(A.story.body)],
+  [h.how.title, `<p>${h.how.text}</p><ol>${h.how.steps.map(s => `<li><strong>${s[0]}</strong> ${s[1]}</li>`).join('')}</ol>`],
+  [A.imigongo.title, `${paras(A.imigongo.body)}${A.imigongo.img ? `<div class="frame" style="margin-top:1.5rem">${ph(lang, A.imigongo.img, { cls: 'r43', zoom: false, sizes: '(min-width:900px) 45vw, 100vw' })}</div>` : ''}`],
+  [A.contact.title, `<p>${A.contact.text}</p>`],
+] })}`;
   return layout(lang, p, { title: A.metaTitle, description: A.metaDescription, body, preload: preloadFor(A.img), ogImage: A.img, crumbs: [[u.nav.about, p]] });
 }
 function contactList(lang) {
@@ -476,19 +459,21 @@ function contactList(lang) {
 
 function pJournal(lang) {
   const J = C[lang].journal, u = C[lang].ui, p = '/journal/';
-  const body = `${plainTop(lang, { crumbs: [[u.nav.journal, p]], title: J.title, intro: J.intro })}
-<section class="section wrap">${journalCards(lang, J.posts)}</section>
-${ctaBanner(lang, { img: J.ctaImg, title: J.cta, button: u.nav.enquire })}`;
+  const body = `${tHero(lang, { back: [u.nav.home, '/'], title: J.title, intro: J.intro })}
+<section class="section wrap" style="padding-top:clamp(2rem,4vw,3rem)">${postCards(lang, J.posts)}</section>
+${reserveHtml(lang)}`;
   return layout(lang, p, { title: J.metaTitle, description: J.metaDescription, body, solid: true, crumbs: [[u.nav.journal, p]] });
 }
 function pPost(lang, post) {
   const J = C[lang].journal, u = C[lang].ui, p = `/journal/${post.slug}/`;
   const others = J.posts.filter(x => x.slug !== post.slug);
+  const secs = []; let cur = [post.dek, []];
+  post.body.forEach(x => { if (x.startsWith('## ')) { secs.push(cur); cur = [x.slice(3), []]; } else cur[1].push(x); });
+  secs.push(cur);
   const body = `
-${pageHero(lang, { img: post.img, crumbs: [[u.nav.journal, '/journal/'], [post.kicker, p]], chips: [post.kicker, post.read], title: post.title, intro: post.dek })}
-<article class="article wrap"><div class="article__grid"><aside><p class="label label--muted">${post.kicker}</p><p class="small muted" style="margin-top:.5rem">${post.read}</p></aside>
-<div class="prose">${post.body.map(b => b.startsWith('## ') ? `<h2>${b.slice(3)}</h2>` : `<p>${b}</p>`).join('')}</div></div></article>
-<section class="section wrap kaolin" aria-labelledby="more-h">${secHead({ label: u.nav.journal, title: J.more, id: 'more-h', link: tlink(J.all, href(lang, '/journal/')) })}${journalCards(lang, others)}</section>`;
+${tHero(lang, { back: [u.nav.journal, '/journal/'], meta: `${post.kicker}, ${post.read}`, title: post.title, img: post.img })}
+${tDetail({ aside: `${kvAside([[u.nav.journal, post.kicker], ['—', post.read]])}<p>${post.dek}</p>`, sections: secs.filter(s => s[1].length).map((s, i) => [i === 0 ? post.kicker : s[0], paras(s[1])]) })}
+${tOthers(lang, J.more, tlink(J.all, href(lang, '/journal/')), postCards(lang, others), 'more-h')}`;
   return layout(lang, p, { title: post.title, description: post.dek, body, preload: preloadFor(post.img), ogImage: post.img, crumbs: [[u.nav.journal, '/journal/'], [post.title, p]], ld: [{ '@type': 'Article', headline: strip(post.title), description: strip(post.dek), inLanguage: lang, url: abs(lang, p), publisher: { '@id': cfg.siteUrl + '/#org' }, author: { '@id': cfg.siteUrl + '/#org' } }] });
 }
 
@@ -531,28 +516,28 @@ ${formHtml(lang, true)}</div></section>
 }
 function pThanks(lang) {
   const T = C[lang].thanks, u = C[lang].ui, p = '/enquire/thanks/';
-  const body = `${plainTop(lang, { crumbs: [[u.nav.enquire, '/enquire/'], [T.crumb, p]], title: T.title, intro: T.text })}
-<section class="section wrap"><div class="split"><div class="prose"><p>${T.next}</p><p style="margin-top:2rem">${btn(T.back, href(lang, '/'))}</p></div>${ph(lang, T.img, { cls: 'r1610', sizes: '(min-width:900px) 50vw, 100vw' })}</div></section>`;
+  const body = `${tHero(lang, { back: [u.nav.home, '/'], title: T.title, intro: T.text, img: T.img })}
+${tDetail({ aside: `<p>${btn(T.back, href(lang, '/'))}</p>`, sections: [[T.crumb, `<p>${T.next}</p>`]] })}`;
   return layout(lang, p, { title: T.title, description: T.text, body, solid: true, noindex: true });
 }
 function pLegal(lang, key, p) {
   const L = C[lang][key], u = C[lang].ui;
-  const body = `${plainTop(lang, { crumbs: [[L.title, p]], title: L.title, intro: L.intro })}
-<section class="section wrap"><div class="legal"><nav aria-label="${attr(u.onThisPage)}"><p class="label label--muted" style="margin-bottom:.75rem">${u.onThisPage}</p><ol>${L.sections.map((s, i) => `<li><a href="#s${i + 1}">${s[0]}</a></li>`).join('')}</ol></nav>
-<div class="prose">${L.sections.map((s, i) => `<section id="s${i + 1}"><h2>${s[0]}</h2>${s[1].map(x => x.startsWith('- ') ? `<ul><li>${x.slice(2).split('\n- ').join('</li><li>')}</li></ul>` : `<p>${x}</p>`).join('')}</section>`).join('')}<p class="small muted" style="margin-top:3rem">${u.updated}: ${fmtDate(lang, new Date(Date.UTC(2026, 10, 2)), { day: 'numeric', month: 'long', year: 'numeric' })}</p></div></div></section>`;
+  const body = `${tHero(lang, { back: [u.nav.home, '/'], title: L.title, intro: L.intro, sub: `${u.updated}: ${fmtDate(lang, new Date(Date.UTC(2026, 10, 2)), { day: 'numeric', month: 'long', year: 'numeric' })}` })}
+${tDetail({ aside: `<nav class="legal__nav" aria-label="${attr(u.onThisPage)}"><p class="meta">${u.onThisPage}</p><ol>${L.sections.map((s, i) => `<li><a href="#s${i + 1}">${s[0]}</a></li>`).join('')}</ol></nav>`, sections: L.sections.map((s, i) => [s[0], s[1].map(x => x.startsWith('- ') ? `<ul><li>${x.slice(2).split('\n- ').join('</li><li>')}</li></ul>` : `<p>${x}</p>`).join(''), `s${i + 1}`]) })}`;
   return layout(lang, p, { title: L.metaTitle || L.title, description: L.metaDescription, body, solid: true, crumbs: [[L.title, p]] });
 }
 function pCredits(lang) {
   const K = C[lang].credits, u = C[lang].ui, p = '/credits/';
   const cc = Object.entries(IMAGES).filter(([, v]) => v.credit && v.credit.license && !/unsplash/i.test(v.credit.license));
-  const body = `${plainTop(lang, { crumbs: [[K.title, p]], title: K.title, intro: K.intro })}
-<section class="section wrap"><ul class="credits" style="list-style:none;padding:0">${cc.map(([k, v]) => `<li><span><strong>${esc(C[lang].alt[k] || k)}</strong></span><span>${esc(v.credit.title || '')} — ${esc(v.credit.author)}</span><span><a class="link" href="${attr(v.credit.licenseUrl || v.credit.sourceUrl)}" rel="license noopener">${esc(v.credit.license)}</a> · <a class="link" href="${attr(v.credit.sourceUrl)}" rel="noopener">${K.source}</a></span></li>`).join('')}</ul>
-<div class="prose" style="margin-top:3rem">${K.body.map(x => `<p>${x}</p>`).join('')}</div></section>`;
+  const body = `${tHero(lang, { back: [u.nav.home, '/'], title: K.title, intro: K.intro })}
+${tDetail({ aside: paras(K.body), sections: [[K.source, `<ul>${cc.map(([k, v]) => `<li><strong>${esc(C[lang].alt[k] || k)}</strong><br>${esc(v.credit.title || '')} — ${esc(v.credit.author)} · <a class="link" href="${attr(v.credit.licenseUrl || v.credit.sourceUrl)}" rel="license noopener">${esc(v.credit.license)}</a> · <a class="link" href="${attr(v.credit.sourceUrl)}" rel="noopener">${K.source}</a></li>`).join('')}</ul>`]] })}`;
   return layout(lang, p, { title: K.title, description: K.intro, body, solid: true, crumbs: [[K.title, p]] });
 }
 function p404(lang) {
   const N = C[lang].notFound, u = C[lang].ui;
-  const body = `${plainTop(lang, { crumbs: [[N.crumb, '/404/']], title: N.title, intro: N.text })}<section class="section wrap">${btn(N.back, href(lang, '/'))}<div style="margin-top:3rem">${placeCards(lang, PLACES)}</div></section>`;
+  const body = `${tHero(lang, { back: [u.nav.home, '/'], title: N.title, intro: N.text })}
+<section class="section wrap" style="padding-top:2rem"><p>${btn(N.back, href(lang, '/'))}</p></section>
+${otherPlaces(lang)}`;
   return layout(lang, '/404/', { title: N.title, description: N.text, body, solid: true, noindex: true, noAlternates: true });
 }
 
