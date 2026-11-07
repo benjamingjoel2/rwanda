@@ -115,7 +115,6 @@ function footer(lang, p) {
   const u = C[lang].ui, n = u.nav, f = u.footer, a = cfg.address;
   const [w1, ...wr] = cfg.brand.name.split(' ');
   return `<footer class="ftr">
-${zz('zz--ochre')}
 <p class="ftr__word" aria-hidden="true">${w1}${wr.length ? ` <em>${wr.join(' ')}</em>` : ''}</p>
 <div class="ftr__grid">
 <div class="ftr__col"><h2>${f.write}</h2><p><a href="mailto:${cfg.brand.email}">${cfg.brand.email}</a></p><address>${a.venue}<br>${a.street}<br>${a.locality}, ${u.countryName}</address></div>
