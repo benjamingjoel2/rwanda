@@ -263,13 +263,13 @@ function pHome(lang) {
   const h = C[lang].home, u = C[lang].ui, g = C[lang].gorilla;
   const ridgeColors = ['#9fb08c', '#7f9670', '#5f7a52', '#46613e', '#2e4630'];
   const ridgeSvgs = ridgeColors.map((c, i) => `<div class="ridges__layer" style="z-index:${i + 1};bottom:${-6 + i * -3}%"><svg viewBox="0 0 1600 600" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="rg${i}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eef0e6" stop-opacity="${0.55 - i * 0.08}"/><stop offset=".35" stop-color="#eef0e6" stop-opacity="0"/></linearGradient></defs><path d="${ridgePath(17 + i * 31, 330 + i * 55, 150 - i * 12)}" fill="${c}"/><path d="${ridgePath(17 + i * 31, 330 + i * 55, 150 - i * 12)}" fill="url(#rg${i})"/></svg></div>`).join('');
+  const heroRidges = `<div class="hero__ridges" aria-hidden="true"><svg viewBox="0 0 1600 600" preserveAspectRatio="none" style="opacity:.55"><path d="${ridgePath(5, 420, 120)}" fill="#2e4630"/></svg><svg viewBox="0 0 1600 600" preserveAspectRatio="none" style="opacity:.8"><path d="${ridgePath(11, 520, 90)}" fill="#1f3121"/></svg></div>`;
   const body = `
-<section class="pano" aria-labelledby="hero-h">
-<div class="pano__in">
-<p class="pano__meta">${h.hero.place} · ${h.idea.facts.time} <span data-kigali-time class="num">--:--</span></p>
-<div class="pano__row"><h1 id="hero-h">${emTail(h.hero.title)}</h1><div class="pano__side"><p class="meta">${h.hero.tags.join(' · ')}</p><p>${h.hero.text}</p><div class="hero__ctas" style="margin-top:1.25rem">${btn(h.hero.cta, href(lang, '/journeys/'))}</div></div></div>
+<section class="hero on-image">${ph(lang, h.hero.img, { eager: true, zoom: false })}<div class="hero__mist"></div>${heroRidges}
+<div class="hero__in">
+<div class="hero__meta"><p>${h.hero.place}</p><p>${h.idea.facts.time} <span data-kigali-time class="num">--:--</span>, ${h.idea.facts.altitude[1]}</p></div>
+<div class="hero__row"><h1>${emTail(h.hero.title)}</h1><div class="hero__side"><p class="meta">${h.hero.tags.join(' · ')}</p><p>${h.hero.text}</p><div class="hero__ctas" style="margin-top:1.25rem">${btn(h.hero.cta, href(lang, '/journeys/'), 'btn--light')}<a class="hero__link" href="${href(lang, '/gorilla-trekking/')}">${u.nav.gorilla} →</a></div></div></div>
 </div>
-${ph(lang, h.hero.img, { eager: true, zoom: false, cls: 'pano__img', sizes: '100vw' })}
 </section>
 
 <section class="lift wrap" aria-labelledby="idea-h">
