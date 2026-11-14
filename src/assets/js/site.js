@@ -176,12 +176,34 @@
     master.gain.setTargetAtTime(0, actx.currentTime, 0.35);
     setTimeout(function () { if (!on) actx.suspend(); }, 1600);
   }
+  /* autoplay: on by default. Browsers only allow sound after the visitor interacts, so it starts
+     immediately where allowed, otherwise on the first click, tap or key press anywhere.
+     Turning it off is remembered (localStorage) so it does not restart on every page. */
+  var PREF = 'vj-sound';
+  function getPref() { try { return localStorage.getItem(PREF); } catch (e) { return null; } }
+  function setPref(v) { try { localStorage.setItem(PREF, v); } catch (e) {} }
+  function ui() {
+    var playing = on && actx && actx.state === 'running';
+    sbtns.forEach(function (x) { x.setAttribute('aria-pressed', !!playing); x.classList.toggle('is-on', !!playing); });
+  }
+  function soundOn() { on = true; if (!startSound()) on = false; if (actx) actx.onstatechange = ui; ui(); }
+  function soundOff() { on = false; stopSound(); ui(); }
+  var GESTURES = ['pointerdown', 'keydown', 'touchend'];
+  function onGesture(e) {
+    GESTURES.forEach(function (g) { d.removeEventListener(g, onGesture, true); });
+    if (e.target && e.target.closest && e.target.closest('.sound')) return; // the button handles itself
+    if (getPref() !== 'off') soundOn();
+  }
+  if (sbtns.length && getPref() !== 'off') {
+    var policy = navigator.getAutoplayPolicy ? navigator.getAutoplayPolicy('audiocontext') : '';
+    if (policy === 'allowed') soundOn();
+    else GESTURES.forEach(function (g) { d.addEventListener(g, onGesture, true); });
+  }
   sbtns.forEach(function (b) {
     b.addEventListener('click', function () {
-      on = !on;
-      if (on && !startSound()) on = false;
-      if (!on) stopSound();
-      sbtns.forEach(function (x) { x.setAttribute('aria-pressed', on); x.classList.toggle('is-on', on); });
+      GESTURES.forEach(function (g) { d.removeEventListener(g, onGesture, true); });
+      var playing = on && actx && actx.state === 'running';
+      if (playing) { soundOff(); setPref('off'); } else { soundOn(); setPref('on'); }
     });
   });
   d.addEventListener('visibilitychange', function () {
