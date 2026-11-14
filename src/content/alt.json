@@ -1,21 +1,21 @@
 {
  "hills-mist": {
-  "en": "Morning mist filling a forested valley below a green ridge in Nyungwe, south-west Rwanda",
-  "fr": "Brume matinale dans une vallée boisée sous une crête verte à Nyungwe, dans le sud-ouest du Rwanda",
-  "de": "Morgennebel in einem bewaldeten Tal unter einem grünen Bergrücken in Nyungwe, Südwest-Ruanda",
-  "es": "Niebla matinal en un valle boscoso bajo una loma verde en Nyungwe, al suroeste de Ruanda"
+  "en": "Sunrise over layered blue ridges in Nyungwe, south-west Rwanda",
+  "fr": "Lever de soleil sur les crêtes bleues superposées de Nyungwe, dans le sud-ouest du Rwanda",
+  "de": "Sonnenaufgang über gestaffelten blauen Bergrücken in Nyungwe, Südwest-Ruanda",
+  "es": "Amanecer sobre las crestas azules superpuestas de Nyungwe, al suroeste de Ruanda"
  },
  "hills-mist-2": {
-  "en": "Green hills and valleys of Karongi District, with villages on the ridges and haze on the horizon",
-  "fr": "Collines et vallées verdoyantes du district de Karongi, villages sur les crêtes et horizon voilé",
-  "de": "Grüne Hügel und Täler im Distrikt Karongi, Dörfer auf den Kämmen und Dunst am Horizont",
-  "es": "Colinas y valles verdes del distrito de Karongi, con aldeas en las lomas y bruma en el horizonte"
+  "en": "Evening sun over the forested ridges of Nyungwe",
+  "fr": "Soleil du soir sur les crêtes boisées de Nyungwe",
+  "de": "Abendsonne über den bewaldeten Bergrücken von Nyungwe",
+  "es": "Sol de la tarde sobre las crestas boscosas de Nyungwe"
  },
  "tea": {
-  "en": "Rows of tea covering the hills at Kitabi, on the edge of Nyungwe",
-  "fr": "Rangées de thé couvrant les collines de Kitabi, en lisière de Nyungwe",
-  "de": "Teereihen auf den Hügeln von Kitabi am Rand von Nyungwe",
-  "es": "Hileras de té cubriendo las colinas de Kitabi, en el límite de Nyungwe"
+  "en": "Two tea pickers in the Gisakura tea estate below the Nyungwe forest",
+  "fr": "Deux cueilleuses dans le domaine de thé de Gisakura, sous la forêt de Nyungwe",
+  "de": "Zwei Teepflückerinnen auf der Teeplantage Gisakura unterhalb des Nyungwe-Waldes",
+  "es": "Dos recolectoras en la plantación de té de Gisakura, bajo el bosque de Nyungwe"
  },
  "countryside": {
   "en": "A Rwandan hillside cut into green farming terraces",
@@ -36,10 +36,10 @@
   "es": "Los volcanes Muhabura, Gahinga y Sabyinyo al amanecer sobre campos del norte de Ruanda"
  },
  "volcanoes-2": {
-  "en": "The jagged peaks of Mount Sabyinyo rising above fields near the park",
-  "fr": "Les sommets déchiquetés du mont Sabyinyo au-dessus des champs, près du parc",
-  "de": "Die zerklüfteten Gipfel des Sabyinyo über Feldern nahe dem Nationalpark",
-  "es": "Los picos irregulares del monte Sabyinyo sobre los campos cercanos al parque"
+  "en": "Mount Sabyinyo rising above the town of Musanze",
+  "fr": "Le mont Sabyinyo au-dessus de la ville de Musanze",
+  "de": "Der Sabyinyo über der Stadt Musanze",
+  "es": "El monte Sabyinyo sobre la ciudad de Musanze"
  },
  "musanze": {
   "en": "Farmland and trees around Kinigi, below the Virunga volcanoes",
@@ -60,10 +60,10 @@
   "es": "Una gorila de montaña descansa con su cría, grupo Sabyinyo, Parque Nacional de los Volcanes"
  },
  "golden-monkey": {
-  "en": "A golden monkey eating bamboo in Volcanoes National Park",
-  "fr": "Un singe doré mangeant du bambou dans le parc national des Volcans",
-  "de": "Eine Goldmeerkatze frisst Bambus im Volcanoes-Nationalpark",
-  "es": "Un mono dorado comiendo bambú en el Parque Nacional de los Volcanes"
+  "en": "A golden monkey on a branch in the bamboo of the Virunga volcanoes",
+  "fr": "Un singe doré sur une branche, dans les bambous des volcans des Virunga",
+  "de": "Eine Goldmeerkatze auf einem Ast im Bambus der Virunga-Vulkane",
+  "es": "Un mono dorado en una rama, entre el bambú de los volcanes Virunga"
  },
  "kigali": {
   "en": "Kigali’s hills covered in houses and trees, with office towers on the skyline",
@@ -84,10 +84,10 @@
   "es": "Los jardines del Memorial del Genocidio de Kigali, en Gisozi, con vistas a la ciudad"
  },
  "akagera": {
-  "en": "Golden grassland running down to a lake in Akagera National Park",
-  "fr": "Savane dorée descendant vers un lac dans le parc national de l’Akagera",
-  "de": "Goldenes Grasland, das zu einem See im Akagera-Nationalpark hinabführt",
-  "es": "Pradera dorada que baja hasta un lago en el Parque Nacional de Akagera"
+  "en": "Impala and a zebra grazing on the Kilala plain in Akagera National Park",
+  "fr": "Impalas et zèbre broutant dans la plaine de Kilala, parc national de l’Akagera",
+  "de": "Impalas und ein Zebra grasen in der Kilala-Ebene im Akagera-Nationalpark",
+  "es": "Impalas y una cebra pastando en la llanura de Kilala, Parque Nacional de Akagera"
  },
  "akagera-2": {
   "en": "Lake Ihema and its islands seen from the wooded shore, Akagera National Park",
@@ -96,10 +96,10 @@
   "es": "El lago Ihema y sus islas desde la orilla arbolada, Parque Nacional de Akagera"
  },
  "akagera-animal": {
-  "en": "A group of Masai giraffes on the green plains of Akagera National Park",
-  "fr": "Un groupe de girafes Masaï dans les plaines vertes du parc national de l’Akagera",
-  "de": "Eine Gruppe Massai-Giraffen in den grünen Ebenen des Akagera-Nationalparks",
-  "es": "Un grupo de jirafas masái en las llanuras verdes del Parque Nacional de Akagera"
+  "en": "Two giraffes among wildflowers and woodland in Akagera National Park",
+  "fr": "Deux girafes parmi les fleurs sauvages et les bois du parc national de l’Akagera",
+  "de": "Zwei Giraffen zwischen Wildblumen und Wald im Akagera-Nationalpark",
+  "es": "Dos jirafas entre flores silvestres y bosque en el Parque Nacional de Akagera"
  },
  "akagera-animal-2": {
   "en": "A herd of zebras walking along a track in Akagera National Park",
@@ -156,10 +156,10 @@
   "es": "Un chimpancé joven sentado entre las ramas del bosque de Nyungwe"
  },
  "colobus": {
-  "en": "A group of black-and-white Rwenzori colobus monkeys in Nyungwe",
-  "fr": "Un groupe de colobes noir et blanc du Ruwenzori à Nyungwe",
-  "de": "Eine Gruppe schwarz-weißer Ruwenzori-Stummelaffen in Nyungwe",
-  "es": "Un grupo de colobos blanquinegros de Ruwenzori en Nyungwe"
+  "en": "A silver monkey among ferns in Nyungwe National Park",
+  "fr": "Un singe argenté parmi les fougères du parc national de Nyungwe",
+  "de": "Eine Silbermeerkatze zwischen Farnen im Nyungwe-Nationalpark",
+  "es": "Un mono plateado entre helechos en el Parque Nacional de Nyungwe"
  },
  "gishwati": {
   "en": "Cloud over the green mountains of Gishwati-Mukura in Rutsiro District",

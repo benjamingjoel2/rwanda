@@ -1,181 +1,4 @@
 {
- "hills-mist": {
-  "w": 2400,
-  "h": 1480,
-  "focal": "50% 50%",
-  "files": {
-   "avif": [
-    [
-     480,
-     "/assets/img/hills-mist-480.dacceb91.avif"
-    ],
-    [
-     800,
-     "/assets/img/hills-mist-800.46f6e33d.avif"
-    ],
-    [
-     1200,
-     "/assets/img/hills-mist-1200.55a314ea.avif"
-    ],
-    [
-     1600,
-     "/assets/img/hills-mist-1600.0d4560c8.avif"
-    ],
-    [
-     2400,
-     "/assets/img/hills-mist-2400.e5414333.avif"
-    ]
-   ],
-   "webp": [
-    [
-     480,
-     "/assets/img/hills-mist-480.bbd7c326.webp"
-    ],
-    [
-     800,
-     "/assets/img/hills-mist-800.7c691bbe.webp"
-    ],
-    [
-     1200,
-     "/assets/img/hills-mist-1200.59ef4fe0.webp"
-    ],
-    [
-     1600,
-     "/assets/img/hills-mist-1600.4573c14f.webp"
-    ],
-    [
-     2400,
-     "/assets/img/hills-mist-2400.64ce8254.webp"
-    ]
-   ]
-  },
-  "credit": {
-   "title": "File:The Welcoming Mist.jpg",
-   "author": "Dpiskho",
-   "license": "CC BY-SA 4.0",
-   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Welcoming_Mist.jpg",
-   "location": "Nyungwe Forest National Park, Rwanda (Commons category)"
-  }
- },
- "hills-mist-2": {
-  "w": 2400,
-  "h": 1485,
-  "focal": "50% 50%",
-  "files": {
-   "avif": [
-    [
-     480,
-     "/assets/img/hills-mist-2-480.593b1f49.avif"
-    ],
-    [
-     800,
-     "/assets/img/hills-mist-2-800.94591ab6.avif"
-    ],
-    [
-     1200,
-     "/assets/img/hills-mist-2-1200.72e3ca38.avif"
-    ],
-    [
-     1600,
-     "/assets/img/hills-mist-2-1600.4e9c30f2.avif"
-    ],
-    [
-     2400,
-     "/assets/img/hills-mist-2-2400.c573e5c8.avif"
-    ]
-   ],
-   "webp": [
-    [
-     480,
-     "/assets/img/hills-mist-2-480.4b976f35.webp"
-    ],
-    [
-     800,
-     "/assets/img/hills-mist-2-800.fb0b3e4f.webp"
-    ],
-    [
-     1200,
-     "/assets/img/hills-mist-2-1200.5cf41e2d.webp"
-    ],
-    [
-     1600,
-     "/assets/img/hills-mist-2-1600.3c9dbebc.webp"
-    ],
-    [
-     2400,
-     "/assets/img/hills-mist-2-2400.b3ff88b5.webp"
-    ]
-   ]
-  },
-  "credit": {
-   "title": "File:Karongi in Rwanda.jpg",
-   "author": "Ericnkurunziza",
-   "license": "CC BY-SA 4.0",
-   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "sourceUrl": "https://commons.wikimedia.org/wiki/File:Karongi_in_Rwanda.jpg",
-   "location": "Karongi District, Western Province, Rwanda"
-  }
- },
- "tea": {
-  "w": 2400,
-  "h": 1448,
-  "focal": "50% 50%",
-  "files": {
-   "avif": [
-    [
-     480,
-     "/assets/img/tea-480.4fdcfce3.avif"
-    ],
-    [
-     800,
-     "/assets/img/tea-800.7bdb45f5.avif"
-    ],
-    [
-     1200,
-     "/assets/img/tea-1200.36e49ed3.avif"
-    ],
-    [
-     1600,
-     "/assets/img/tea-1600.50afb905.avif"
-    ],
-    [
-     2400,
-     "/assets/img/tea-2400.23e033e3.avif"
-    ]
-   ],
-   "webp": [
-    [
-     480,
-     "/assets/img/tea-480.5fa6def4.webp"
-    ],
-    [
-     800,
-     "/assets/img/tea-800.1cb31729.webp"
-    ],
-    [
-     1200,
-     "/assets/img/tea-1200.96775610.webp"
-    ],
-    [
-     1600,
-     "/assets/img/tea-1600.0717a5ab.webp"
-    ],
-    [
-     2400,
-     "/assets/img/tea-2400.962bd16f.webp"
-    ]
-   ]
-  },
-  "credit": {
-   "title": "File:Kitabi - Nyaruguru hills.jpg",
-   "author": "Jnshuti",
-   "license": "CC BY-SA 4.0",
-   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kitabi_-_Nyaruguru_hills.jpg",
-   "location": "Kitabi, Nyamagabe District (Nyaruguru hills), Southern Province, Rwanda - tea plantations"
-  }
- },
  "countryside": {
   "w": 2400,
   "h": 1600,
@@ -351,65 +174,6 @@
    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMuhabura%2CGahinga_and_Sabyinyo.jpg",
    "location": "Muhabura,Gahinga and Sabyinyo Volcanoes in the morning"
-  }
- },
- "volcanoes-2": {
-  "w": 2400,
-  "h": 1600,
-  "focal": "50% 50%",
-  "files": {
-   "avif": [
-    [
-     480,
-     "/assets/img/volcanoes-2-480.a8eef408.avif"
-    ],
-    [
-     800,
-     "/assets/img/volcanoes-2-800.ba53b080.avif"
-    ],
-    [
-     1200,
-     "/assets/img/volcanoes-2-1200.93788466.avif"
-    ],
-    [
-     1600,
-     "/assets/img/volcanoes-2-1600.ee6e80cd.avif"
-    ],
-    [
-     2400,
-     "/assets/img/volcanoes-2-2400.cade64d6.avif"
-    ]
-   ],
-   "webp": [
-    [
-     480,
-     "/assets/img/volcanoes-2-480.564bfd44.webp"
-    ],
-    [
-     800,
-     "/assets/img/volcanoes-2-800.91e109e5.webp"
-    ],
-    [
-     1200,
-     "/assets/img/volcanoes-2-1200.ead01688.webp"
-    ],
-    [
-     1600,
-     "/assets/img/volcanoes-2-1600.75dc9751.webp"
-    ],
-    [
-     2400,
-     "/assets/img/volcanoes-2-2400.491822bd.webp"
-    ]
-   ]
-  },
-  "credit": {
-   "title": "File:Sabyinyo (32413217396).jpg",
-   "author": "Maciej",
-   "license": "CC BY-SA 2.0",
-   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ASabyinyo_%2832413217396%29.jpg",
-   "location": "Sabyinyo is an extinct volcano in eastern Africa."
   }
  },
  "musanze": {
@@ -589,65 +353,6 @@
    "location": "Sabyinyo group of mountain gorillas. Volcanoes National Park, Rwanda."
   }
  },
- "golden-monkey": {
-  "w": 2400,
-  "h": 1600,
-  "focal": "70% 50%",
-  "files": {
-   "avif": [
-    [
-     480,
-     "/assets/img/golden-monkey-480.9ab732c4.avif"
-    ],
-    [
-     800,
-     "/assets/img/golden-monkey-800.f56d80d3.avif"
-    ],
-    [
-     1200,
-     "/assets/img/golden-monkey-1200.25f4d0f3.avif"
-    ],
-    [
-     1600,
-     "/assets/img/golden-monkey-1600.b5741086.avif"
-    ],
-    [
-     2400,
-     "/assets/img/golden-monkey-2400.1b6cc304.avif"
-    ]
-   ],
-   "webp": [
-    [
-     480,
-     "/assets/img/golden-monkey-480.93366434.webp"
-    ],
-    [
-     800,
-     "/assets/img/golden-monkey-800.4ef11171.webp"
-    ],
-    [
-     1200,
-     "/assets/img/golden-monkey-1200.d3c5e333.webp"
-    ],
-    [
-     1600,
-     "/assets/img/golden-monkey-1600.8ea74e40.webp"
-    ],
-    [
-     2400,
-     "/assets/img/golden-monkey-2400.a7dcd90a.webp"
-    ]
-   ]
-  },
-  "credit": {
-   "title": "File:Golden monkey (Cercopithecus kandti) eating.jpg",
-   "author": "Charles J. Sharp",
-   "license": "CC BY-SA 4.0",
-   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AGolden_monkey_%28Cercopithecus_kandti%29_eating.jpg",
-   "location": "Golden monkey (Cercopithecus kandti) eating bamboo, Volcanoes National Park, Rwanda"
-  }
- },
  "kigali": {
   "w": 2400,
   "h": 1589,
@@ -825,65 +530,6 @@
    "location": "Kigali Genocide Memorial Centre"
   }
  },
- "akagera": {
-  "w": 2400,
-  "h": 1600,
-  "focal": "50% 50%",
-  "files": {
-   "avif": [
-    [
-     480,
-     "/assets/img/akagera-480.f7d67d12.avif"
-    ],
-    [
-     800,
-     "/assets/img/akagera-800.8d2e9d3f.avif"
-    ],
-    [
-     1200,
-     "/assets/img/akagera-1200.d554b870.avif"
-    ],
-    [
-     1600,
-     "/assets/img/akagera-1600.4f7828c4.avif"
-    ],
-    [
-     2400,
-     "/assets/img/akagera-2400.8f21d53d.avif"
-    ]
-   ],
-   "webp": [
-    [
-     480,
-     "/assets/img/akagera-480.77baf87a.webp"
-    ],
-    [
-     800,
-     "/assets/img/akagera-800.ec77dda4.webp"
-    ],
-    [
-     1200,
-     "/assets/img/akagera-1200.d5953744.webp"
-    ],
-    [
-     1600,
-     "/assets/img/akagera-1600.d63c79a1.webp"
-    ],
-    [
-     2400,
-     "/assets/img/akagera-2400.e1e9f0c5.webp"
-    ]
-   ]
-  },
-  "credit": {
-   "title": "File:Akagera National Park Rwanda.jpg",
-   "author": "Emery045",
-   "license": "CC BY-SA 4.0",
-   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAkagera_National_Park_Rwanda.jpg",
-   "location": "Camera Make\nCanon\nCamera Model\nCanon EOS 6D\nFocal Length\n50.0mm\nAperture\nƒ/2.8\nShutter Speed\n1/1600s\nISO\n100\nDimensions\n4104 × 2736\n\nThe picture was taken from "
-  }
- },
  "akagera-2": {
   "w": 1920,
   "h": 1280,
@@ -941,65 +587,6 @@
    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ALake_Ihema.jpg",
    "location": "Lake Ihema, Akagera National Park, Rwanda"
-  }
- },
- "akagera-animal": {
-  "w": 1920,
-  "h": 1079,
-  "focal": "70% 50%",
-  "files": {
-   "avif": [
-    [
-     480,
-     "/assets/img/akagera-animal-480.62326961.avif"
-    ],
-    [
-     800,
-     "/assets/img/akagera-animal-800.371c435e.avif"
-    ],
-    [
-     1200,
-     "/assets/img/akagera-animal-1200.e944a783.avif"
-    ],
-    [
-     1600,
-     "/assets/img/akagera-animal-1600.e6ba8597.avif"
-    ],
-    [
-     1920,
-     "/assets/img/akagera-animal-1920.1c97fd2a.avif"
-    ]
-   ],
-   "webp": [
-    [
-     480,
-     "/assets/img/akagera-animal-480.66f8b6db.webp"
-    ],
-    [
-     800,
-     "/assets/img/akagera-animal-800.8a6384ff.webp"
-    ],
-    [
-     1200,
-     "/assets/img/akagera-animal-1200.fafa8600.webp"
-    ],
-    [
-     1600,
-     "/assets/img/akagera-animal-1600.3a05f33d.webp"
-    ],
-    [
-     1920,
-     "/assets/img/akagera-animal-1920.1146e05f.webp"
-    ]
-   ]
-  },
-  "credit": {
-   "title": "File:Giraffe Gathering Akagera National Park.jpg",
-   "author": "Joseph Lionceau",
-   "license": "CC BY-SA 4.0",
-   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AGiraffe_Gathering_Akagera_National_Park.jpg",
-   "location": "Giraffe group gathering Akagera National Park"
   }
  },
  "akagera-animal-2": {
@@ -1517,65 +1104,6 @@
    "location": "Young chimpanzee in Nyungwe Forest National Park"
   }
  },
- "colobus": {
-  "w": 1920,
-  "h": 1440,
-  "focal": "50% 50%",
-  "files": {
-   "avif": [
-    [
-     480,
-     "/assets/img/colobus-480.54069cf1.avif"
-    ],
-    [
-     800,
-     "/assets/img/colobus-800.14f498e9.avif"
-    ],
-    [
-     1200,
-     "/assets/img/colobus-1200.492214fd.avif"
-    ],
-    [
-     1600,
-     "/assets/img/colobus-1600.8a28a93f.avif"
-    ],
-    [
-     1920,
-     "/assets/img/colobus-1920.93812efc.avif"
-    ]
-   ],
-   "webp": [
-    [
-     480,
-     "/assets/img/colobus-480.02668dd7.webp"
-    ],
-    [
-     800,
-     "/assets/img/colobus-800.4509c72c.webp"
-    ],
-    [
-     1200,
-     "/assets/img/colobus-1200.b0cb18b7.webp"
-    ],
-    [
-     1600,
-     "/assets/img/colobus-1600.122699cb.webp"
-    ],
-    [
-     1920,
-     "/assets/img/colobus-1920.b903e902.webp"
-    ]
-   ]
-  },
-  "credit": {
-   "title": "File:Multi-male unit of Rwenzori colobus in Nyungwe .jpg",
-   "author": "AlexMiller12345",
-   "license": "CC BY-SA 4.0",
-   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMulti-male_unit_of_Rwenzori_colobus_in_Nyungwe_.jpg",
-   "location": "A multi-male unit of Angolan colobus in a multilevel society"
-  }
- },
  "gishwati": {
   "w": 1920,
   "h": 1280,
@@ -1692,6 +1220,478 @@
    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AImigongo_traditional_patterns_%281%29.jpg",
    "location": "Motifs géométriques traditionnels de l'art Imigongo, né à la fin du 18e s. dans la province de Kibungo (Rwanda). Panneaux installés à Saint-Dié-des-Vosges dans "
+  }
+ },
+ "hills-mist": {
+  "w": 1920,
+  "h": 1522,
+  "focal": "50% 50%",
+  "files": {
+   "avif": [
+    [
+     480,
+     "/assets/img/hills-mist-480.e84af402.avif"
+    ],
+    [
+     800,
+     "/assets/img/hills-mist-800.f742acf8.avif"
+    ],
+    [
+     1200,
+     "/assets/img/hills-mist-1200.0702d87d.avif"
+    ],
+    [
+     1600,
+     "/assets/img/hills-mist-1600.77bd731e.avif"
+    ],
+    [
+     1920,
+     "/assets/img/hills-mist-1920.77dcd7a2.avif"
+    ]
+   ],
+   "webp": [
+    [
+     480,
+     "/assets/img/hills-mist-480.bc0ffc14.webp"
+    ],
+    [
+     800,
+     "/assets/img/hills-mist-800.34d0fea4.webp"
+    ],
+    [
+     1200,
+     "/assets/img/hills-mist-1200.e871a1db.webp"
+    ],
+    [
+     1600,
+     "/assets/img/hills-mist-1600.c203654f.webp"
+    ],
+    [
+     1920,
+     "/assets/img/hills-mist-1920.3d54d227.webp"
+    ]
+   ]
+  },
+  "credit": {
+   "title": "File:Sunrisenyungwe.jpg",
+   "author": "Jonkmania",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ASunrisenyungwe.jpg",
+   "location": "When hiking in Nyungwe you have to get up very very early, and thats when the magic happens..."
+  }
+ },
+ "hills-mist-2": {
+  "w": 1920,
+  "h": 806,
+  "focal": "50% 50%",
+  "files": {
+   "avif": [
+    [
+     480,
+     "/assets/img/hills-mist-2-480.47afb407.avif"
+    ],
+    [
+     800,
+     "/assets/img/hills-mist-2-800.f9583db5.avif"
+    ],
+    [
+     1200,
+     "/assets/img/hills-mist-2-1200.59674419.avif"
+    ],
+    [
+     1600,
+     "/assets/img/hills-mist-2-1600.43ec78dd.avif"
+    ],
+    [
+     1920,
+     "/assets/img/hills-mist-2-1920.e7e2fdfb.avif"
+    ]
+   ],
+   "webp": [
+    [
+     480,
+     "/assets/img/hills-mist-2-480.f0dfcde5.webp"
+    ],
+    [
+     800,
+     "/assets/img/hills-mist-2-800.6d09c78a.webp"
+    ],
+    [
+     1200,
+     "/assets/img/hills-mist-2-1200.c24cc504.webp"
+    ],
+    [
+     1600,
+     "/assets/img/hills-mist-2-1600.8e2fcb69.webp"
+    ],
+    [
+     1920,
+     "/assets/img/hills-mist-2-1920.b9238fe9.webp"
+    ]
+   ]
+  },
+  "credit": {
+   "title": "File:Nyungwe Panorama.jpg",
+   "author": "Dpiskho",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ANyungwe_Panorama.jpg",
+   "location": "Beautiful country"
+  }
+ },
+ "tea": {
+  "w": 1920,
+  "h": 1280,
+  "focal": "50% 50%",
+  "files": {
+   "avif": [
+    [
+     480,
+     "/assets/img/tea-480.485c5bf9.avif"
+    ],
+    [
+     800,
+     "/assets/img/tea-800.19629f16.avif"
+    ],
+    [
+     1200,
+     "/assets/img/tea-1200.0e260845.avif"
+    ],
+    [
+     1600,
+     "/assets/img/tea-1600.76829371.avif"
+    ],
+    [
+     1920,
+     "/assets/img/tea-1920.29cc24b0.avif"
+    ]
+   ],
+   "webp": [
+    [
+     480,
+     "/assets/img/tea-480.d9963070.webp"
+    ],
+    [
+     800,
+     "/assets/img/tea-800.290e2b23.webp"
+    ],
+    [
+     1200,
+     "/assets/img/tea-1200.a1e3c0ef.webp"
+    ],
+    [
+     1600,
+     "/assets/img/tea-1600.cd4191ae.webp"
+    ],
+    [
+     1920,
+     "/assets/img/tea-1920.b38f29a6.webp"
+    ]
+   ]
+  },
+  "credit": {
+   "title": "File:Tea plantation ol.jpg",
+   "author": "Wood Wildlife Photography",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ATea_plantation_ol.jpg",
+   "location": "Gisakura tea plantation in Nyungwe national park"
+  }
+ },
+ "akagera-animal": {
+  "w": 1920,
+  "h": 1280,
+  "focal": "50% 50%",
+  "files": {
+   "avif": [
+    [
+     480,
+     "/assets/img/akagera-animal-480.8ab8f7a2.avif"
+    ],
+    [
+     800,
+     "/assets/img/akagera-animal-800.bca8e246.avif"
+    ],
+    [
+     1200,
+     "/assets/img/akagera-animal-1200.77e1d6f5.avif"
+    ],
+    [
+     1600,
+     "/assets/img/akagera-animal-1600.626f4f27.avif"
+    ],
+    [
+     1920,
+     "/assets/img/akagera-animal-1920.2fee8cd1.avif"
+    ]
+   ],
+   "webp": [
+    [
+     480,
+     "/assets/img/akagera-animal-480.8d58399a.webp"
+    ],
+    [
+     800,
+     "/assets/img/akagera-animal-800.8bdcb7b9.webp"
+    ],
+    [
+     1200,
+     "/assets/img/akagera-animal-1200.a7f0159e.webp"
+    ],
+    [
+     1600,
+     "/assets/img/akagera-animal-1600.52cce647.webp"
+    ],
+    [
+     1920,
+     "/assets/img/akagera-animal-1920.2bb87ecb.webp"
+    ]
+   ]
+  },
+  "credit": {
+   "title": "File:GIRAFFE OL5.jpg",
+   "author": "Wood Wildlife Photography",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AGIRAFFE_OL5.jpg",
+   "location": "pair of giraffe in plain of akagera national park"
+  }
+ },
+ "akagera": {
+  "w": 1920,
+  "h": 1280,
+  "focal": "50% 50%",
+  "files": {
+   "avif": [
+    [
+     480,
+     "/assets/img/akagera-480.6d54d306.avif"
+    ],
+    [
+     800,
+     "/assets/img/akagera-800.2f40afd3.avif"
+    ],
+    [
+     1200,
+     "/assets/img/akagera-1200.140de544.avif"
+    ],
+    [
+     1600,
+     "/assets/img/akagera-1600.c4aa5a76.avif"
+    ],
+    [
+     1920,
+     "/assets/img/akagera-1920.57932c1e.avif"
+    ]
+   ],
+   "webp": [
+    [
+     480,
+     "/assets/img/akagera-480.bec22c8a.webp"
+    ],
+    [
+     800,
+     "/assets/img/akagera-800.128a0fdd.webp"
+    ],
+    [
+     1200,
+     "/assets/img/akagera-1200.2f859896.webp"
+    ],
+    [
+     1600,
+     "/assets/img/akagera-1600.1ab15a36.webp"
+    ],
+    [
+     1920,
+     "/assets/img/akagera-1920.be13d78a.webp"
+    ]
+   ]
+  },
+  "credit": {
+   "title": "File:ANTELLOPE4.jpg",
+   "author": "Wood Wildlife Photography",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AANTELLOPE4.jpg",
+   "location": "antelope and zebras in Kilala plain at akaera national park"
+  }
+ },
+ "golden-monkey": {
+  "w": 1920,
+  "h": 1280,
+  "focal": "50% 50%",
+  "files": {
+   "avif": [
+    [
+     480,
+     "/assets/img/golden-monkey-480.93eddfc5.avif"
+    ],
+    [
+     800,
+     "/assets/img/golden-monkey-800.a0e7234a.avif"
+    ],
+    [
+     1200,
+     "/assets/img/golden-monkey-1200.5a4681e4.avif"
+    ],
+    [
+     1600,
+     "/assets/img/golden-monkey-1600.352ac0ed.avif"
+    ],
+    [
+     1920,
+     "/assets/img/golden-monkey-1920.ec6ce59a.avif"
+    ]
+   ],
+   "webp": [
+    [
+     480,
+     "/assets/img/golden-monkey-480.17124db0.webp"
+    ],
+    [
+     800,
+     "/assets/img/golden-monkey-800.86ff3278.webp"
+    ],
+    [
+     1200,
+     "/assets/img/golden-monkey-1200.8cd2857a.webp"
+    ],
+    [
+     1600,
+     "/assets/img/golden-monkey-1600.06500242.webp"
+    ],
+    [
+     1920,
+     "/assets/img/golden-monkey-1920.a29b1a97.webp"
+    ]
+   ]
+  },
+  "credit": {
+   "title": "File:GOLDEN MONKEY.jpg",
+   "author": "Wood Wildlife Photography",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AGOLDEN_MONKEY.jpg",
+   "location": "Golden monkey found in the Virunga volcanic mountains of Central Africa."
+  }
+ },
+ "colobus": {
+  "w": 1920,
+  "h": 1280,
+  "focal": "50% 50%",
+  "files": {
+   "avif": [
+    [
+     480,
+     "/assets/img/colobus-480.7e75d04d.avif"
+    ],
+    [
+     800,
+     "/assets/img/colobus-800.57cc4683.avif"
+    ],
+    [
+     1200,
+     "/assets/img/colobus-1200.17bf926c.avif"
+    ],
+    [
+     1600,
+     "/assets/img/colobus-1600.271da9d9.avif"
+    ],
+    [
+     1920,
+     "/assets/img/colobus-1920.fe4e97ef.avif"
+    ]
+   ],
+   "webp": [
+    [
+     480,
+     "/assets/img/colobus-480.2895fe72.webp"
+    ],
+    [
+     800,
+     "/assets/img/colobus-800.f10baebf.webp"
+    ],
+    [
+     1200,
+     "/assets/img/colobus-1200.978f7542.webp"
+    ],
+    [
+     1600,
+     "/assets/img/colobus-1600.7a329e34.webp"
+    ],
+    [
+     1920,
+     "/assets/img/colobus-1920.93547e79.webp"
+    ]
+   ]
+  },
+  "credit": {
+   "title": "File:SILVER MONKEY.jpg",
+   "author": "Wood Wildlife Photography",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ASILVER_MONKEY.jpg",
+   "location": "silver monkey at Nyungwe national park"
+  }
+ },
+ "volcanoes-2": {
+  "w": 1920,
+  "h": 1280,
+  "focal": "50% 50%",
+  "files": {
+   "avif": [
+    [
+     480,
+     "/assets/img/volcanoes-2-480.794e5dc5.avif"
+    ],
+    [
+     800,
+     "/assets/img/volcanoes-2-800.84e21967.avif"
+    ],
+    [
+     1200,
+     "/assets/img/volcanoes-2-1200.4402c3bb.avif"
+    ],
+    [
+     1600,
+     "/assets/img/volcanoes-2-1600.742c5036.avif"
+    ],
+    [
+     1920,
+     "/assets/img/volcanoes-2-1920.38896c05.avif"
+    ]
+   ],
+   "webp": [
+    [
+     480,
+     "/assets/img/volcanoes-2-480.cb1306be.webp"
+    ],
+    [
+     800,
+     "/assets/img/volcanoes-2-800.8ae4b835.webp"
+    ],
+    [
+     1200,
+     "/assets/img/volcanoes-2-1200.ae25247f.webp"
+    ],
+    [
+     1600,
+     "/assets/img/volcanoes-2-1600.ab31fe85.webp"
+    ],
+    [
+     1920,
+     "/assets/img/volcanoes-2-1920.d1cd8358.webp"
+    ]
+   ]
+  },
+  "credit": {
+   "title": "File:Musanze's Volcano (46355800961).jpg",
+   "author": "Andrew Moore from Johannesburg, South Africa",
+   "license": "CC BY-SA 2.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMusanze%27s_Volcano_%2846355800961%29.jpg",
+   "location": "Mount Sabyinyo, Musanze's Volcano Sabyinyo."
   }
  }
 }
