@@ -4,6 +4,8 @@ module.exports = {
   ui: {
     skip: 'Zum Inhalt springen',
     menu: 'Menü',
+    sound: 'Ton',
+    soundTitle: 'Waldklänge: Wind, Blätter und Vögel',
     otherPlaces: 'Weitere Orte',
     prev: 'Zurück',
     next: 'Weiter',

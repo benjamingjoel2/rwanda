@@ -102,6 +102,7 @@ function header(lang, p) {
 </ul></nav>
 <div class="hdr__side">
 ${langSwitch(lang, p)}
+<button class="sound" type="button" aria-pressed="false" title="${attr(u.soundTitle)}"><span class="sound__bars" aria-hidden="true"><i></i><i></i><i></i></span><span>${u.sound}</span></button>
 ${btn(n.enquire, href(lang, '/enquire/'), 'btn--line enq')}
 <button class="burger" type="button" aria-expanded="false" aria-controls="mnav"><span class="sr">${u.menu}</span><i></i></button>
 </div></div></header>

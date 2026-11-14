@@ -4,6 +4,8 @@ module.exports = {
   ui: {
     skip: 'Skip to content',
     menu: 'Menu',
+    sound: 'Sound',
+    soundTitle: 'Ambient sound of the forest: wind, leaves and birds',
     otherPlaces: 'Other places',
     prev: 'Previous',
     next: 'Next',

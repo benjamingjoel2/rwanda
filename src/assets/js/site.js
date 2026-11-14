@@ -109,6 +109,86 @@
     });
   });
 
+  /* ambient sound (Tarn-style toggle). Generated in the browser with the Web Audio API:
+     wind and leaves from filtered noise, plus occasional bird calls. Nothing loads until pressed. */
+  var sbtns = d.querySelectorAll('.sound'), actx = null, master = null, birdTimer = null, on = false;
+  function noiseBuffer(ctx, secs, brown) {
+    var len = ctx.sampleRate * secs, buf = ctx.createBuffer(2, len, ctx.sampleRate);
+    for (var c = 0; c < 2; c++) {
+      var data = buf.getChannelData(c), last = 0;
+      for (var i = 0; i < len; i++) {
+        var white = Math.random() * 2 - 1;
+        if (brown) { last = (last + 0.02 * white) / 1.02; data[i] = last * 3.5; } else data[i] = white * 0.5;
+      }
+    }
+    return buf;
+  }
+  function loop(ctx, buf, filterType, freq, q, gain) {
+    var src = ctx.createBufferSource(), f = ctx.createBiquadFilter(), g = ctx.createGain();
+    src.buffer = buf; src.loop = true; f.type = filterType; f.frequency.value = freq; f.Q.value = q; g.gain.value = gain;
+    src.connect(f); f.connect(g); g.connect(master); src.start();
+    return { f: f, g: g };
+  }
+  function lfo(ctx, param, rate, depth) {
+    var o = ctx.createOscillator(), g = ctx.createGain();
+    o.frequency.value = rate; g.gain.value = depth; o.connect(g); g.connect(param); o.start();
+  }
+  function bird() {
+    if (!on || !actx) return;
+    var t = actx.currentTime, notes = 2 + Math.floor(Math.random() * 4), base = 2200 + Math.random() * 1800;
+    var pan = actx.createStereoPanner ? actx.createStereoPanner() : null;
+    if (pan) { pan.pan.value = Math.random() * 1.6 - 0.8; pan.connect(master); }
+    for (var n = 0; n < notes; n++) {
+      var o = actx.createOscillator(), g = actx.createGain(), st = t + n * (0.12 + Math.random() * 0.1), dur = 0.07 + Math.random() * 0.08;
+      o.type = 'sine';
+      o.frequency.setValueAtTime(base * (0.9 + Math.random() * 0.25), st);
+      o.frequency.exponentialRampToValueAtTime(base * (1.15 + Math.random() * 0.4), st + dur);
+      g.gain.setValueAtTime(0.0001, st);
+      g.gain.exponentialRampToValueAtTime(0.05, st + 0.015);
+      g.gain.exponentialRampToValueAtTime(0.0001, st + dur);
+      o.connect(g); g.connect(pan || master); o.start(st); o.stop(st + dur + 0.05);
+    }
+    birdTimer = setTimeout(bird, 2500 + Math.random() * 6000);
+  }
+  function startSound() {
+    var AC = w.AudioContext || w.webkitAudioContext;
+    if (!AC) return false;
+    if (!actx) {
+      actx = new AC();
+      master = actx.createGain(); master.gain.value = 0; master.connect(actx.destination);
+      var brown = noiseBuffer(actx, 4, true), white = noiseBuffer(actx, 3, false);
+      var wind = loop(actx, brown, 'lowpass', 420, 0.6, 0.55);
+      lfo(actx, wind.f.frequency, 0.07, 220);
+      lfo(actx, wind.g.gain, 0.11, 0.18);
+      var leaves = loop(actx, white, 'bandpass', 5200, 0.7, 0.035);
+      lfo(actx, leaves.g.gain, 0.17, 0.025);
+    }
+    actx.resume();
+    master.gain.cancelScheduledValues(actx.currentTime);
+    master.gain.setTargetAtTime(0.55, actx.currentTime, 0.6);
+    clearTimeout(birdTimer); birdTimer = setTimeout(bird, 1200);
+    return true;
+  }
+  function stopSound() {
+    if (!actx) return;
+    clearTimeout(birdTimer);
+    master.gain.cancelScheduledValues(actx.currentTime);
+    master.gain.setTargetAtTime(0, actx.currentTime, 0.35);
+    setTimeout(function () { if (!on) actx.suspend(); }, 1600);
+  }
+  sbtns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      on = !on;
+      if (on && !startSound()) on = false;
+      if (!on) stopSound();
+      sbtns.forEach(function (x) { x.setAttribute('aria-pressed', on); x.classList.toggle('is-on', on); });
+    });
+  });
+  d.addEventListener('visibilitychange', function () {
+    if (!actx || !on) return;
+    if (d.hidden) actx.suspend(); else actx.resume();
+  });
+
   /* Kigali local time (fact row) */
   var kt = d.querySelectorAll('[data-kigali-time]');
   function tick() {
